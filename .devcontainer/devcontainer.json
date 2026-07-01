@@ -1,0 +1,42 @@
+{
+  "name": "quarto-odyssey",
+  "image": "ghcr.io/rocker-org/devcontainer/verse:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": false,
+      "configureZshAsDefaultShell": false,
+      "upgradePackages": false
+    }
+  },
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "8gb"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "quarto.quarto",
+        "reditorsupport.r",
+        "rdebugger.r-debugger"
+      ],
+      "settings": {
+        "editor.formatOnSave": false,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "security.workspace.trust.enabled": false,
+        "task.allowAutomaticTasks": "on",
+        "r.rterm.linux": "/usr/local/bin/R",
+        "r.bracketedPaste": true,
+        "[r]": {
+          "editor.wordSeparators": "`~!@#%$^&*()-=+[{]}\\|;:'\",<>/?"
+        }
+      }
+    },
+    "codespaces": {
+      "openFiles": [
+        "course/course.qmd",
+        "exercises/02-quarto-analysis/template/manuscript.qmd"
+      ]
+    }
+  },
+  "postCreateCommand": "R -e 'install.packages(c(\"tidyverse\", \"gt\", \"ggplot2\", \"knitr\", \"rmarkdown\"), repos=\"https://cloud.r-project.org\")' 2>/dev/null || echo 'R packages already installed via rocker image'"
+}

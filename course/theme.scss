@@ -1,0 +1,475 @@
+/*-- scss:defaults --*/
+
+// 2001: A Quarto Odyssey — light theme, clinical white aesthetic.
+//
+// Fonts:
+//   Display  : Space Grotesk    (headings — geometric retro-future)
+//   Body     : Inter            (paragraphs — clean modern sans)
+//   Mono     : JetBrains Mono   (commands, code blocks, inline mono)
+
+$paper:          #fafaf8;   // clinical near-white background
+$paper-soft:     #f1f0eb;   // sidebars / callouts (unified)
+$paper-card:     #ebeae4;   // code blocks
+$ink:            #14140f;   // near-black text
+$ink-soft:       #4a4a44;   // muted text
+$gray:           #888880;   // mid-gray for less prominent
+$hal-red:        #c1272d;   // HAL 9000's eye
+$hal-red-bright: #e63238;
+$hal-red-soft:   rgba(193, 39, 45, 0.08);
+$signal-blue:    #2c5f7c;   // cool accent for links
+$rule:           #d8d6cc;
+
+// Bootstrap variables for Quarto HTML
+$body-bg:           $paper;
+$body-color:        $ink;
+$primary:           $hal-red;
+$secondary:         $gray;
+$link-color:        $signal-blue;
+$link-hover-color:  $hal-red;
+
+$font-family-sans-serif: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-monospace:  'JetBrains Mono', 'Source Code Pro', Menlo, monospace;
+$headings-font-family:   'Space Grotesk', 'Inter', 'Helvetica Neue', sans-serif;
+$headings-font-weight:   600;
+$headings-color:         $ink;
+$headings-line-height:   1.2;
+
+$font-size-base:        1.25rem;
+$line-height-base:      1.7;
+$h1-font-size:          2.4rem;
+$h2-font-size:          1.7rem;
+$h3-font-size:          1.3rem;
+$h4-font-size:          1.1rem;
+
+$code-color:        $ink;
+$code-bg:           $paper-card;
+$pre-bg:            $paper-card;
+$pre-color:         $ink;
+$pre-border-color:  $rule;
+
+$table-color:                       $ink;
+$table-bg:                          transparent;
+$table-border-color:                $rule;
+$table-striped-bg:                  rgba($ink, 0.02);
+
+$border-color:               $rule;
+$hr-color:                   $rule;
+$blockquote-border-color:    $hal-red;
+$blockquote-font-size:       1em;
+
+/*-- scss:rules --*/
+
+body {
+  font-family: $font-family-sans-serif;
+  font-weight: 400;
+  background: $body-bg;
+  color: $body-color;
+}
+
+// Headings ---------------------------------------------------------------
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4 {
+  font-family: $headings-font-family;
+  letter-spacing: -0.005em;
+  color: $ink;
+  text-transform: none;
+}
+
+h1 {
+  border-bottom: 1px solid $hal-red;
+  padding-bottom: 0.4rem;
+  margin-top: 2.8rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+h2 {
+  margin-top: 2.2rem;
+  margin-bottom: 0.8rem;
+  color: $ink;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 1.6rem;
+  margin-bottom: 0.6rem;
+  color: $ink-soft;
+  font-weight: 500;
+}
+
+// Links ------------------------------------------------------------------
+
+a {
+  color: $signal-blue;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba($signal-blue, 0.5);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+a:hover {
+  color: $hal-red;
+  border-bottom-color: $hal-red;
+}
+
+// Paragraphs / lists -----------------------------------------------------
+
+p, li {
+  font-family: $font-family-sans-serif;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+ul, ol {
+  margin-bottom: 1.2rem;
+}
+
+// Code -------------------------------------------------------------------
+
+code {
+  font-family: $font-family-monospace;
+  color: $ink;
+  background: $paper-card;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  font-size: 0.85em;
+  border: 1px solid $rule;
+}
+
+pre, .sourceCode {
+  background: $paper-card;
+  border: 1px solid $rule;
+  color: $ink;
+  padding: 1em 1.2em;
+  border-radius: 4px;
+  font-family: $font-family-monospace;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 1em 0 1.5em 0;
+  overflow-x: auto;
+}
+
+pre code, pre code.sourceCode {
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  border: 0;
+}
+
+div.sourceCode {
+  background: $paper-card;
+  border: 1px solid $rule;
+  border-radius: 4px;
+  margin: 1em 0 1.5em 0;
+}
+
+// Blockquote -------------------------------------------------------------
+
+blockquote, .blockquote {
+  border-left: 3px solid $hal-red;
+  padding: 0.6em 1.2em;
+  margin: 1.6em 0;
+  color: $ink-soft;
+  font-style: italic;
+  background: $hal-red-soft;
+  border-radius: 0 4px 4px 0;
+}
+
+// Tables -----------------------------------------------------------------
+
+table {
+  border-collapse: collapse;
+  margin: 1.2em 0 1.8em 0;
+  width: 100%;
+  color: $ink;
+}
+th, td {
+  border-bottom: 1px solid $rule;
+  padding: 0.55em 0.9em;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  font-family: $headings-font-family;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: $ink;
+  border-bottom: 1.5px solid $gray;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  background: $paper-soft;
+}
+
+// Horizontal rule --------------------------------------------------------
+
+hr {
+  border: 0;
+  border-top: 1px solid $rule;
+  margin: 2.5em 0;
+  opacity: 1;
+}
+
+// TOC sidebar ------------------------------------------------------------
+
+#TOC, #toc-sidebar, .quarto-secondary-nav, nav#toc, nav[role=doc-toc] {
+  background: $paper;
+  font-family: $font-family-sans-serif;
+  font-size: 0.95rem;
+  color: $ink-soft;
+  border-right: 1px solid $rule;
+}
+
+nav[role=doc-toc] ul,
+nav#TOC ul,
+.sidebar nav ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+nav[role=doc-toc] ul li,
+nav#TOC ul li,
+.sidebar nav ul li {
+  margin-bottom: 0.15rem;
+}
+
+nav[role=doc-toc] a,
+nav#TOC a,
+.sidebar nav a {
+  color: $ink-soft;
+  border-bottom: none;
+  padding: 0.2em 0.6em;
+  display: block;
+  border-left: 2px solid transparent;
+  line-height: 1.35;
+}
+
+nav[role=doc-toc] a:hover,
+nav#TOC a:hover,
+.sidebar nav a:hover {
+  color: $ink;
+  background: transparent;
+  border-left-color: $signal-blue;
+}
+
+nav[role=doc-toc] a.active,
+nav#TOC a.active,
+.sidebar nav a.active {
+  color: $hal-red;
+  border-left-color: $hal-red;
+  font-weight: 600;
+}
+
+.sidebar-title,
+.toc-title {
+  font-family: $headings-font-family;
+  color: $ink;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  padding: 0.5em 0.6em 0.6em;
+  font-weight: 600;
+}
+
+// Title banner -----------------------------------------------------------
+
+.quarto-title-block, .quarto-title-banner, header#title-block-header {
+  background: $paper;
+  color: $ink;
+  padding: 2.5rem 0 1rem;
+}
+
+.quarto-title h1.title, h1.title {
+  font-size: 2.6rem;
+  letter-spacing: -0.01em;
+  color: $ink;
+  border-bottom: 1px solid $hal-red;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.subtitle {
+  color: $ink-soft;
+  font-style: italic;
+  font-size: 1.2rem;
+  font-family: $font-family-sans-serif;
+  font-weight: 400;
+}
+
+.quarto-title-meta,
+.quarto-title-meta-heading,
+.quarto-title-meta-contents {
+  color: $gray;
+  font-family: $headings-font-family;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+// Images -----------------------------------------------------------------
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Strong / emphasis ------------------------------------------------------
+
+strong, b {
+  color: $ink;
+  font-weight: 600;
+}
+
+em, i {
+  color: $ink;
+}
+
+// HAL quote treatment ---------------------------------------------------
+
+.hal {
+  text-align: center;
+  margin: 2.5rem auto;
+  padding: 1.6em 1.6em 1.4em;
+  border-left: none;
+  border: 1px solid $rule;
+  background: $paper-soft;
+  border-radius: 4px;
+  position: relative;
+}
+
+.hal::before {
+  content: "";
+  display: block;
+  width: 0.85rem;
+  height: 0.85rem;
+  background: $hal-red;
+  border-radius: 50%;
+  margin: 0 auto 1.1rem;
+  box-shadow: 0 0 14px $hal-red, 0 0 32px rgba($hal-red, 0.35);
+}
+
+.hal p {
+  border: 0;
+  background: transparent;
+  color: $ink;
+  font-size: 1.3rem;
+  font-family: $font-family-sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
+}
+
+.hal cite,
+.hal .source {
+  display: block;
+  margin-top: 0.8em;
+  color: $gray;
+  font-family: $headings-font-family;
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+// Column-margin notes (Quarto `.column-margin`) -------------------------
+
+.column-margin,
+.aside,
+aside {
+  color: $ink-soft;
+  font-size: 0.9rem;
+  font-style: normal;
+  line-height: 1.5;
+  font-family: $font-family-sans-serif;
+}
+
+.column-margin {
+  border-left: 2px solid $signal-blue;
+  padding: 0.3em 0 0.3em 0.8em;
+  margin-top: 0.3em;
+  margin-bottom: 1em;
+}
+
+.column-margin p:first-child {
+  margin-top: 0;
+}
+.column-margin p:last-child {
+  margin-bottom: 0;
+}
+
+.column-margin code {
+  font-size: 0.85em;
+  padding: 0.05em 0.3em;
+}
+
+.column-margin .margin-label {
+  display: block;
+  font-family: $headings-font-family;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.65rem;
+  color: $hal-red;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+}
+
+// Callouts — unified backgrounds for clean look ------------------------
+// Header and body share the same background; only the left accent border
+// signals the callout type.
+
+.callout {
+  border: 1px solid $rule;
+  border-radius: 4px;
+  background: $paper-soft;
+  margin: 1.5em 0;
+  overflow: hidden;
+}
+
+.callout .callout-header,
+.callout .callout-title-container {
+  background: transparent;
+  color: $ink;
+  font-family: $headings-font-family;
+  font-weight: 600;
+  border-bottom: 1px solid rgba($ink, 0.06);
+  letter-spacing: 0.01em;
+}
+
+.callout .callout-title {
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.callout-body {
+  background: transparent;
+}
+
+.callout-note { border-left: 4px solid $signal-blue; }
+.callout-tip { border-left: 4px solid #3e8a5e; }
+.callout-warning { border-left: 4px solid #c08a20; }
+.callout-important { border-left: 4px solid $hal-red; }
+.callout-caution { border-left: 4px solid #8a4b9e; }
+
+// Hero poster ------------------------------------------------------------
+
+.hero {
+  margin: 1.5rem auto 3rem;
+  text-align: center;
+}
+
+.hero img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border: 1px solid $rule;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba($ink, 0.10);
+}
