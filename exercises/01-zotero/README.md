@@ -44,7 +44,7 @@ Cria uma colecção nova (`File → New Collection`) chamada `quarto-odyssey`. A
 2. **DOI / PMID via *magic wand*.** No Zotero, carrega na varinha mágica (canto superior esquerdo, ícone com `+` verde). Cola um DOI (ex.: `10.1056/NEJMoa1403108`) ou PMID (ex.: `25196427`).
 3. **Drag-and-drop de PDF.** Arrasta um PDF (descarregado a partir do PubMed Central, por exemplo) para a janela do Zotero. Os metadados são extraídos automaticamente. Sem PDF à mão? `starter-files/hansen2024-asthma-biologics.pdf` neste exercício é um artigo real, *open access*, pronto a arrastar.
 4. **Entrada manual.** Botão verde `+` → escolhe o tipo de item. Útil para capítulos de livro, comunicações em conferência, *grey literature*.
-5. **Importação `.bib`/`.ris`.** Se tens uma bibliografia herdada, `File → Import` e selecciona o ficheiro. Sem bibliografia à mão? `starter-files/legado.bib` tem duas referências reais prontas a importar.
+5. **Importação `.bib`/`.ris`.** Se tens uma bibliografia herdada, `File → Import` e selecciona o ficheiro. Sem bibliografia à mão? `starter-files/refs.bib` tem duas referências reais prontas a importar.
 
 ### 4. Verificar retractações
 

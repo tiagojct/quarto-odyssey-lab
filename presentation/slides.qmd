@@ -23,6 +23,36 @@ format:
 - Princípios FAIR
 - Próximos passos
 
+## Antes de começar: conta GitHub
+
+Precisas de uma **conta GitHub gratuita** para seguir o curso.
+
+- Já tens conta? Login em [github.com](https://github.com).
+- Não tens? Cria uma agora em [github.com/signup](https://github.com/signup) — só precisas de um email, demora menos de um minuto.
+- Um navegador moderno (Chrome, Firefox, Safari, Edge). Não precisas de instalar nada no teu computador — R, Quarto e LaTeX já vêm prontos no ambiente que vais abrir a seguir.
+
+::: {.callout-tip}
+## Excepção: exercício 1 (Zotero)
+
+O Zotero corre no teu computador, não no browser. Instala-o agora se ainda não tens: [zotero.org/download](https://www.zotero.org/download/) (versão 7+), mais o [conector do navegador](https://www.zotero.org/download/connectors).
+:::
+
+## Acede ao repositório do curso
+
+:::: {.columns}
+::: {.column width="45%"}
+![](images/repo-qr.png){fig-align="center"}
+:::
+::: {.column width="55%"}
+[github.com/tiagojct/ev2026-quarto-odyssey-students](https://github.com/tiagojct/ev2026-quarto-odyssey-students)
+
+1. Abre o link (ou digitaliza o código).
+2. **Use this template → Create a new repository**.
+3. No teu novo repo: **Code → Codespaces → Create codespace on main**.
+4. Espera 3–5 minutos no primeiro arranque.
+:::
+::::
+
 ## O problema
 
 Um investigador em saúde faz três coisas repetidamente: **gere referências**, **analisa dados**, **escreve**.
