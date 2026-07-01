@@ -586,7 +586,7 @@ A [referência completa de opções](https://quarto.org/docs/reference/) está o
 ::: {.callout-note}
 ## Templates de revistas para Quarto
 
-Várias revistas já têm templates oficiais Quarto: [PLOS One](https://github.com/quarto-journals/plos), [BMC](https://github.com/quarto-journals/biomed-central), [American Statistical Association](https://github.com/quarto-journals/jasa), [Elsevier](https://github.com/quarto-journals/elsevier). A lista cresce. Procura em [github.com/quarto-journals](https://github.com/quarto-journals) antes de fazer o teu próprio template.
+Várias revistas já têm templates oficiais Quarto: [PLOS One](https://github.com/quarto-journals/plos), [American Statistical Association](https://github.com/quarto-journals/jasa), [Elsevier](https://github.com/quarto-journals/elsevier). A lista cresce. Procura em [github.com/quarto-journals](https://github.com/quarto-journals) antes de fazer o teu próprio template.
 
 Para usar um template (exemplo com PLOS):
 
@@ -701,7 +701,7 @@ Se o YAML é longo, valida-o em [yamllint.com](https://www.yamllint.com) antes d
 Recomendado:
 
 1. Faz o curso completo (Zotero + Quarto + R chunks + exportação).
-2. Para a tese em si, considera a [extensão Quarto para teses](https://github.com/quarto-ext/thesis-templates) ou o template específico da tua universidade.
+2. Para a tese em si, considera a [extensão Quarto para teses](https://github.com/nmfs-opensci/quarto-thesis) ou procura o template específico da tua universidade na [lista curada de templates de tese em Quarto](https://github.com/Jupyter4Science/awesome-quarto-thesis).
 3. Aprende **Git** em paralelo (1h em [learngitbranching.js.org](https://learngitbranching.js.org)) — vais agradecer ao quinto rascunho da introdução.
 4. Sincroniza a biblioteca Zotero em três sítios: portátil, máquina do laboratório, conta online. Faz *backup* mensal do `.bib` para o repositório Git do projecto.
 5. Considera escrever a tese em formato [Quarto Book](https://quarto.org/docs/books/) — capítulos separados num projecto único, com bibliografia partilhada.
@@ -748,7 +748,7 @@ Boa notícia: a transição é suave.
 
 Recomendado:
 
-1. Migra a biblioteca de Mendeley para Zotero ([guia oficial](https://www.zotero.org/support/kb/mendeley_import)). O Zotero é mais activo, mais aberto, e o Mendeley deixou de receber novos utilizadores em 2024.
+1. Migra a biblioteca de Mendeley para Zotero ([guia oficial](https://www.zotero.org/support/kb/mendeley_import)). O Zotero é *open source* e independente de qualquer editora; o Mendeley pertence à Elsevier, que já descontinuou (e depois recuperou) partes do produto — historial que vale a pena considerar antes de depender dele a longo prazo.
 2. Começa por usar Quarto **apenas** para os documentos onde código e dados são parte do output (artigos quantitativos, relatórios analíticos). Mantém Word para documentos puramente textuais durante a transição.
 3. À medida que ganhas confiança, expande. Não há prémio por adoptar tudo de uma vez.
 4. Mantém o Word disponível para co-autores que insistem — exporta para `.docx` quando preciso, mas o teu original fica `.qmd`.
@@ -851,7 +851,7 @@ Para aprofundar depois do curso:
 
 **Workshops relacionados:**
 
-- [The Promptfather](https://github.com/tiagojct/ev2026-promptfather-students) — workshop irmão deste, sobre agentes de IA na linha de comandos para investigação em saúde.
+- [The Promptfather](https://github.com/tiagojct/promptfather-lab) — workshop irmão deste, sobre agentes de IA na linha de comandos para investigação em saúde.
 
 **Tutoriais relacionados (Tiago Jacinto):**
 

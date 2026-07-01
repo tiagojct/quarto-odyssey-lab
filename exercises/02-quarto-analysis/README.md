@@ -35,7 +35,7 @@ Abre uma página com o documento renderizado. Cada vez que gravares o `.qmd`, a 
 
 ### 3. Completa o primeiro chunk — leitura dos dados
 
-Na secção marcada com `<!-- TODO: chunk 1 -->`, escreve um bloco R que carregue o dataset e guarde-o num objecto chamado `cohort`. Algo como:
+No chunk marcado com o comentário `# TODO: chunk 1`, escreve código R que carregue o dataset e guarde-o num objecto chamado `cohort`. Algo como:
 
 ```r
 library(tidyverse)
@@ -47,7 +47,7 @@ cohort <- read_csv("../data/cohort-asma.csv")
 
 ### 4. Completa o segundo chunk — tabela descritiva
 
-Na secção marcada com `<!-- TODO: chunk 2 -->`, produz uma tabela com:
+No chunk marcado com `# TODO: chunk 2`, produz uma tabela com:
 
 - N por sexo.
 - Média e desvio-padrão da idade, em cada grupo de sexo.
@@ -59,7 +59,7 @@ Dá ao chunk o label `tbl-demographics` e uma legenda em `tbl-cap`.
 
 ### 5. Completa o terceiro chunk — gráfico
 
-Na secção marcada com `<!-- TODO: chunk 3 -->`, faz um gráfico com `ggplot2`:
+No chunk marcado com `# TODO: chunk 3`, faz um gráfico com `ggplot2`:
 
 - Eixo X: idade.
 - Eixo Y: FEV1 em litros.

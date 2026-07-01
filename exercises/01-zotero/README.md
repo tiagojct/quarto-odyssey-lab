@@ -36,7 +36,7 @@ Criar uma biblioteca Zotero com pelo menos **10 referências** adicionadas por *
 
 ### 3. Adicionar 10 referências por 3 métodos diferentes
 
-Cria uma colecção nova (`File → New Collection`) chamada `promptfather-workshop`. Adiciona pelo menos 10 referências sobre um tópico à tua escolha, usando **pelo menos três** dos seguintes métodos:
+Cria uma colecção nova (`File → New Collection`) chamada `quarto-odyssey`. Adiciona pelo menos 10 referências sobre um tópico à tua escolha, usando **pelo menos três** dos seguintes métodos:
 
 1. **Conector do navegador.** Vai ao PubMed, procura um termo (ex.: *eosinophilic asthma children*), abre um artigo, e carrega no ícone do Zotero na barra do navegador.
 2. **DOI / PMID via *magic wand*.** No Zotero, carrega na varinha mágica (canto superior esquerdo, ícone com `+` verde). Cola um DOI (ex.: `10.1056/NEJMoa1403108`) ou PMID (ex.: `25196427`).
@@ -52,7 +52,7 @@ Cria uma colecção nova (`File → New Collection`) chamada `promptfather-works
 
 ### 5. Exportar para `.bib`
 
-1. Botão direito na colecção `promptfather-workshop` → **Export Collection** (ou **Export Library** para a biblioteca inteira).
+1. Botão direito na colecção `quarto-odyssey` → **Export Collection** (ou **Export Library** para a biblioteca inteira).
 2. Formato: **Better BibTeX**.
 3. Marca **Keep updated**.
 4. Guarda como `references.bib` na pasta do projecto Quarto que vais usar nos exercícios 2 e 3 (no teu Codespace).
