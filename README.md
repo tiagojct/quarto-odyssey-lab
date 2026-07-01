@@ -13,7 +13,7 @@ Curso sobre Quarto, Zotero e R para investigação reproduzível em saúde. FMUP
 1. Cria uma conta GitHub gratuita, se ainda não tiveres.
 2. Carrega em **"Use this template" → "Create a new repository"** no canto superior desta página. Faz uma cópia para a tua conta (podes deixá-la privada).
 3. No teu novo repositório, carrega em **"Code" → "Codespaces" → "Create codespace on main"**.
-4. Espera dois a três minutos no primeiro arranque. O Codespace usa a imagem `rocker-org/devcontainer/verse` que traz R, tidyverse, Quarto e LaTeX já instalados.
+4. Espera dois a três minutos no primeiro arranque. O Codespace usa a imagem `rocker-org/devcontainer/tidyverse` com a feature `quarto-cli` (TinyTeX incluído), que traz R, tidyverse, Quarto e LaTeX já instalados.
 5. Quando o VS Code abrir, o terminal já está aberto em baixo. Para abrir o curso no navegador:
 
    ```bash
