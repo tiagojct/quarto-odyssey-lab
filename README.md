@@ -6,7 +6,7 @@
 
 Curso sobre Quarto, Zotero e R para investigação reproduzível em saúde. FMUP / MEDCIDS Escola de Verão 2026.
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tiagojct/ev2026-quarto-odyssey-students)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tiagojct/quarto-odyssey-lab)
 
 ## Como começar
 

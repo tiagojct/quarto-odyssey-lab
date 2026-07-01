@@ -44,7 +44,7 @@ O Zotero corre no teu computador, não no browser. Instala-o agora se ainda não
 ![](images/repo-qr.png){fig-align="center"}
 :::
 ::: {.column width="55%"}
-[github.com/tiagojct/ev2026-quarto-odyssey-students](https://github.com/tiagojct/ev2026-quarto-odyssey-students)
+[github.com/tiagojct/quarto-odyssey-lab](https://github.com/tiagojct/quarto-odyssey-lab)
 
 1. Abre o link (ou digitaliza o código).
 2. **Use this template → Create a new repository**.
@@ -224,6 +224,6 @@ Não precisas de ter visto o filme. Mas depois de hoje, talvez valha a pena.
 
 Abre o `course/course.qmd` no teu Codespace — é o guião de hoje, e fica contigo depois.
 
-[github.com/tiagojct/ev2026-quarto-odyssey-students](https://github.com/tiagojct/ev2026-quarto-odyssey-students)
+[github.com/tiagojct/quarto-odyssey-lab](https://github.com/tiagojct/quarto-odyssey-lab)
 
 Tiago Jacinto · FMUP / CINTESIS–RISE-Health
