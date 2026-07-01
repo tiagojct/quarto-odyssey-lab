@@ -13,6 +13,8 @@ Criar uma biblioteca Zotero com pelo menos **10 referências** adicionadas por *
 
 > **Nota.** Este exercício faz-se na tua **máquina local**, não no Codespace. O Codespace serve para o documento Quarto (exercícios 2 e 3), mas o Zotero é uma aplicação de ambiente de trabalho.
 
+> **Ficheiros de apoio.** A pasta `starter-files/` deste exercício tem um PDF e um `.bib` de exemplo (ver passo 3, métodos 3 e 5). Como o Zotero corre na tua máquina, não no Codespace, descarrega-os primeiro: no GitHub, abre `exercises/01-zotero/starter-files/`, escolhe o ficheiro, e usa **Download raw file**.
+
 ## Passos
 
 ### 1. Instalar o Better BibTeX
@@ -40,9 +42,9 @@ Cria uma colecção nova (`File → New Collection`) chamada `quarto-odyssey`. A
 
 1. **Conector do navegador.** Vai ao PubMed, procura um termo (ex.: *eosinophilic asthma children*), abre um artigo, e carrega no ícone do Zotero na barra do navegador.
 2. **DOI / PMID via *magic wand*.** No Zotero, carrega na varinha mágica (canto superior esquerdo, ícone com `+` verde). Cola um DOI (ex.: `10.1056/NEJMoa1403108`) ou PMID (ex.: `25196427`).
-3. **Drag-and-drop de PDF.** Arrasta um PDF (descarregado a partir do PubMed Central, por exemplo) para a janela do Zotero. Os metadados são extraídos automaticamente.
+3. **Drag-and-drop de PDF.** Arrasta um PDF (descarregado a partir do PubMed Central, por exemplo) para a janela do Zotero. Os metadados são extraídos automaticamente. Sem PDF à mão? `starter-files/hansen2024-asthma-biologics.pdf` neste exercício é um artigo real, *open access*, pronto a arrastar.
 4. **Entrada manual.** Botão verde `+` → escolhe o tipo de item. Útil para capítulos de livro, comunicações em conferência, *grey literature*.
-5. **Importação `.bib`/`.ris`.** Se tens uma bibliografia herdada, `File → Import` e selecciona o ficheiro.
+5. **Importação `.bib`/`.ris`.** Se tens uma bibliografia herdada, `File → Import` e selecciona o ficheiro. Sem bibliografia à mão? `starter-files/legado.bib` tem duas referências reais prontas a importar.
 
 ### 4. Verificar retractações
 

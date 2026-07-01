@@ -38,6 +38,7 @@ Curso sobre Quarto, Zotero e R para investigação reproduzível em saúde. FMUP
 │   └── slides.qmd                  # Slides de abertura (Quarto reveal.js)
 └── exercises/
     ├── 01-zotero/                  # Biblioteca Zotero + Better BibTeX (local)
+    │   └── starter-files/          # PDF + .bib de exemplo, opcionais
     ├── 02-quarto-analysis/         # Quarto + R chunks (no Codespace)
     │   ├── data/cohort-asma.csv
     │   └── template/
