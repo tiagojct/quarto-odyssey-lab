@@ -371,6 +371,18 @@ read_csv("data/cohort-asma.csv") |>
   gt()
 ```
 
+::: {.callout-tip collapse="true"}
+## R enferrujado? Três coisas para reconhecer neste exemplo
+
+Não vamos ensinar R — mas se não lhe tocas há uns meses, isto orienta-te para os exercícios:
+
+- **`|>` é o *pipe*.** Lê-se "e depois": pega no resultado da esquerda e passa-o como primeiro argumento à função da direita. `dados |> summarise(...)` é o mesmo que `summarise(dados, ...)`, mas lê-se de cima para baixo.
+- **`summarise()` colapsa linhas em resumos** (média, contagem). Com `group_by(sex)` antes, faz um resumo *por grupo*.
+- **`gt()` transforma a tabela num objecto formatado** para o documento final.
+
+Se precisas de mais, o [R for Data Science (2e)](https://r4ds.hadley.nz) (gratuito) cobre isto nos capítulos 3–4.
+:::
+
 As opções com `#|` (chamadas *hash-pipe options*) controlam o comportamento do chunk:
 
 | Opção        | O que faz                                                  |
@@ -566,6 +578,8 @@ format:
 
 Quando renderizas, geram-se os três ficheiros. Para revistas que exigem `.docx`, tens. Para arquivo institucional, tens PDF. Para partilha online (preprint, página pessoal, GitHub Pages), tens HTML.
 
+[Há um quarto formato a ganhar terreno: `typst`. Gera PDF sem LaTeX, muito mais depressa, e a primeira render não descarrega pacotes. Ainda é recente, mas para relatórios e apontamentos vale a pena experimentar `format: typst`.]{.column-margin}
+
 Cada formato pode ter opções próprias:
 
 ```yaml
@@ -630,7 +644,7 @@ Abre [`exercises/03-writing-export/README.md`](../exercises/03-writing-export/RE
 
 # Post-mortem — erros comuns ao renderizar
 
-Quando o `quarto render` falha, a mensagem de erro é geralmente honesta mas verbosa. Cinco padrões cobrem a maioria dos casos.
+Quando o `quarto render` falha, a mensagem de erro é geralmente honesta mas verbosa. Seis padrões cobrem a maioria dos casos.
 
 ::: {.callout-warning}
 ## "Error: cannot find object" ou "object 'x' not found"
@@ -691,6 +705,17 @@ YAML é sensível a indentação e a aspas. Quatro causas frequentes:
 4. Indentação inconsistente — usa sempre 2 espaços, nunca 4 numa secção e 2 noutra.
 
 Se o YAML é longo, valida-o em [yamllint.com](https://www.yamllint.com) antes de re-renderizar.
+:::
+
+::: {.callout-warning}
+## "Misplaced alignment tab character &" — caracteres especiais no PDF
+
+Só em renders PDF. Os caracteres `&`, `%`, `_`, `#`, `$` têm significado próprio em LaTeX. Um `&` cru no texto (ex.: "Saúde & Tecnologia"), numa legenda, ou num campo do `.bib` faz o render PDF falhar.
+
+- **No teu texto:** escapa-os com uma barra invertida — `\&`, `\%`, `\_`, `\#`, `\$`.
+- **No `.bib`:** deixa o Better BibTeX tratar disto — re-exporta a biblioteca em vez de editar o `.bib` à mão.
+
+Acentos portugueses (á, ç, ã, õ) **não** são o problema: o motor por defeito (LuaLaTeX/XeLaTeX) trata-os nativamente. Se vires caracteres corrompidos (`Ã§` em vez de `ç`), confirma que não forçaste `pdf-engine: pdflatex` no YAML — o `pdflatex` antigo não lida bem com UTF-8.
 :::
 
 # Perfis típicos — qual é o teu ponto de partida?

@@ -61,6 +61,16 @@ Cria uma colecção nova (`File → New Collection`) chamada `quarto-odyssey`. A
 
 > Como mover o ficheiro do teu computador para o Codespace: no VS Code do Codespace, arrasta o `references.bib` da tua pasta local para o painel de ficheiros à esquerda. O ficheiro é carregado para o Codespace.
 
+### 6. Verifica o `.bib` antes de avançar
+
+Um `.bib` mal exportado só dá erro no exercício 2 ou 3, longe daqui — vale a pena confirmar agora. Abre o `references.bib` num editor de texto e verifica:
+
+- **Tem as tuas referências.** Conta os `@` no início de linha (`@article{...`, `@book{...`): deves ter pelo menos 10.
+- **As *cite keys* são legíveis.** A chave é o que vem logo a seguir a `@article{`, antes da primeira vírgula — deve parecer `papi2018asthma`, não um código aleatório. Se são aleatórias, volta ao passo 2 (Better BibTeX → Citation Key Format).
+- **Não há entradas cortadas a meio.** Cada entrada abre com `{` e fecha com `}`.
+
+Se estes três pontos estão bem, o `.bib` está pronto para os exercícios 2 e 3.
+
 ## Output esperado
 
 - Uma colecção Zotero com 10+ referências adicionadas por pelo menos 3 métodos.
