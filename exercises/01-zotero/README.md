@@ -1,86 +1,86 @@
-# Exercício 1 — Biblioteca Zotero com Better BibTeX
+# Exercise 1 — Zotero library with Better BibTeX
 
-## Objectivo
+## Objective
 
-Criar uma biblioteca Zotero com pelo menos **10 referências** adicionadas por **três métodos diferentes**, instalar e configurar o Better BibTeX, configurar a exportação automática para `.bib`, e verificar retractações.
+Build a Zotero library with at least **10 references** added by **three different methods**, install and configure Better BibTeX, set up automatic export to `.bib`, and check for retractions.
 
-## Antes de começar
+## Before you start
 
-- Tens o Zotero instalado na tua máquina (não no Codespace — Zotero é uma aplicação desktop).
-  - Download em <https://www.zotero.org/download/>. Versão 7.0 ou superior.
-- Tens o conector do Zotero instalado no teu navegador.
+- You have Zotero installed on your machine (not in the Codespace — Zotero is a desktop application).
+  - Download it at <https://www.zotero.org/download/>. Version 7.0 or later.
+- You have the Zotero connector installed in your browser.
   - <https://www.zotero.org/download/connectors>
 
-> **Nota.** Este exercício faz-se na tua **máquina local**, não no Codespace. O Codespace serve para o documento Quarto (exercícios 2 e 3), mas o Zotero é uma aplicação de ambiente de trabalho.
+> **Note.** This exercise is done on your **local machine**, not in the Codespace. The Codespace is for the Quarto document (exercises 2 and 3), but Zotero is a desktop application.
 
-> **Ficheiros de apoio.** A pasta `starter-files/` deste exercício tem um PDF e um `.bib` de exemplo (ver passo 3, métodos 3 e 5). Como o Zotero corre na tua máquina, não no Codespace, descarrega-os primeiro: no GitHub, abre `exercises/01-zotero/starter-files/`, escolhe o ficheiro, e usa **Download raw file**.
+> **Support files.** This exercise's `starter-files/` folder contains a sample PDF and a sample `.bib` (see step 3, methods 3 and 5). Since Zotero runs on your machine and not in the Codespace, download them first: on GitHub, open `exercises/01-zotero/starter-files/`, pick the file, and use **Download raw file**.
 
-## Passos
+## Steps
 
-### 1. Instalar o Better BibTeX
+### 1. Install Better BibTeX
 
-1. Descarrega a versão mais recente em <https://retorque.re/zotero-better-bibtex/installation/>. O ficheiro tem extensão `.xpi`.
-2. No Zotero: **Tools → Add-ons → Engrenagem → Install Add-on From File...**
-3. Selecciona o `.xpi` descarregado.
-4. Reinicia o Zotero.
+1. Download the latest version at <https://retorque.re/zotero-better-bibtex/installation/>. The file has a `.xpi` extension.
+2. In Zotero: **Tools → Add-ons → Gear → Install Add-on From File...**
+3. Select the downloaded `.xpi`.
+4. Restart Zotero.
 
-### 2. Configurar cite keys estáveis
+### 2. Configure stable cite keys
 
 1. **Edit → Preferences → Better BibTeX**.
-2. Em **Citation Key Format**, cola:
+2. In **Citation Key Format**, paste:
 
    ```
    auth.lower + year + shorttitle(1,1).lower
    ```
 
-   Isto gera *cite keys* como `silva2024asthma` ou `who2023air`.
-3. Em **Automatic Export**, escolhe **On Change** — o `.bib` actualiza-se sempre que mexes na biblioteca.
+   This generates *cite keys* like `silva2024asthma` or `who2023air`.
+3. In **Automatic Export**, choose **On Change** — the `.bib` updates every time you change the library.
 
-### 3. Adicionar 10 referências por 3 métodos diferentes
+### 3. Add 10 references by 3 different methods
 
-Cria uma colecção nova (`File → New Collection`) chamada `quarto-odyssey`. Adiciona pelo menos 10 referências sobre um tópico à tua escolha, usando **pelo menos três** dos seguintes métodos:
+Create a new collection (`File → New Collection`) named `quarto-odyssey`. Add at least 10 references on a topic of your choice, using **at least three** of the following methods:
 
-1. **Conector do navegador.** Vai ao PubMed, procura um termo (ex.: *eosinophilic asthma children*), abre um artigo, e carrega no ícone do Zotero na barra do navegador.
-2. **DOI / PMID via *magic wand*.** No Zotero, carrega na varinha mágica (canto superior esquerdo, ícone com `+` verde). Cola um DOI (ex.: `10.1056/NEJMoa1403108`) ou PMID (ex.: `25196427`).
-3. **Drag-and-drop de PDF.** Arrasta um PDF (descarregado a partir do PubMed Central, por exemplo) para a janela do Zotero. Os metadados são extraídos automaticamente. Sem PDF à mão? `starter-files/hansen2024-asthma-biologics.pdf` neste exercício é um artigo real, *open access*, pronto a arrastar.
-4. **Entrada manual.** Botão verde `+` → escolhe o tipo de item. Útil para capítulos de livro, comunicações em conferência, *grey literature*.
-5. **Importação `.bib`/`.ris`.** Se tens uma bibliografia herdada, `File → Import` e selecciona o ficheiro. Sem bibliografia à mão? `starter-files/refs.bib` tem duas referências reais prontas a importar.
+1. **Browser connector.** Go to PubMed, search for a term (e.g., *eosinophilic asthma children*), open an article, and click the Zotero icon in the browser bar.
+2. **DOI / PMID via *magic wand*.** In Zotero, click the magic wand (top-left corner, icon with a green `+`). Paste a DOI (e.g., `10.1056/NEJMoa1403108`) or PMID (e.g., `25196427`).
+3. **Drag-and-drop of a PDF.** Drag a PDF (downloaded from PubMed Central, for example) into the Zotero window. The metadata is extracted automatically. No PDF at hand? `starter-files/hansen2024-asthma-biologics.pdf` in this exercise is a real, *open access* article, ready to drag.
+4. **Manual entry.** Green `+` button → choose the item type. Useful for book chapters, conference proceedings, *grey literature*.
+5. **`.bib`/`.ris` import.** If you have a legacy bibliography, `File → Import` and select the file. No bibliography at hand? `starter-files/refs.bib` has two real references ready to import.
 
-### 4. Verificar retractações
+### 4. Check for retractions
 
-1. **Edit → Find Duplicates** para limpar duplicados.
-2. Repara nos avisos do Retraction Watch: artigos retractados aparecem com um aviso vermelho na linha do item. (Para garantir que o Zotero está a verificar, força um *refresh*: clica com o botão direito na biblioteca → **Refresh Retraction Data**.)
-3. Pesquisa manualmente um artigo conhecidamente retractado para confirmar que o aviso aparece. O artigo de Andrew Wakefield (Lancet, 1998, DOI `10.1016/S0140-6736(97)11096-0`) é um exemplo histórico — adiciona-o à biblioteca e vê o aviso.
+1. **Edit → Find Duplicates** to clean up duplicates.
+2. Watch for Retraction Watch warnings: retracted articles appear with a red warning on the item's row. (To make sure Zotero is checking, force a *refresh*: right-click the library → **Refresh Retraction Data**.)
+3. Manually search for a known retracted article to confirm that the warning appears. Andrew Wakefield's article (Lancet, 1998, DOI `10.1016/S0140-6736(97)11096-0`) is a historic example — add it to the library and see the warning.
 
-### 5. Exportar para `.bib`
+### 5. Export to `.bib`
 
-1. Botão direito na colecção `quarto-odyssey` → **Export Collection** (ou **Export Library** para a biblioteca inteira).
-2. Formato: **Better BibTeX**.
-3. Marca **Keep updated**.
-4. Guarda como `references.bib` na pasta do projecto Quarto que vais usar nos exercícios 2 e 3 (no teu Codespace).
+1. Right-click the `quarto-odyssey` collection → **Export Collection** (or **Export Library** for the entire library).
+2. Format: **Better BibTeX**.
+3. Check **Keep updated**.
+4. Save it as `references.bib` in the folder of the Quarto project you will use in exercises 2 and 3 (in your Codespace).
 
-> Como mover o ficheiro do teu computador para o Codespace: no VS Code do Codespace, arrasta o `references.bib` da tua pasta local para o painel de ficheiros à esquerda. O ficheiro é carregado para o Codespace.
+> How to move the file from your computer to the Codespace: in the Codespace's VS Code, drag `references.bib` from your local folder into the file panel on the left. The file is uploaded to the Codespace.
 
-### 6. Verifica o `.bib` antes de avançar
+### 6. Check the `.bib` before moving on
 
-Um `.bib` mal exportado só dá erro no exercício 2 ou 3, longe daqui — vale a pena confirmar agora. Abre o `references.bib` num editor de texto e verifica:
+A badly exported `.bib` only throws an error in exercise 2 or 3, far from here — it's worth confirming now. Open `references.bib` in a text editor and check:
 
-- **Tem as tuas referências.** Conta os `@` no início de linha (`@article{...`, `@book{...`): deves ter pelo menos 10.
-- **As *cite keys* são legíveis.** A chave é o que vem logo a seguir a `@article{`, antes da primeira vírgula — deve parecer `papi2018asthma`, não um código aleatório. Se são aleatórias, volta ao passo 2 (Better BibTeX → Citation Key Format).
-- **Não há entradas cortadas a meio.** Cada entrada abre com `{` e fecha com `}`.
+- **It has your references.** Count the `@` at the start of lines (`@article{...`, `@book{...`): you should have at least 10.
+- **The *cite keys* are readable.** The key is what comes right after `@article{`, before the first comma — it should look like `papi2018asthma`, not a random code. If they are random, go back to step 2 (Better BibTeX → Citation Key Format).
+- **There are no entries cut off halfway.** Each entry opens with `{` and closes with `}`.
 
-Se estes três pontos estão bem, o `.bib` está pronto para os exercícios 2 e 3.
+If these three points are fine, the `.bib` is ready for exercises 2 and 3.
 
-## Output esperado
+## Expected output
 
-- Uma colecção Zotero com 10+ referências adicionadas por pelo menos 3 métodos.
-- Better BibTeX instalado e a gerar *cite keys* legíveis.
-- Um ficheiro `references.bib` no projecto Quarto no Codespace.
-- Pelo menos um artigo com aviso de retractação na biblioteca (forçando o exemplo do Wakefield 1998).
+- A Zotero collection with 10+ references added by at least 3 methods.
+- Better BibTeX installed and generating readable *cite keys*.
+- A `references.bib` file in the Quarto project in the Codespace.
+- At least one article with a retraction warning in the library (forcing the Wakefield 1998 example).
 
-## Para discussão
+## For discussion
 
-- Que método de adição te pareceu mais rápido? Algum falhou?
-- Encontraste duplicados óbvios na tua biblioteca? Como resolveste?
-- O Retraction Watch detectou todas as retractações que esperavas?
-- Olha para os *cite keys* gerados pelo Better BibTeX. Algum é ambíguo ou poderia colidir com outros?
+- Which adding method felt fastest? Did any fail?
+- Did you find obvious duplicates in your library? How did you resolve them?
+- Did Retraction Watch detect all the retractions you expected?
+- Look at the *cite keys* generated by Better BibTeX. Is any of them ambiguous or likely to collide with others?

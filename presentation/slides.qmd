@@ -4,11 +4,11 @@ subtitle: "I'm sorry Dave, Word can't do that"
 author: "Tiago Jacinto"
 institute: "FMUP · CINTESIS/RISE-Health"
 date: 2026-07-03
-date-format: "D [de] MMMM [de] YYYY"
-lang: pt-PT
+date-format: "D MMMM YYYY"
+lang: en
 format:
   fmup-revealjs:
-    footer: "2001: A Quarto Odyssey · Escola de Verão FMUP/MEDCIDS 2026"
+    footer: "2001: A Quarto Odyssey · FMUP/MEDCIDS Summer School 2026"
     slide-number: c/t
     chalkboard: false
     incremental: false
@@ -16,28 +16,28 @@ format:
 
 ## Agenda
 
-- O problema: três ferramentas que não comunicam
-- Parte I — Zotero + Better BibTeX
-- Parte II — Quarto + R
-- Parte III — Escrita e exportação
-- Princípios FAIR
-- Próximos passos
+- The problem: three tools that don't talk to each other
+- Part I — Zotero + Better BibTeX
+- Part II — Quarto + R
+- Part III — Writing and export
+- FAIR principles
+- Next steps
 
-## Antes de começar: conta GitHub
+## Before we start: GitHub account
 
-Precisas de uma **conta GitHub gratuita** para seguir o curso.
+You need a **free GitHub account** to follow the course.
 
-- Já tens conta? Login em [github.com](https://github.com).
-- Não tens? Cria uma agora em [github.com/signup](https://github.com/signup) — só precisas de um email, demora menos de um minuto.
-- Um navegador moderno (Chrome, Firefox, Safari, Edge). Não precisas de instalar nada no teu computador — R, Quarto e LaTeX já vêm prontos no ambiente que vais abrir a seguir.
+- Already have an account? Log in at [github.com](https://github.com).
+- Don't have one? Create one now at [github.com/signup](https://github.com/signup) — all you need is an email, it takes less than a minute.
+- A modern browser (Chrome, Firefox, Safari, Edge). You don't need to install anything on your computer — R, Quarto and LaTeX come ready in the environment you'll open next.
 
 ::: {.callout-tip}
-## Excepção: exercício 1 (Zotero)
+## Exception: exercise 1 (Zotero)
 
-O Zotero corre no teu computador, não no browser. Instala-o agora se ainda não tens: [zotero.org/download](https://www.zotero.org/download/) (versão 7+), mais o [conector do navegador](https://www.zotero.org/download/connectors).
+Zotero runs on your computer, not in the browser. Install it now if you don't have it yet: [zotero.org/download](https://www.zotero.org/download/) (version 7+), plus the [browser connector](https://www.zotero.org/download/connectors).
 :::
 
-## Acede ao repositório do curso
+## Access the course repository
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -46,98 +46,98 @@ O Zotero corre no teu computador, não no browser. Instala-o agora se ainda não
 ::: {.column width="55%"}
 [github.com/tiagojct/quarto-odyssey-lab](https://github.com/tiagojct/quarto-odyssey-lab)
 
-1. Abre o link (ou digitaliza o código).
+1. Open the link (or scan the code).
 2. **Use this template → Create a new repository**.
-3. No teu novo repo: **Code → Codespaces → Create codespace on main**.
-4. Espera 3–5 minutos no primeiro arranque.
+3. In your new repo: **Code → Codespaces → Create codespace on main**.
+4. Wait 3–5 minutes on the first launch.
 :::
 ::::
 
-## O problema
+## The problem
 
-Um investigador em saúde faz três coisas repetidamente: **gere referências**, **analisa dados**, **escreve**.
+A health researcher does three things repeatedly: **manages references**, **analyses data**, **writes**.
 
-Na maioria dos casos, em três ferramentas separadas que não comunicam entre si.
+In most cases, across three separate tools that don't talk to each other.
 
-Zotero num canto, RStudio noutro, Word num terceiro.
+Zotero in one corner, RStudio in another, Word in a third.
 
-## O resultado é previsível
+## The result is predictable
 
-- Ficheiros duplicados
-- Referências desactualizadas
-- Tabelas copiadas à mão de um lado para o outro
-- Formatações refeitas cada vez que o documento muda de destino
+- Duplicated files
+- Outdated references
+- Tables copied by hand from one place to another
+- Formatting redone every time the document changes destination
 
-[O número típico de versões diferentes de um manuscrito em circulação durante a revisão por pares: **5 a 8**.]{.column-margin}
+[The typical number of different versions of a manuscript in circulation during peer review: **5 to 8**.]{.column-margin}
 
 ## Word vs Quarto
 
-| Cenário | Word | Quarto |
+| Scenario | Word | Quarto |
 |---|---|---|
-| Muda um dado | Refazer tabela à mão | Re-renderiza sozinho |
-| Muda o estilo de citação | 1–3 horas | Uma linha no YAML, segundos |
-| Submeter noutro formato | Reformatar tudo | `format: [docx, pdf, html]` |
-| Rever o que mudou | Comparar visualmente | `git diff` — texto simples |
+| Change a data point | Redo the table by hand | Re-renders on its own |
+| Change the citation style | 1–3 hours | One line in the YAML, seconds |
+| Submit in another format | Reformat everything | `format: [docx, pdf, html]` |
+| Review what changed | Compare visually | `git diff` — plain text |
 
-## O que é o Quarto
+## What is Quarto
 
-[Quarto](https://quarto.org) — sistema *open source* de publicação científica.
+[Quarto](https://quarto.org) — *open source* scientific publishing system.
 
-Junta três coisas que normalmente vivem separadas:
+It brings together three things that usually live apart:
 
-- Texto em **Markdown**
-- Código **R** (ou Python, Julia) que corre quando renderizas
-- **Citações** geridas pelo Zotero
+- Text in **Markdown**
+- **R** code (or Python, Julia) that runs when you render
+- **Citations** managed by Zotero
 
-Um ficheiro `.qmd` → `.docx`, PDF, ou HTML, à escolha.
+One `.qmd` file → `.docx`, PDF, or HTML, your choice.
 
-## O que vais conseguir fazer ao fim do dia
+## What you'll be able to do by the end of the day
 
-- Configurar Zotero + Better BibTeX para *cite keys* estáveis
-- Adicionar referências por cinco vias diferentes
-- Verificar retracções com o Retraction Watch
-- Escrever um `.qmd` com YAML, Markdown e código R
-- Produzir tabelas e gráficos que se actualizam com os dados
-- Exportar para `.docx`, PDF e HTML — e mudar de estilo em segundos
+- Set up Zotero + Better BibTeX for stable *cite keys*
+- Add references in five different ways
+- Check for retractions with Retraction Watch
+- Write a `.qmd` with YAML, Markdown and R code
+- Produce tables and figures that update with the data
+- Export to `.docx`, PDF and HTML — and switch style in seconds
 
-# Parte I — Zotero + Better BibTeX {.center}
+# Part I — Zotero + Better BibTeX {.center}
 
-## O que é o Zotero
+## What is Zotero
 
-[Zotero](https://www.zotero.org) — gestor de referências. *Open source*, gratuito, aplicação *desktop* + sincronização *online*.
+[Zotero](https://www.zotero.org) — reference manager. *Open source*, free, *desktop* application + *online* sync.
 
-Guarda três coisas por referência:
+It stores three things per reference:
 
-- **Metadados** (autores, título, DOI)
-- **Anexos** (o PDF)
-- **Anotações** (destaques, notas)
+- **Metadata** (authors, title, DOI)
+- **Attachments** (the PDF)
+- **Annotations** (highlights, notes)
 
-Integra directamente com o Quarto — sem copiar e colar.
+It integrates directly with Quarto — no copy and paste.
 
-## Cinco formas de adicionar referências
+## Five ways to add references
 
-1. Conector do navegador
-2. DOI ou PMID (*magic wand*)
-3. *Drag-and-drop* de PDF
-4. Entrada manual
-5. Importação `.bib`/`.ris`
+1. Browser connector
+2. DOI or PMID (*magic wand*)
+3. *Drag-and-drop* of a PDF
+4. Manual entry
+5. `.bib`/`.ris` import
 
 ## Better BibTeX
 
-*Cite keys* estáveis (`silva2024asthma`, não um código aleatório) e exportação automática da biblioteca para `.bib`.
+Stable *cite keys* (`silva2024asthma`, not a random code) and automatic export of the library to `.bib`.
 
 ::: {.callout-warning}
-## Regra inegociável
+## Non-negotiable rule
 
-Verifica sempre se um artigo foi **retractado** antes de o citares. O Zotero mostra um aviso vermelho; o Retraction Watch mantém a base de dados.
+Always check whether an article has been **retracted** before citing it. Zotero shows a red warning; Retraction Watch maintains the database.
 :::
 
-# Parte II — Quarto + R {.center}
+# Part II — Quarto + R {.center}
 
-## Um projecto, pastas simples
+## One project, simple folders
 
 ```
-o-meu-artigo/
+my-article/
 ├── manuscript.qmd
 ├── references.bib
 ├── data/
@@ -148,14 +148,14 @@ o-meu-artigo/
     └── manuscript.html
 ```
 
-Caminhos **relativos**, sempre. `data/cohort.csv`, nunca `C:\Users\...`.
+**Relative** paths, always. `data/cohort.csv`, never `C:\Users\...`.
 
-## Código R dentro do documento
+## R code inside the document
 
 ````markdown
 ```{{r}}
 #| label: tbl-demographics
-#| tbl-cap: "Características da amostra"
+#| tbl-cap: "Sample characteristics"
 
 cohort |>
   group_by(sex) |>
@@ -164,26 +164,26 @@ cohort |>
 ```
 ````
 
-A tabela actualiza-se sozinha sempre que `cohort.csv` muda.
+The table updates on its own whenever `cohort.csv` changes.
 
-## Tabelas e gráficos, cross-references automáticas
+## Tables and figures, automatic cross-references
 
-- `knitr::kable()` ou `gt()` para tabelas
-- `ggplot2` para gráficos
-- `@tbl-demographics`, `@fig-fev1-age` — referências no texto que se actualizam sozinhas se reordenares o documento
+- `knitr::kable()` or `gt()` for tables
+- `ggplot2` for figures
+- `@tbl-demographics`, `@fig-fev1-age` — references in the text that update on their own if you reorder the document
 
-# Parte III — Escrita e exportação {.center}
+# Part III — Writing and export {.center}
 
-## Citações em segundos
+## Citations in seconds
 
 ```yaml
 bibliography: references.bib
 csl: vancouver.csl
 ```
 
-`@silva2024asthma` → Silva (2024). Muda `csl: nature.csl`, re-renderiza — **toda** a bibliografia muda de estilo, sem tocar no texto.
+`@silva2024asthma` → Silva (2024). Change `csl: nature.csl`, re-render — **the whole** bibliography changes style, without touching the text.
 
-## Um ficheiro, três formatos
+## One file, three formats
 
 ```yaml
 format:
@@ -193,36 +193,36 @@ format:
     documentclass: scrartcl
 ```
 
-`.docx` para colaborar com co-autores, PDF para arquivar, HTML para partilhar — todos do mesmo `manuscript.qmd`.
+`.docx` to collaborate with co-authors, PDF to archive, HTML to share — all from the same `manuscript.qmd`.
 
-## Princípios FAIR
+## FAIR principles
 
 **F**indable · **A**ccessible · **I**nteroperable · **R**eusable
 
-Um projecto Quarto bem organizado — dados, código, texto separados, tudo em texto simples, tudo em Git — cumpre estes princípios quase por construção.
+A well-organised Quarto project — data, code, text kept separate, everything in plain text, everything in Git — meets these principles almost by construction.
 
-## Próximos passos
+## Next steps
 
-- Controlo de versões com **Git**
-- **`renv`** para fixar versões de pacotes R
-- **Positron**, sucessor do RStudio
-- Templates de revistas e extensões Quarto
+- Version control with **Git**
+- **`renv`** to pin R package versions
+- **Positron**, the successor to RStudio
+- Journal templates and Quarto extensions
 
-# Porquê "2001: A Quarto Odyssey"? {.center}
+# Why "2001: A Quarto Odyssey"? {.center}
 
-## Uma referência, não um requisito
+## A reference, not a requirement
 
-O nome é um trocadilho com *2001: A Space Odyssey* (Kubrick, 1968) — o computador de bordo **HAL 9000**, que falha e complica a missão.
+The name is a pun on *2001: A Space Odyssey* (Kubrick, 1968) — the onboard computer **HAL 9000**, which fails and complicates the mission.
 
-O subtítulo reescreve a frase mais famosa do filme: *"I'm sorry, Dave. I'm afraid I can't do that."*
+The subtitle rewrites the film's most famous line: *"I'm sorry, Dave. I'm afraid I can't do that."*
 
-É o que o Word te diz, em silêncio, sempre que tentas fazer algo reprodutível lá dentro.
+It's what Word tells you, silently, every time you try to do something reproducible inside it.
 
-Não precisas de ter visto o filme. Mas depois de hoje, talvez valha a pena.
+You don't need to have seen the film. But after today, it might be worth it.
 
-## Vamos começar
+## Let's get started
 
-Abre o `course/course.qmd` no teu Codespace — é o guião de hoje, e fica contigo depois.
+Open `course/course.qmd` in your Codespace — it's today's script, and it stays with you afterwards.
 
 [github.com/tiagojct/quarto-odyssey-lab](https://github.com/tiagojct/quarto-odyssey-lab)
 

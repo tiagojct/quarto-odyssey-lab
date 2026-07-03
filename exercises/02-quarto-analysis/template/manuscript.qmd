@@ -1,19 +1,19 @@
 ---
-title: "Função pulmonar em crianças com asma: um estudo descritivo"
-subtitle: "Manuscrito de demonstração para o curso A Quarto Odyssey"
+title: "Lung function in children with asthma: a descriptive study"
+subtitle: "Demonstration manuscript for the A Quarto Odyssey course"
 author:
-  - name: "[Coloca aqui o teu nome]"
-    email: "exemplo@med.up.pt"
+  - name: "[Put your name here]"
+    email: "example@med.up.pt"
     affiliations:
-      - "Faculdade de Medicina da Universidade do Porto"
+      - "Faculty of Medicine, University of Porto"
 date: today
-date-format: "D [de] MMMM [de] YYYY"
+date-format: "D MMMM YYYY"
 abstract: |
-  Este documento é o esqueleto que vais completar nos exercícios 2 e 3 do
-  curso *A Quarto Odyssey*. No exercício 2, vais preencher os três blocos
-  de código R marcados com `TODO`. No exercício 3, vais escrever as
-  secções de Introdução e Métodos, inserir citações da tua biblioteca
-  Zotero, e exportar o documento para .docx, PDF e HTML.
+  This document is the skeleton you'll complete in exercises 2 and 3 of
+  the *A Quarto Odyssey* course. In exercise 2, you'll fill in the three R
+  code blocks marked with `TODO`. In exercise 3, you'll write the
+  Introduction and Methods sections, insert citations from your Zotero
+  library, and export the document to .docx, PDF and HTML.
 bibliography: references.bib
 csl: vancouver.csl
 format:
@@ -33,55 +33,55 @@ execute:
 ```{r}
 #| label: setup
 
-# TODO: chunk 1 — carrega o tidyverse, o gt, e lê o ficheiro
-# ../data/cohort-asma.csv para um objecto chamado `cohort`.
+# TODO: chunk 1 — load the tidyverse and gt, and read the file
+# ../data/cohort-asma.csv into an object called `cohort`.
 #
-# Sugestão:
+# Hint:
 #   library(tidyverse)
 #   library(gt)
 #   cohort <- read_csv("../data/cohort-asma.csv")
 
 ```
 
-# Introdução
+# Introduction
 
-> *No exercício 3, escreve aqui dois ou três parágrafos sobre asma pediátrica
-> com pelo menos três citações da tua biblioteca Zotero.*
+> *In exercise 3, write two or three paragraphs here about paediatric asthma,
+> with at least three citations from your Zotero library.*
 >
-> Sintaxe de citação:
+> Citation syntax:
 >
 > - `@papi2018asthma` → "Papi et al. (2018)"
-> - `[@papi2018asthma]` → "(Papi et al., 2018)" ou "(1)" em Vancouver
-> - `[@papi2018asthma; @quanjer2012multi]` → combina citações
+> - `[@papi2018asthma]` → "(Papi et al., 2018)" or "(1)" in Vancouver
+> - `[@papi2018asthma; @quanjer2012multi]` → combines citations
 
-# Métodos
+# Methods
 
-> *No exercício 3, escreve aqui a descrição da amostra. Inclui:*
+> *In exercise 3, write the sample description here. Include:*
 >
-> - *Tamanho da amostra (n) e intervalo de idades.*
-> - *Distribuição por sexo.*
-> - *Critérios de inclusão e exclusão (inventados — é um exercício).*
-> - *Pelo menos uma referência ao método estatístico usado.*
+> - *Sample size (n) and age range.*
+> - *Distribution by sex.*
+> - *Inclusion and exclusion criteria (made up — it's an exercise).*
+> - *At least one reference to the statistical method used.*
 >
-> *Referencia as tabelas e figuras com `@tbl-demographics` e `@fig-fev1-age`.*
+> *Cross-reference the tables and figures with `@tbl-demographics` and `@fig-fev1-age`.*
 >
-> *Bónus (opcional, ver exercício 3): gera um diagrama de fluxo STROBE da*
-> *coorte com a extensão `quarto-study-flow` e referencia-o com `@fig-flow`.*
+> *Bonus (optional, see exercise 3): generate a STROBE flow diagram of the*
+> *cohort with the `quarto-study-flow` extension and cross-reference it with `@fig-flow`.*
 
-# Resultados
+# Results
 
-A amostra é caracterizada na @tbl-demographics. A relação entre idade e função pulmonar, estratificada por gravidade da asma, está ilustrada na @fig-fev1-age.
+The sample is characterised in @tbl-demographics. The relationship between age and lung function, stratified by asthma severity, is illustrated in @fig-fev1-age.
 
 ```{r}
 #| label: tbl-demographics
-#| tbl-cap: "Características demográficas e funcionais da amostra, por sexo"
+#| tbl-cap: "Demographic and functional characteristics of the sample, by sex"
 
-# TODO: chunk 2 — produz uma tabela com:
-#   - n por sexo
-#   - média (desvio-padrão) da idade, por sexo
-#   - média (desvio-padrão) do FEV1, por sexo
+# TODO: chunk 2 — produce a table with:
+#   - n by sex
+#   - mean (standard deviation) of age, by sex
+#   - mean (standard deviation) of FEV1, by sex
 #
-# Sugestão (dplyr + gt):
+# Hint (dplyr + gt):
 #   cohort |>
 #     group_by(sex) |>
 #     summarise(
@@ -98,31 +98,31 @@ A amostra é caracterizada na @tbl-demographics. A relação entre idade e funç
 
 ```{r}
 #| label: fig-fev1-age
-#| fig-cap: "FEV1 em função da idade, estratificado por gravidade da asma"
+#| fig-cap: "FEV1 as a function of age, stratified by asthma severity"
 #| fig-width: 7
 #| fig-height: 5
 
-# TODO: chunk 3 — gráfico ggplot2 com:
-#   - eixo x: age
-#   - eixo y: fev1_l
-#   - cor: asthma_severity
+# TODO: chunk 3 — ggplot2 plot with:
+#   - x axis: age
+#   - y axis: fev1_l
+#   - colour: asthma_severity
 #   - geom_point() + geom_smooth(method = "lm")
 #
-# Sugestão:
+# Hint:
 #   ggplot(cohort, aes(x = age, y = fev1_l, colour = asthma_severity)) +
 #     geom_point(alpha = 0.7) +
 #     geom_smooth(method = "lm", se = FALSE) +
-#     labs(x = "Idade (anos)", y = "FEV1 (L)", colour = "Gravidade") +
+#     labs(x = "Age (years)", y = "FEV1 (L)", colour = "Severity") +
 #     theme_minimal()
 
 ```
 
-# Discussão
+# Discussion
 
-> *Não precisas de escrever a discussão. O objectivo do exercício é o fluxo
-> Quarto, não a análise clínica.*
+> *You don't need to write the discussion. The goal of the exercise is the
+> Quarto workflow, not the clinical analysis.*
 
-# Referências
+# References
 
 ::: {#refs}
 :::

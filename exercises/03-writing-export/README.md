@@ -1,151 +1,151 @@
-# Exercício 3 — Escrita, citações e exportação
+# Exercise 3 — Writing, citations and export
 
-## Objectivo
+## Objective
 
-Retomar o `.qmd` do exercício 2, escrever uma **introdução** e **métodos** com **citações** da biblioteca do exercício 1, e exportar o documento final em **`.docx`**, **PDF** e **HTML**. Mudar o estilo de citação e re-exportar.
+Pick up the `.qmd` from exercise 2, write an **introduction** and **methods** section with **citations** from the exercise 1 library, and export the final document as **`.docx`**, PDF and HTML. Change the citation style and re-export.
 
-## Antes de começar
+## Before you start
 
-- Exercício 2 concluído (tens um `manuscript.qmd` que renderiza para HTML com tabela e gráfico).
-- Exercício 1 concluído (tens um `references.bib` com pelo menos 10 referências).
+- Exercise 2 completed (you have a `manuscript.qmd` that renders to HTML with a table and a figure).
+- Exercise 1 completed (you have a `references.bib` with at least 10 references).
 
-## Passos
+## Steps
 
-### 1. Copia o `references.bib` para a pasta do projecto
+### 1. Copy `references.bib` into the project folder
 
-Se ainda não o fizeste, copia o `references.bib` exportado do Zotero (exercício 1) para `exercises/02-quarto-analysis/template/`. Confirma com `ls` no terminal.
+If you haven't done so yet, copy the `references.bib` exported from Zotero (exercise 1) into `exercises/02-quarto-analysis/template/`. Confirm with `ls` in the terminal.
 
-### 2. Confirma o YAML do `.qmd`
+### 2. Check the `.qmd` YAML
 
-Abre `manuscript.qmd`. Verifica que o YAML tem as linhas:
+Open `manuscript.qmd`. Verify that the YAML has the lines:
 
 ```yaml
 bibliography: references.bib
 csl: vancouver.csl
 ```
 
-O `vancouver.csl` já vem incluído na pasta do projecto — não precisas de o descarregar. Se quiseres experimentar outro estilo além de Vancouver e Nature (usado no passo 8), procura em <https://www.zotero.org/styles>, descarrega o `.csl` correspondente e guarda-o na mesma pasta.
+The `vancouver.csl` is already included in the project folder — you don't need to download it. If you want to try a style other than Vancouver and Nature (used in step 8), look it up at <https://www.zotero.org/styles>, download the matching `.csl`, and save it in the same folder.
 
-### 3. Escreve a introdução
+### 3. Write the introduction
 
-Na secção `# Introdução` (vais ter de a criar antes do `# Métodos` no `.qmd`), escreve dois ou três parágrafos sobre asma pediátrica, citando pelo menos **três** referências da tua biblioteca.
+In the `# Introduction` section (which you'll need to create before `# Methods` in the `.qmd`), write two or three paragraphs about paediatric asthma, citing at least **three** references from your library.
 
-Sintaxe de citação:
+Citation syntax:
 
-- `@papi2018asthma` produz "Papi et al. (2018)".
-- `[@papi2018asthma]` produz "(Papi et al., 2018)" ou "(1)" consoante o estilo.
-- `[-@papi2018asthma]` produz apenas "2018" (útil para "Papi et al. [@-papi2018asthma] estudaram...").
-- `[@papi2018asthma; @quanjer2012multi]` combina duas citações.
+- `@papi2018asthma` produces "Papi et al. (2018)".
+- `[@papi2018asthma]` produces "(Papi et al., 2018)" or "(1)" depending on the style.
+- `[-@papi2018asthma]` produces only "2018" (useful for "Papi et al. [@-papi2018asthma] studied...").
+- `[@papi2018asthma; @quanjer2012multi]` combines two citations.
 
-Para usar o selector visual em vez de decorar *cite keys*:
+To use the visual picker instead of memorising cite keys:
 
-- **No RStudio:** menu **Insert → Citation** ou `Ctrl + Shift + F8`.
-- **No VS Code:** escreve `@` no editor e selecciona da lista filtrada.
+- **In RStudio:** menu **Insert → Citation** or `Ctrl + Shift + F8`.
+- **In VS Code:** type `@` in the editor and select from the filtered list.
 
-### 4. Escreve os métodos
+### 4. Write the methods
 
-Na secção `# Métodos`, descreve a amostra com base no que carregaste no exercício 2 (n, intervalo de idades, distribuição por sexo). Inclui pelo menos uma citação para o método estatístico usado.
+In the `# Methods` section, describe the sample based on what you loaded in exercise 2 (n, age range, distribution by sex). Include at least one citation for the statistical method used.
 
-Referencia explicitamente as tabelas e figuras no texto:
+Cross-reference the tables and figures explicitly in the text:
 
 ```markdown
-Os participantes foram caracterizados em termos demográficos e funcionais
+Participants were characterised in demographic and functional terms
 (@tbl-demographics, @fig-fev1-age).
 ```
 
-### 5. Render para HTML
+### 5. Render to HTML
 
 ```bash
 quarto render manuscript.qmd --to html
 ```
 
-Vê a bibliografia no fim do documento. Reparou em alguma referência que parece formatada de forma estranha? Voltar ao Zotero e completar os metadados costuma resolver.
+Look at the bibliography at the end of the document. Did you notice any reference that looks oddly formatted? Going back to Zotero and completing the metadata usually fixes it.
 
-### 6. Render para `.docx`
+### 6. Render to `.docx`
 
 ```bash
 quarto render manuscript.qmd --to docx
 ```
 
-Abre o `manuscript.docx` (carrega duas vezes no painel de ficheiros do VS Code; o Codespace mostra-te o ficheiro no navegador). Confirma que tabelas e citações estão correctas.
+Open `manuscript.docx` (double-click it in the VS Code file panel; in a Codespace the file opens in the browser). Confirm that the tables and citations are correct.
 
-### 7. Render para PDF
+### 7. Render to PDF
 
 ```bash
 quarto render manuscript.qmd --to pdf
 ```
 
-> O primeiro PDF pode demorar uns segundos a mais — o `tinytex` instala pacotes LaTeX em falta na primeira vez.
+> The first PDF may take a few extra seconds — `tinytex` installs the missing LaTeX packages on the first run.
 
-### 8. Muda o estilo de citação
+### 8. Change the citation style
 
-O `nature.csl` também já está na pasta do projecto. Muda o YAML:
+The `nature.csl` is also already in the project folder. Change the YAML:
 
 ```yaml
 csl: nature.csl
 ```
 
-Re-renderiza para HTML:
+Re-render to HTML:
 
 ```bash
 quarto render manuscript.qmd --to html
 ```
 
-Repara como **todas** as citações e a bibliografia mudam de Vancouver para Nature, sem editares uma única linha do texto.
+Notice how **every** citation and the bibliography switch from Vancouver to Nature, without you editing a single line of the text.
 
-### 9. Bónus (opcional) — diagrama de fluxo STROBE
+### 9. Bonus (optional) — STROBE flow diagram
 
-O `manuscript.qmd` já tem a extensão [`quarto-study-flow`](https://github.com/tiagojct/quarto-study-flow) instalada (`_extensions/`). É uma ferramenta do próprio instrutor: gera diagramas de fluxo de participantes (CONSORT, STROBE, PRISMA, TRIPOD+AI, STARD) a partir de YAML, em SVG para HTML e TikZ nativo para PDF — útil para a tua tese ou artigo real, não só para este exercício.
+The `manuscript.qmd` already has the [`quarto-study-flow`](https://github.com/tiagojct/quarto-study-flow) extension installed (`_extensions/`). It's a tool built by the instructor: it generates participant flow diagrams (CONSORT, STROBE, PRISMA, TRIPOD+AI, STARD) from YAML, as SVG for HTML and native TikZ for PDF — useful for your thesis or a real paper, not just for this exercise.
 
-Como o nosso estudo é uma coorte descritiva, usa o tipo `strobe`. Acrescenta ao YAML do `manuscript.qmd` (fora do bloco `study-flow`, os números são inventados — ajusta-os à tua narrativa da secção Métodos):
+Since our study is a descriptive cohort, use the `strobe` type. Add the following to the `manuscript.qmd` YAML (outside the `study-flow` block; the numbers are made up — adjust them to your Methods narrative):
 
 ```yaml
 study-flow:
   type: strobe
   source:
-    label: "Doentes referenciados à consulta de pneumologia pediátrica"
+    label: "Patients referred to the paediatric pulmonology clinic"
     n: 412
   eligible:
-    label: "Elegíveis (5–17 anos, diagnóstico de asma confirmado)"
+    label: "Eligible (5–17 years, confirmed asthma diagnosis)"
     n: 248
     excluded: 164
     exclusion_reasons:
-      - "Fora do intervalo de idade: 71"
-      - "Diagnóstico não confirmado: 58"
-      - "Dados de espirometria incompletos: 35"
+      - "Outside age range: 71"
+      - "Diagnosis not confirmed: 58"
+      - "Incomplete spirometry data: 35"
   enrolled:
-    label: "Coorte final"
+    label: "Final cohort"
     n: 200
     excluded: 48
     exclusion_reasons:
-      - "Consentimento não obtido: 30"
-      - "Perda de seguimento antes da primeira avaliação: 18"
+      - "Consent not obtained: 30"
+      - "Loss to follow-up before first assessment: 18"
 ```
 
-Depois, na secção `# Métodos`, adiciona o diagrama como figura com legenda e referência cruzada:
+Then, in the `# Methods` section, add the diagram as a figure with a caption and cross-reference:
 
 ```markdown
 ::: {#fig-flow}
 {{< study-flow >}}
 
-Fluxo de participantes, segundo o STROBE.
+Participant flow, per STROBE.
 :::
 
-O processo de selecção da amostra está ilustrado na @fig-flow.
+The sample selection process is illustrated in @fig-flow.
 ```
 
-Re-renderiza para HTML e PDF. Repara que o mesmo YAML produz SVG no HTML e TikZ nativo no PDF, sem mudares nada no `.qmd`.
+Re-render to HTML and PDF. Notice that the same YAML produces SVG in HTML and native TikZ in PDF, without you changing anything in the `.qmd`.
 
-## Output esperado
+## Expected output
 
-- `manuscript.html` com bibliografia formatada e cross-references resolvidas.
-- `manuscript.docx` com tabelas, figuras, citações e bibliografia.
-- `manuscript.pdf` com o mesmo conteúdo.
-- Três versões diferentes do `manuscript.html` se experimentaste estilos diferentes (Vancouver → Nature → APA).
+- `manuscript.html` with a formatted bibliography and resolved cross-references.
+- `manuscript.docx` with tables, figures, citations and bibliography.
+- `manuscript.pdf` with the same content.
+- Three different versions of `manuscript.html` if you tried different styles (Vancouver → Nature → APA).
 
-## Para discussão
+## For discussion
 
-- Os três formatos ficaram visualmente diferentes? Como reagirias se a revista te pedisse `.docx`?
-- Encontraste alguma referência mal formatada (autores em falta, ano errado)? Vais ao Zotero corrigir, exportar de novo, re-renderizar. Quanto tempo demorou?
-- Imagina que uma revista exige *Vancouver* e outra *APA*. Quanto tempo poupas com este fluxo, comparado com edição manual no Word?
-- Que limitações reparaste na exportação para `.docx`? (Pista: tabelas complexas do `gt` podem perder formatação; figuras podem ficar com dimensões inesperadas.)
+- Did the three formats end up looking visually different? How would you react if the journal asked you for `.docx`?
+- Did you find any badly formatted reference (missing authors, wrong year)? You go to Zotero, fix it, export again, re-render. How long did that take?
+- Imagine one journal requires *Vancouver* and another *APA*. How much time do you save with this workflow, compared to manual editing in Word?
+- What limitations did you notice when exporting to `.docx`? (Hint: complex `gt` tables can lose formatting; figures may end up with unexpected dimensions.)

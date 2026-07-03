@@ -1,61 +1,61 @@
 <p align="center">
-  <img src="course/images/quartoodissey.png" alt="2001: A Quarto Odyssey — Escola de Verão MEDCIDS 2026" width="320">
+  <img src="course/images/quartoodissey.png" alt="2001: A Quarto Odyssey — MEDCIDS Summer School 2026" width="320">
 </p>
 
 # 2001: A Quarto Odyssey — Workshop
 
-Curso sobre Quarto, Zotero e R para investigação reproduzível em saúde. FMUP / MEDCIDS Escola de Verão 2026.
+A course on Quarto, Zotero and R for reproducible research in health. FMUP / MEDCIDS Summer School 2026.
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/tiagojct/quarto-odyssey-lab)
 
-## Como começar
+## Getting started
 
-1. Cria uma conta GitHub gratuita, se ainda não tiveres.
-2. Carrega em **"Use this template" → "Create a new repository"** no canto superior desta página. Faz uma cópia para a tua conta (podes deixá-la privada).
-3. No teu novo repositório, carrega em **"Code" → "Codespaces" → "Create codespace on main"**.
-4. Espera dois a três minutos no primeiro arranque. O Codespace usa a imagem `rocker-org/devcontainer/tidyverse` com a feature `quarto-cli` (TinyTeX incluído), que traz R, tidyverse, Quarto e LaTeX já instalados.
-5. Quando o VS Code abrir, o terminal já está aberto em baixo. Para abrir o curso no navegador:
+1. Create a free GitHub account if you don't have one yet.
+2. Click **"Use this template" → "Create a new repository"** in the top-right corner of this page. Make a copy under your own account (you can keep it private).
+3. In your new repository, click **"Code" → "Codespaces" → "Create codespace on main"**.
+4. Wait two to three minutes on the first startup. The Codespace uses the `rocker-org/devcontainer/tidyverse` image with the `quarto-cli` feature (TinyTeX included), which comes with R, tidyverse, Quarto and LaTeX already installed.
+5. When VS Code opens, the terminal is already open at the bottom. To open the course in your browser:
 
    ```bash
    quarto preview course/course.qmd
    ```
 
-   Abre um separador novo com o documento do curso. Navega pelo índice à esquerda.
+   This opens a new tab with the course document. Navigate through the table of contents on the left.
 
-   Quando renderizares um PDF (exercício 3), carrega duas vezes no ficheiro `.pdf` no painel de ficheiros à esquerda — abre num visualizador de PDF dentro do próprio Codespace, sem precisares de descarregar nada.
+   When you render a PDF (exercise 3), double-click the `.pdf` file in the file panel on the left — it opens in a PDF viewer inside the Codespace itself, without needing to download anything.
 
-   Os slides de abertura ficam em `presentation/slides.qmd` — renderiza-os com `quarto preview presentation/slides.qmd` se quiseres a versão local, ou consulta directamente a versão [online](https://tiagojct.eu/quarto-odissey/slides/). Não são necessários para os exercícios, só para acompanhar a introdução.
+   The opening slides live in `presentation/slides.qmd` — render them with `quarto preview presentation/slides.qmd` if you want the local version, or view the [online](https://tiagojct.eu/quarto-odissey/slides/) version directly. They are not required for the exercises, only to follow along with the introduction.
 
-## Estrutura
+## Structure
 
 ```
 .
 ├── course/
-│   ├── course.qmd                  # Documento do curso (Quarto HTML)
-│   ├── theme.scss                  # Tema visual (paleta do poster)
-│   └── images/                     # Poster e outras imagens
+│   ├── course.qmd                  # Course document (Quarto HTML)
+│   ├── theme.scss                  # Visual theme (poster palette)
+│   └── images/                     # Poster and other images
 ├── presentation/
-│   └── slides.qmd                  # Slides de abertura (Quarto reveal.js)
+│   └── slides.qmd                  # Opening slides (Quarto reveal.js)
 └── exercises/
-    ├── 01-zotero/                  # Biblioteca Zotero + Better BibTeX (local)
-    │   └── starter-files/          # PDF + .bib de exemplo, opcionais
-    ├── 02-quarto-analysis/         # Quarto + R chunks (no Codespace)
+    ├── 01-zotero/                  # Zotero library + Better BibTeX (local)
+    │   └── starter-files/          # Example PDF + .bib, optional
+    ├── 02-quarto-analysis/         # Quarto + R chunks (in the Codespace)
     │   ├── data/cohort-asma.csv
     │   └── template/
     │       ├── manuscript.qmd
     │       ├── references.bib
     │       └── vancouver.csl, nature.csl
-    └── 03-writing-export/          # Citações + exportação para .docx/PDF/HTML
+    └── 03-writing-export/          # Citations + export to .docx/PDF/HTML
 ```
 
-## Requisitos
+## Requirements
 
-- Conta GitHub (qualquer plano gratuito).
-- Navegador moderno.
-- **Para o exercício 1 apenas:** Zotero 7+ na tua máquina local. O Zotero é uma aplicação desktop e não corre dentro do Codespace.
+- A GitHub account (any free plan).
+- A modern browser.
+- **For exercise 1 only:** Zotero 7+ on your local machine. Zotero is a desktop application and does not run inside the Codespace.
 
-Tudo o resto (R, tidyverse, Quarto, LaTeX) está pré-instalado no Codespace. Não precisas de instalar nada no teu computador.
+Everything else (R, tidyverse, Quarto, LaTeX) is pre-installed in the Codespace. You don't need to install anything on your own computer.
 
-## Aviso
+## Notice
 
-Os dados disponíveis no exercício 2 são **sintéticos**. Para os teus projectos reais com dados de doentes, vê a secção "Dados sintéticos e dados reais" em [`course/course.qmd`](course/course.qmd) e confirma a política da tua instituição.
+The data provided in exercise 2 is **synthetic**. For your real projects with patient data, see the "Synthetic data and real data" section in [`course/course.qmd`](course/course.qmd) and check your institution's policy.

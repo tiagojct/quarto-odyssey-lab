@@ -2,9 +2,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Bem-vindo",
+      "label": "Welcome",
       "type": "shell",
-      "command": "echo '\\n=== 2001: A Quarto Odyssey ===\\nAmbiente pronto. R, Quarto e LaTeX disponiveis no terminal.\\n\\nO curso esta em course/course.qmd. Para o abrir no navegador:\\n  quarto preview course/course.qmd\\n\\nO primeiro exercicio (Zotero) faz-se na tua maquina local.\\nO segundo exercicio (Quarto + R) comeca em:\\n  exercises/02-quarto-analysis/template/manuscript.qmd\\n'",
+      "command": "echo '\\n=== 2001: A Quarto Odyssey ===\\nEnvironment ready. R, Quarto and LaTeX available in the terminal.\\n\\nThe course is in course/course.qmd. To open it in the browser:\\n  quarto preview course/course.qmd\\n\\nThe first exercise (Zotero) is done on your local machine.\\nThe second exercise (Quarto + R) starts in:\\n  exercises/02-quarto-analysis/template/manuscript.qmd\\n'",
       "presentation": {
         "echo": true,
         "reveal": "always",

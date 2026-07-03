@@ -3,15 +3,15 @@ title: "2001: A Quarto Odyssey"
 subtitle: "I'm sorry Dave, Word can't do that"
 author: "Tiago Jacinto — FMUP / CINTESIS–RISE-Health"
 date: "2026-07-03"
-date-format: "D [de] MMMM [de] YYYY"
-lang: pt-PT
+date-format: "D MMMM YYYY"
+lang: en
 format:
   html:
     theme: theme.scss
     toc: true
     toc-location: left
     toc-depth: 3
-    toc-title: "Conteúdo"
+    toc-title: "Contents"
     smooth-scroll: true
     code-copy: true
     code-overflow: wrap
@@ -28,126 +28,126 @@ format:
 ---
 
 ::: {.hero}
-![](images/quartoodissey.png){alt="2001: A Quarto Odyssey — Escola de Verão MEDCIDS 2026"}
+![](images/quartoodissey.png){alt="2001: A Quarto Odyssey — MEDCIDS Summer School 2026"}
 :::
 
-Este curso ensina-te a usar o **Quarto** para integrar três actividades que normalmente fazes em ferramentas separadas: gerir referências (Zotero), analisar dados (R) e escrever (Word, LaTeX, ou outro processador). No fim do dia, um único ficheiro `.qmd` produz `.docx`, PDF e HTML, com tabelas que se actualizam quando os dados mudam e citações que mudam de estilo num segundo.
+This course teaches you to use **Quarto** to integrate three activities you normally do in separate tools: managing references (Zotero), analysing data (R), and writing (Word, LaTeX, or another processor). By the end of the day, a single `.qmd` file produces `.docx`, PDF and HTML, with tables that update when the data change and citations that switch style in a second.
 
-[Quarto, RStudio, Zotero, Better BibTeX — todos *open source*, todos multiplataforma, todos com versões para Windows, macOS e Linux.]{.column-margin}
+[Quarto, RStudio, Zotero, Better BibTeX — all *open source*, all cross-platform, all with versions for Windows, macOS and Linux.]{.column-margin}
 
-Não precisas de saber R em profundidade — basta saber carregar dados, correr funções e ler o output. Não precisas de ter usado Markdown nem Quarto antes.
+You don't need to know R in depth — it's enough to load data, run functions and read the output. You don't need to have used Markdown or Quarto before.
 
 ::: {.callout-tip collapse="true"}
-## Glossário relâmpago — termos que vão aparecer já a seguir
+## Quick glossary — terms that show up right away
 
-Se algum destes termos é novo, lê esta caixa antes de continuares. Definições mais detalhadas estão na secção [Glossário](#glossário) abaixo.
+If any of these terms is new, read this box before continuing. More detailed definitions are in the [Glossary](#glossary) section below.
 
-| Termo                  | Em uma frase                                                                       |
+| Term                   | In one sentence                                                                    |
 |------------------------|------------------------------------------------------------------------------------|
-| **Quarto**             | Sistema de publicação científica que junta texto, código e referências num só ficheiro. |
-| **`.qmd`**             | A extensão de ficheiro do Quarto. É um ficheiro de texto com Markdown e blocos de código. |
-| **Markdown**           | Linguagem de marcação leve para escrever texto formatado (cabeçalhos, listas, *itálico*) sem botões. |
-| **YAML**               | A "ficha técnica" no topo de um `.qmd`: título, autores, formato de saída, bibliografia. |
-| **R chunk**            | Um bloco de código R dentro do `.qmd`. Quando renderizas, o código corre e o output entra no documento. |
-| **Render**             | O acto de transformar o `.qmd` em PDF, `.docx` ou HTML.                            |
-| **Zotero**             | Gestor de referências bibliográficas. Guarda autores, anos, DOIs, PDFs.            |
-| **Better BibTeX**      | Extensão do Zotero que gera identificadores estáveis e mantém um ficheiro `.bib` actualizado. |
-| **`.bib`**             | Ficheiro de texto com todas as tuas referências em formato BibTeX. O Quarto lê este ficheiro. |
-| **Cite key**           | Identificador curto de uma referência (`silva2024asthma`). É o que escreves no texto. |
-| **CSL**                | Citation Style Language. Define como as citações ficam formatadas (Vancouver, APA, Nature). |
-| **Pandoc**             | O motor que converte Markdown em PDF, `.docx` ou HTML. O Quarto usa o Pandoc por baixo. |
+| **Quarto**             | Scientific publishing system that brings text, code and references together in a single file. |
+| **`.qmd`**             | Quarto's file extension. It's a text file with Markdown and code blocks.           |
+| **Markdown**           | Lightweight markup language for writing formatted text (headings, lists, *italics*) without buttons. |
+| **YAML**               | The "spec sheet" at the top of a `.qmd`: title, authors, output format, bibliography. |
+| **R chunk**            | A block of R code inside the `.qmd`. When you render, the code runs and the output goes into the document. |
+| **Render**             | The act of turning the `.qmd` into PDF, `.docx` or HTML.                            |
+| **Zotero**             | Bibliographic reference manager. Stores authors, years, DOIs, PDFs.                |
+| **Better BibTeX**      | Zotero extension that generates stable identifiers and keeps a `.bib` file up to date. |
+| **`.bib`**             | Text file with all your references in BibTeX format. Quarto reads this file.       |
+| **Cite key**           | Short identifier for a reference (`silva2024asthma`). It's what you write in the text. |
+| **CSL**                | Citation Style Language. Defines how citations are formatted (Vancouver, APA, Nature). |
+| **Pandoc**             | The engine that converts Markdown into PDF, `.docx` or HTML. Quarto uses Pandoc underneath. |
 :::
 
-# Sobre o workshop
+# About the workshop
 
-Um investigador em saúde faz três coisas repetidamente: **gere referências**, **analisa dados** e **escreve**. Na maioria dos casos, faz cada uma destas actividades em ferramentas diferentes que não comunicam entre si — Zotero num lado, RStudio noutro, Word num terceiro. O resultado é previsível: ficheiros duplicados, referências desactualizadas, tabelas copiadas à mão entre programas, e formatações que se refazem cada vez que o documento muda de destino.
+A health researcher does three things repeatedly: **manages references**, **analyses data** and **writes**. In most cases, each of these activities happens in a different tool that doesn't talk to the others — Zotero on one side, RStudio on another, Word on a third. The result is predictable: duplicated files, outdated references, tables copied by hand between programs, and formatting redone every time the document changes destination.
 
-[O número típico de versões diferentes de um manuscrito em circulação durante a revisão por pares: **5 a 8**. Cada uma um ficheiro Word separado. Erros de versão são uma das três causas mais comuns de retracções por dados incorrectos.]{.column-margin}
+[The typical number of different versions of a manuscript in circulation during peer review: **5 to 8**. Each one a separate Word file. Version errors are one of the three most common causes of retractions due to incorrect data.]{.column-margin}
 
-O Quarto resolve este problema. É um sistema de publicação científica que permite escrever texto, inserir citações geridas pelo Zotero, e incluir blocos de código R que produzem tabelas e gráficos directamente no documento final. Uma alteração nos dados propaga-se automaticamente para as tabelas e figuras. Uma mudança de estilo de citação aplica-se em segundos. O mesmo ficheiro `.qmd` gera um `.docx` para submeter a uma revista, um PDF para arquivar, e uma página HTML para partilhar.
+Quarto solves this problem. It's a scientific publishing system that lets you write text, insert citations managed by Zotero, and include blocks of R code that produce tables and figures directly in the final document. A change in the data propagates automatically to the tables and figures. A change of citation style applies in seconds. The same `.qmd` file generates a `.docx` to submit to a journal, a PDF to archive, and an HTML page to share.
 
-Este documento serve dois fins. É o **guião do curso** que vais seguir hoje. E é o **material de apoio** que vais levar contigo: depois do curso fica disponível no Codespace e podes voltar a consultá-lo. Navega pelo índice à esquerda para saltar entre secções. Cada exercício tem um `README.md` próprio em `exercises/` — é aí que vais trabalhar com as mãos.
+This document serves two purposes. It's the **course script** you'll follow today. And it's the **reference material** you take with you: after the course it stays available in the Codespace and you can come back to it. Navigate the table of contents on the left to jump between sections. Each exercise has its own `README.md` in `exercises/` — that's where you'll do the hands-on work.
 
 ::: {.callout-tip}
-## Se ainda não tens o Codespace aberto
+## If you don't have the Codespace open yet
 
-Volta ao [README do repositório](../README.md) e segue as quatro instruções de arranque (precisas só de uma conta GitHub e um navegador). O resto deste documento assume que já tens o Codespace a correr, com R, Quarto e LaTeX disponíveis.
+Go back to the [repository README](../README.md) and follow the four startup instructions (all you need is a GitHub account and a browser). The rest of this document assumes you already have the Codespace running, with R, Quarto and LaTeX available.
 :::
 
-## O que vais conseguir fazer ao fim do dia
+## What you'll be able to do by the end of the day
 
-- Configurar o [Zotero](https://www.zotero.org) com [Better BibTeX](https://retorque.re/zotero-better-bibtex/) para *cite keys* estáveis e exportação automática para `.bib`.
-- Adicionar referências por cinco vias diferentes: conector de navegador, DOI/PMID, *drag-and-drop* de PDF, entrada manual, importação `.bib`/`.ris`.
-- Verificar se artigos da tua biblioteca foram **retractados** usando o [Retraction Watch](https://retractionwatch.com) e os alertas integrados no Zotero.
-- Criar um documento `.qmd` com YAML *front matter*, texto em Markdown e blocos de código R.
-- Integrar código R num documento Quarto para produzir tabelas e gráficos que se actualizam automaticamente quando os dados mudam.
-- Inserir citações do Zotero no documento Quarto e exportar para `.docx`, PDF e HTML com bibliografia formatada.
-- Mudar de estilo de citação (Vancouver, APA, Nature) em segundos, sem edição manual.
-- Reconhecer os [princípios FAIR](https://www.go-fair.org/fair-principles/) e perceber como este fluxo de trabalho os apoia.
+- Set up [Zotero](https://www.zotero.org) with [Better BibTeX](https://retorque.re/zotero-better-bibtex/) for stable *cite keys* and automatic export to `.bib`.
+- Add references in five different ways: browser connector, DOI/PMID, PDF *drag-and-drop*, manual entry, `.bib`/`.ris` import.
+- Check whether articles in your library have been **retracted** using [Retraction Watch](https://retractionwatch.com) and the alerts built into Zotero.
+- Create a `.qmd` document with YAML *front matter*, Markdown text and blocks of R code.
+- Integrate R code in a Quarto document to produce tables and figures that update automatically when the data change.
+- Insert Zotero citations in the Quarto document and export to `.docx`, PDF and HTML with a formatted bibliography.
+- Switch citation style (Vancouver, APA, Nature) in seconds, without manual editing.
+- Recognise the [FAIR principles](https://www.go-fair.org/fair-principles/) and understand how this workflow supports them.
 
-# Word vs Quarto — uma comparação prática
+# Word vs Quarto — a practical comparison
 
-Antes de mergulhar nos detalhes, um quadro lado a lado do que muda quando passas de Word para Quarto.
+Before diving into the details, a side-by-side table of what changes when you move from Word to Quarto.
 
-| Cenário                                  | Word                                                                            | Quarto                                                                    |
+| Scenario                                 | Word                                                                            | Quarto                                                                    |
 |------------------------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| Dataset actualizado, refaz a tabela 1.   | Copiar de novo manualmente do R / SPSS. Erros de transcrição comuns.            | Re-render. A tabela actualiza-se sozinha.                                 |
-| Revista pede estilo Nature em vez de APA. | Refazer toda a bibliografia à mão (1-3 horas para 50 referências).              | Mudar uma linha no YAML (`csl: nature.csl`). Re-render. 5 segundos.       |
-| Co-autor pede PDF; revista pede `.docx`. | Manter dois ficheiros sincronizados, editar mudanças em paralelo.               | Mesmo `.qmd`, gera ambos os formatos. Sincronia garantida.                |
-| Inserir uma nova referência no texto.    | Plugin Word + Zotero → escolher → inserir → renumerar tudo o que veio depois.   | Escrever `[@citekey]`. Renumeração automática.                            |
-| Reorganizar secções (introdução → fim).  | Cortar, colar, refazer numeração, refazer cross-references.                     | Mudar a ordem dos `#` no `.qmd`. Cross-references resolvem-se sozinhas.   |
-| Partilhar o manuscrito.                  | Anexar `.docx` por email. Versões divergem rapidamente.                         | Partilhar o repositório Git. Toda a gente tem a versão actual.            |
-| Re-executar a análise daqui a dois anos. | Esperar ter ainda o RStudio, os pacotes e os dados. Frequentemente falha.       | `renv::restore()` recompõe o ambiente. Render produz o mesmo documento.   |
+| Dataset updated, redo Table 1.           | Copy it again by hand from R / SPSS. Transcription errors are common.           | Re-render. The table updates on its own.                                  |
+| Journal asks for Nature style not APA.   | Redo the whole bibliography by hand (1–3 hours for 50 references).              | Change one line in the YAML (`csl: nature.csl`). Re-render. 5 seconds.    |
+| Co-author asks for PDF; journal for `.docx`. | Keep two files in sync, edit changes in parallel.                            | Same `.qmd`, generates both formats. Sync guaranteed.                     |
+| Insert a new reference in the text.      | Word + Zotero plugin → choose → insert → renumber everything after it.          | Write `[@citekey]`. Automatic renumbering.                                |
+| Reorganise sections (intro → end).       | Cut, paste, redo numbering, redo cross-references.                              | Change the order of the `#` in the `.qmd`. Cross-references resolve on their own. |
+| Share the manuscript.                    | Attach `.docx` by email. Versions diverge quickly.                             | Share the Git repository. Everyone has the current version.               |
+| Re-run the analysis two years from now.  | Hope you still have RStudio, the packages and the data. Often fails.            | `renv::restore()` rebuilds the environment. Render produces the same document. |
 
-[A maior parte das tarefas continua a ser feita em Word **por inércia**, não por superioridade. O custo de aprender Quarto paga-se na segunda submissão a uma revista que pede um estilo diferente.]{.column-margin}
+[Most tasks are still done in Word **out of inertia**, not superiority. The cost of learning Quarto pays off on the second submission to a journal that asks for a different style.]{.column-margin}
 
-# Glossário
+# Glossary
 
-Os termos centrais, em mais detalhe:
+The core terms, in more detail:
 
-**Quarto.** Sistema *open source* de publicação científica desenhado para investigadores. Substitui Word, LaTeX e Rmarkdown num único ecossistema. Ler mais: [quarto.org](https://quarto.org).
+**Quarto.** *Open source* scientific publishing system designed for researchers. Replaces Word, LaTeX and RMarkdown in a single ecosystem. Read more: [quarto.org](https://quarto.org).
 
-[Desenvolvido pela [Posit (ex-RStudio)](https://posit.co). Lançado em 2022, baseado em décadas de aprendizagem do RMarkdown.]{.column-margin}
+[Developed by [Posit (formerly RStudio)](https://posit.co). Released in 2022, built on decades of learning from RMarkdown.]{.column-margin}
 
-**`.qmd`.** A extensão de ficheiro do Quarto. Por dentro é texto puro, lê-se bem com qualquer editor, gere-se bem com Git. Mistura prosa (em Markdown), código (em R, Python, Julia ou Observable) e metadados (em YAML).
+**`.qmd`.** Quarto's file extension. Underneath it's plain text, reads well in any editor, versions well with Git. It mixes prose (in Markdown), code (in R, Python, Julia or Observable) and metadata (in YAML).
 
-**YAML.** O cabeçalho no topo do ficheiro, entre `---` e `---`. É onde defines o título, autores, data, formato de saída (`docx`, `pdf`, `html`), localização da bibliografia, estilo de citação. Sintaxe sensível à indentação — espaços, não *tabs*.
+**YAML.** The header at the top of the file, between `---` and `---`. It's where you set the title, authors, date, output format (`docx`, `pdf`, `html`), bibliography location, citation style. Indentation-sensitive syntax — spaces, not *tabs*.
 
-[YAML = "YAML Ain't Markup Language". Acrónimo recursivo, como GNU.]{.column-margin}
+[YAML = "YAML Ain't Markup Language". A recursive acronym, like GNU.]{.column-margin}
 
-**Markdown.** Linguagem de marcação leve. `# Título` é um cabeçalho de nível 1. `**negrito**` fica negrito. `[texto](url)` é um link. Mais nada para aprender no primeiro dia.
+**Markdown.** Lightweight markup language. `# Title` is a level-1 heading. `**bold**` becomes bold. `[text](url)` is a link. Nothing else to learn on day one.
 
-**R chunk.** Um bloco de código R que vai correr quando renderizares o `.qmd`. Marcado entre ` ```{r} ` e ` ``` `. O output (tabelas, gráficos, valores numéricos) entra no documento final. As opções de execução (`echo`, `eval`, `warning`, `message`, `label`) controlam o que é mostrado.
+**R chunk.** A block of R code that runs when you render the `.qmd`. Marked between ` ```{r} ` and ` ``` `. The output (tables, figures, numeric values) goes into the final document. The execution options (`echo`, `eval`, `warning`, `message`, `label`) control what is shown.
 
-**Render.** Acto de transformar o `.qmd` em documento final. No terminal: `quarto render documento.qmd`. No RStudio: botão **Render**. No VS Code com a extensão Quarto: `Ctrl/Cmd + Shift + K`.
+**Render.** The act of turning the `.qmd` into a final document. In the terminal: `quarto render document.qmd`. In RStudio: the **Render** button. In VS Code with the Quarto extension: `Ctrl/Cmd + Shift + K`.
 
-**Zotero.** Gestor *open source* de referências bibliográficas. Guarda metadados (autores, ano, DOI), PDFs, anotações e notas. Tem aplicação desktop e biblioteca online sincronizada. Ler mais: [zotero.org](https://www.zotero.org).
+**Zotero.** *Open source* bibliographic reference manager. Stores metadata (authors, year, DOI), PDFs, annotations and notes. Has a desktop application and a synced online library. Read more: [zotero.org](https://www.zotero.org).
 
-[O Zotero foi criado em 2006 na [George Mason University](https://www.gmu.edu/) com financiamento da Mellon Foundation. Hoje é mantido pela Corporation for Digital Scholarship.]{.column-margin}
+[Zotero was created in 2006 at [George Mason University](https://www.gmu.edu/) with funding from the Mellon Foundation. Today it's maintained by the Corporation for Digital Scholarship.]{.column-margin}
 
-**Better BibTeX.** [Extensão do Zotero](https://retorque.re/zotero-better-bibtex/) que faz duas coisas críticas: gera identificadores (*cite keys*) estáveis e legíveis (`silva2024asthma` em vez de `gibberish123`), e mantém um ficheiro `.bib` exportado e actualizado em tempo real.
+**Better BibTeX.** [Zotero extension](https://retorque.re/zotero-better-bibtex/) that does two critical things: it generates stable, readable identifiers (*cite keys*) (`silva2024asthma` instead of `gibberish123`), and it keeps an exported `.bib` file updated in real time.
 
-**`.bib`.** Ficheiro de texto com todas as tuas referências em [formato BibTeX](https://www.bibtex.org/Format/). É o que o Quarto lê para resolver as tuas citações.
+**`.bib`.** Text file with all your references in [BibTeX format](https://www.bibtex.org/Format/). It's what Quarto reads to resolve your citations.
 
-**Cite key.** Identificador curto de uma referência (`silva2024asthma`, `who2023air`). É o que escreves no texto: `[@silva2024asthma]` produz `(Silva, 2024)` na renderização.
+**Cite key.** Short identifier for a reference (`silva2024asthma`, `who2023air`). It's what you write in the text: `[@silva2024asthma]` produces `(Silva, 2024)` on render.
 
-**CSL.** [Citation Style Language](https://citationstyles.org). Define como cada referência fica formatada — Vancouver, APA 7, Nature, etc. Há mais de [10 000 estilos prontos](https://www.zotero.org/styles).
+**CSL.** [Citation Style Language](https://citationstyles.org). Defines how each reference is formatted — Vancouver, APA 7, Nature, etc. There are over [10,000 ready-made styles](https://www.zotero.org/styles).
 
-**Pandoc.** O [motor universal de conversão de documentos](https://pandoc.org). O Quarto usa o Pandoc por baixo para gerar `.docx`, PDF (via LaTeX), HTML e outros formatos.
+**Pandoc.** The [universal document conversion engine](https://pandoc.org). Quarto uses Pandoc underneath to generate `.docx`, PDF (via LaTeX), HTML and other formats.
 
-[Pandoc foi criado por John MacFarlane, filósofo na UC Berkeley. É o canivete suíço da conversão de documentos: aceita mais de 30 formatos de entrada e produz mais de 50 de saída.]{.column-margin}
+[Pandoc was created by John MacFarlane, a philosopher at UC Berkeley. It's the Swiss army knife of document conversion: it accepts over 30 input formats and produces over 50 output formats.]{.column-margin}
 
-**FAIR.** Acrónimo de *Findable, Accessible, Interoperable, Reusable*. [Princípios](https://www.go-fair.org/fair-principles/) para tornar dados (e código, e documentos) reutilizáveis no longo prazo. O fluxo Quarto + Zotero + R apoia os quatro.
+**FAIR.** Acronym for *Findable, Accessible, Interoperable, Reusable*. [Principles](https://www.go-fair.org/fair-principles/) for making data (and code, and documents) reusable in the long term. The Quarto + Zotero + R workflow supports all four.
 
-# O problema: três ferramentas que não comunicam
+# The problem: three tools that don't talk to each other
 
-Vê o teu fluxo de trabalho típico para escrever um artigo:
+Look at your typical workflow for writing an article:
 
-1. Lês PDFs e guardas-os no Zotero (ou no Mendeley, ou numa pasta `papers/`).
-2. Analisas o dataset em R ou em SPSS, exportas tabelas e gráficos.
-3. Abres o Word. Escreves a introdução. Copias os números das tabelas R para o texto. Inseres os gráficos como imagens. Citas os papers a partir do plugin do Zotero/Mendeley.
+1. You read PDFs and store them in Zotero (or Mendeley, or a `papers/` folder).
+2. You analyse the dataset in R or SPSS, export tables and figures.
+3. You open Word. You write the introduction. You copy the numbers from the R tables into the text. You insert the figures as images. You cite the papers from the Zotero/Mendeley plugin.
 
-Cada vez que um dado muda, refazes a análise, voltas a copiar os números, voltas a colar os gráficos. Cada vez que a revista pede outro estilo de citação, recompõe-se a bibliografia à mão. Cada vez que o orientador pede o ficheiro em PDF e a revista pede `.docx`, fazes dois exports diferentes a partir de dois originais.
+Every time a data point changes, you redo the analysis, copy the numbers again, paste the figures again. Every time the journal asks for another citation style, the bibliography is rebuilt by hand. Every time the supervisor asks for the file in PDF and the journal asks for `.docx`, you do two different exports from two different originals.
 
 ::: {.hal}
 I'm sorry, Dave. I'm afraid I can't do that.
@@ -155,142 +155,142 @@ I'm sorry, Dave. I'm afraid I can't do that.
 <cite>HAL 9000 · 1968</cite>
 :::
 
-A frase do HAL é o que o Word te diz, em silêncio, sempre que tentas fazer algo *reproducible* lá dentro: actualizar uma tabela sem refazer, mudar estilo de citação sem reescrever a bibliografia, recompor o documento a partir dos dados originais. O Word não foi feito para isso.
+HAL's line is what Word tells you, silently, every time you try to do something *reproducible* inside it: update a table without redoing it, change citation style without rewriting the bibliography, rebuild the document from the original data. Word wasn't built for that.
 
-O Quarto foi.
+Quarto was.
 
-# O que é o Quarto
+# What is Quarto
 
-O [Quarto](https://quarto.org) é um sistema *open source* de publicação científica. Por dentro, junta três coisas que já existiam mas que viviam separadas:
+[Quarto](https://quarto.org) is an *open source* scientific publishing system. Underneath, it brings together three things that already existed but lived apart:
 
-- **Markdown** para o texto.
-- **Blocos de código R** (ou Python, Julia, Observable) para análises que correm quando renderizas.
-- **Citações `.bib`** geridas externamente pelo Zotero, inseridas no texto com sintaxe simples.
+- **Markdown** for the text.
+- **Blocks of R code** (or Python, Julia, Observable) for analyses that run when you render.
+- **`.bib` citations** managed externally by Zotero, inserted in the text with simple syntax.
 
-Quando renderizas, o Pandoc compõe tudo isto num ficheiro final — `.docx`, PDF ou HTML, à tua escolha. As tabelas saem do código R, as figuras saem do código R, as citações saem do `.bib`. Mudas qualquer coisa numa das fontes e re-renderizas: o resto actualiza-se.
+When you render, Pandoc composes all of this into a final file — `.docx`, PDF or HTML, your choice. The tables come from the R code, the figures come from the R code, the citations come from the `.bib`. Change anything in one of the sources and re-render: the rest updates.
 
 ::: {.callout-note}
 ## Quarto vs RMarkdown
 
-Se já usaste **RMarkdown**, o Quarto é o sucessor mais amplo. RMarkdown só corre R; Quarto corre R, Python, Julia, Observable. RMarkdown depende de pacotes R; Quarto é uma ferramenta independente, instalada no sistema. Ficheiros `.Rmd` antigos correm no Quarto com mudanças mínimas — a [migration guide](https://quarto.org/docs/faq/rmarkdown.html) é curta.
+If you've used **RMarkdown**, Quarto is the broader successor. RMarkdown only runs R; Quarto runs R, Python, Julia, Observable. RMarkdown depends on R packages; Quarto is a standalone tool, installed on the system. Old `.Rmd` files run in Quarto with minimal changes — the [migration guide](https://quarto.org/docs/faq/rmarkdown.html) is short.
 :::
 
 ::: {.callout-note}
 ## Quarto vs Jupyter Notebook
 
-Os [Jupyter Notebooks](https://jupyter.org) são óptimos para exploração interactiva mas pobres para escrita longa-forma. O Quarto importa `.ipynb` directamente, com o mesmo modelo de chunks. Se vens de Python, podes usar Quarto exactamente como usavas notebooks, com vantagens em formatação, citações e exportação para `.docx`/PDF.
+[Jupyter Notebooks](https://jupyter.org) are great for interactive exploration but poor for long-form writing. Quarto imports `.ipynb` directly, with the same chunk model. If you come from Python, you can use Quarto exactly as you used notebooks, with advantages in formatting, citations and export to `.docx`/PDF.
 :::
 
-# Como organizar um projecto Quarto
+# How to organise a Quarto project
 
-Antes de escreveres uma linha de código, organiza as pastas. Uma estrutura simples que funciona para a maioria dos projectos:
+Before you write a line of code, organise the folders. A simple structure that works for most projects:
 
 ```
-o-meu-artigo/
-├── _quarto.yml          # Configuração do projecto (opcional para um único .qmd)
-├── manuscript.qmd       # O documento principal
-├── references.bib       # Bibliografia exportada do Zotero
+my-article/
+├── _quarto.yml          # Project configuration (optional for a single .qmd)
+├── manuscript.qmd       # The main document
+├── references.bib       # Bibliography exported from Zotero
 ├── data/
-│   └── cohort-asma.csv  # Dados brutos
+│   └── cohort-asma.csv  # Raw data
 ├── R/
-│   └── analysis.R       # Funções R reutilizáveis (opcional)
+│   └── analysis.R       # Reusable R functions (optional)
 └── output/
     ├── manuscript.docx
     ├── manuscript.pdf
     └── manuscript.html
 ```
 
-Quando o ficheiro `.qmd` lê dados, usa **caminhos relativos** (`data/cohort-asma.csv`), não absolutos. Assim o projecto funciona na tua máquina, na do orientador e no Codespace.
+When the `.qmd` file reads data, use **relative paths** (`data/cohort-asma.csv`), not absolute ones. That way the project works on your machine, on your supervisor's, and in the Codespace.
 
-[Caminho absoluto: `C:\Users\Tiago\Desktop\dados.csv`. Caminho relativo: `data/cohort.csv`. Só o segundo sobrevive a mover o projecto para outra máquina ou para a *cloud*.]{.column-margin}
+[Absolute path: `C:\Users\Tiago\Desktop\data.csv`. Relative path: `data/cohort.csv`. Only the second survives moving the project to another machine or to the *cloud*.]{.column-margin}
 
 ::: {.callout-tip}
-## Cinco princípios para um projecto reproduzível
+## Five principles for a reproducible project
 
-1. **Um ficheiro `.qmd` por documento.** Não cinco ficheiros que partilham fragmentos copiados.
-2. **Caminhos relativos sempre.** Nunca `C:\Users\Tiago\Desktop\dados.csv`.
-3. **Dados brutos imutáveis.** Não escrevas por cima do `cohort-asma.csv` original. Gera ficheiros transformados em `data-processed/` ou em variáveis dentro do `.qmd`.
-4. **`renv` ou Conda para fixar versões.** Os pacotes R mudam; o `.qmd` que corre hoje pode falhar daqui a dois anos se não congelares as versões.
-5. **Tudo em Git.** O `.qmd` é texto: o Git lê-o, vê *diffs*, recupera versões. Aprende [Git em uma hora](https://learngitbranching.js.org) e ganhas auditabilidade para o resto da vida.
+1. **One `.qmd` file per document.** Not five files sharing copied fragments.
+2. **Relative paths always.** Never `C:\Users\Tiago\Desktop\data.csv`.
+3. **Immutable raw data.** Don't overwrite the original `cohort-asma.csv`. Generate transformed files in `data-processed/` or in variables inside the `.qmd`.
+4. **`renv` or Conda to pin versions.** R packages change; the `.qmd` that runs today may fail two years from now if you don't freeze the versions.
+5. **Everything in Git.** The `.qmd` is text: Git reads it, sees *diffs*, recovers versions. Learn [Git in an hour](https://learngitbranching.js.org) and gain auditability for the rest of your life.
 :::
 
 ::: {.callout-important}
-## Dados sintéticos e dados reais
+## Synthetic data and real data
 
-O `cohort-asma.csv` que vais usar hoje é **sintético** — gerado para o exercício, sem ligação a doentes reais. Isto permite-nos pôr o dataset num repositório GitHub (mesmo privado) sem qualquer risco.
+The `cohort-asma.csv` you'll use today is **synthetic** — generated for the exercise, with no connection to real patients. This lets us put the dataset in a GitHub repository (even a private one) with no risk whatsoever.
 
-Nos teus projectos reais, com dados de doentes, aplicam-se regras diferentes:
+In your real projects, with patient data, different rules apply:
 
-- **Nunca commites dados de doentes reais para um repositório Git**, público ou privado. Um Codespace pode ser partilhado, esquecido em modo público, ou o repositório pode ser *forked*; o histórico do Git guarda tudo para sempre, mesmo que apagues o ficheiro num commit posterior.
-- **Confirma a política de protecção de dados da tua instituição** (RGPD, comissão de ética) antes de sequer carregar dados de doentes para qualquer máquina — incluindo o teu portátil.
-- **Confirma que tens aprovação da comissão de ética** para o estudo em causa antes de analisar os dados.
-- Se precisares de trabalhar com dados sensíveis num fluxo Quarto, mantém-nos fora do repositório (por exemplo, num `data/` listado no `.gitignore`, ou num sistema de armazenamento aprovado pela instituição) e usa apenas caminhos relativos para os referenciar localmente.
+- **Never commit real patient data to a Git repository**, public or private. A Codespace can be shared, left in public mode by mistake, or the repository can be *forked*; Git history keeps everything forever, even if you delete the file in a later commit.
+- **Check your institution's data protection policy** (GDPR, ethics committee) before you even load patient data onto any machine — including your own laptop.
+- **Confirm you have ethics committee approval** for the study in question before analysing the data.
+- If you need to work with sensitive data in a Quarto workflow, keep it out of the repository (for example, in a `data/` folder listed in `.gitignore`, or in an institution-approved storage system) and use only relative paths to reference it locally.
 :::
 
-# Zotero e Better BibTeX
+# Zotero and Better BibTeX
 
-O [Zotero](https://www.zotero.org) é o gestor de referências que vais usar. É *open source*, é gratuito, e tem aplicação desktop (Windows, macOS, Linux) mais sincronização com a biblioteca *online*. Resolve um problema concreto: guardar, organizar e citar centenas (ou milhares) de artigos sem depender de pastas de PDFs com nomes como `artigo_final_v2.pdf`.
+[Zotero](https://www.zotero.org) is the reference manager you'll use. It's *open source*, it's free, and it has a desktop application (Windows, macOS, Linux) plus sync with the *online* library. It solves a concrete problem: storing, organising and citing hundreds (or thousands) of articles without relying on PDF folders with names like `article_final_v2.pdf`.
 
-Por dentro, o Zotero guarda três coisas por cada referência: os **metadados** (autores, título, ano, DOI — o que vai para a bibliografia), os **anexos** (o PDF, se tiveres acesso), e as tuas **anotações** (destaques, notas). Tudo isto sincroniza entre computadores e integra directamente com o Word, o LibreOffice, e — o que interessa aqui — com o Quarto.
+Underneath, Zotero stores three things per reference: the **metadata** (authors, title, year, DOI — what goes into the bibliography), the **attachments** (the PDF, if you have access), and your **annotations** (highlights, notes). All of this syncs across computers and integrates directly with Word, LibreOffice, and — what matters here — with Quarto.
 
 ::: {.callout-note}
 ## Zotero vs Mendeley vs EndNote
 
-Os três fazem o essencial (guardar referências, inserir citações). O Zotero destaca-se em três pontos para um fluxo Quarto: é gratuito sem limite de armazenamento para metadados (só os PDFs contam para a quota), tem o [Better BibTeX](https://retorque.re/zotero-better-bibtex/) — que nenhum dos outros replica de forma equivalente — e o [Retraction Watch Database](https://retractionwatch.com/retraction-watch-database/) vem integrado desde 2022. Se já usas Mendeley ou EndNote, a [importação para Zotero](https://www.zotero.org/support/moving_to_zotero) é directa.
+All three do the essentials (store references, insert citations). Zotero stands out on three points for a Quarto workflow: it's free with no storage limit for metadata (only PDFs count toward the quota), it has [Better BibTeX](https://retorque.re/zotero-better-bibtex/) — which none of the others replicates equivalently — and the [Retraction Watch Database](https://retractionwatch.com/retraction-watch-database/) has been built in since 2022. If you already use Mendeley or EndNote, [importing into Zotero](https://www.zotero.org/support/moving_to_zotero) is straightforward.
 :::
 
-## Cinco formas de adicionar referências
+## Five ways to add references
 
-1. **Conector do navegador.** [Instala o Zotero Connector](https://www.zotero.org/download/connectors) para Chrome, Firefox, Safari ou Edge. Vês um artigo no PubMed, carregas no ícone do Zotero na barra do navegador, e a referência (mais o PDF, se houver acesso) entra na biblioteca.
-2. **DOI ou PMID com a *magic wand*.** No Zotero desktop, carrega no botão da varinha mágica (canto superior esquerdo, com um `+` verde). Cola um DOI (`10.1234/abc`), um PMID (`12345678`), ou um ISBN. O Zotero vai à internet buscar os metadados.
-3. ***Drag-and-drop* de PDF.** Arrasta um PDF para a janela do Zotero. Ele tenta extrair metadados automaticamente. Quase sempre funciona com artigos científicos modernos.
-4. **Entrada manual.** Botão `+ verde → Item Type`. Útil para capítulos de livro, comunicações em conferência, *grey literature* — coisas que os outros métodos não apanham bem.
-5. **Importação `.bib`/`.ris`.** Tens uma bibliografia herdada de outro projecto? `File → Import` e seleccionas o ficheiro. As referências entram numa colecção nova.
+1. **Browser connector.** [Install the Zotero Connector](https://www.zotero.org/download/connectors) for Chrome, Firefox, Safari or Edge. You see an article on PubMed, click the Zotero icon in the browser bar, and the reference (plus the PDF, if there's access) goes into the library.
+2. **DOI or PMID with the *magic wand*.** In Zotero desktop, click the magic wand button (top-left, with a green `+`). Paste a DOI (`10.1234/abc`), a PMID (`12345678`), or an ISBN. Zotero goes online to fetch the metadata.
+3. ***Drag-and-drop* of a PDF.** Drag a PDF into the Zotero window. It tries to extract metadata automatically. It almost always works with modern scientific articles.
+4. **Manual entry.** `Green + → Item Type` button. Useful for book chapters, conference papers, *grey literature* — things the other methods don't capture well.
+5. **`.bib`/`.ris` import.** Have a bibliography inherited from another project? `File → Import` and select the file. The references go into a new collection.
 
-[O conector funciona em sites de revistas, PubMed, Google Scholar, IEEE, ACM, Cochrane Library e mais de 600 outros. Vê uma lista actualizada em [zotero.org/support/translators](https://www.zotero.org/support/translators).]{.column-margin}
+[The connector works on journal sites, PubMed, Google Scholar, IEEE, ACM, Cochrane Library and over 600 others. See an updated list at [zotero.org/support/translators](https://www.zotero.org/support/translators).]{.column-margin}
 
 ::: {.callout-warning}
-## Atenção a duplicados
+## Watch out for duplicates
 
-Quase nenhum método é à prova de duplicados. O Zotero detecta duplicados óbvios (mesmo DOI), mas variantes (versão *preprint* + versão publicada) escapam. Antes de exportar a biblioteca, corre `Edit → Find Duplicates` e une os duplicados a mão.
+Almost no method is duplicate-proof. Zotero detects obvious duplicates (same DOI), but variants (*preprint* version + published version) slip through. Before exporting the library, run `Edit → Find Duplicates` and merge the duplicates by hand.
 :::
 
 ## Better BibTeX
 
-[Better BibTeX](https://retorque.re/zotero-better-bibtex/) é uma extensão do Zotero que faz duas coisas críticas:
+[Better BibTeX](https://retorque.re/zotero-better-bibtex/) is a Zotero extension that does two critical things:
 
-- **Cite keys estáveis e legíveis.** Em vez de identificadores aleatórios, a tua referência fica como `silva2024asthma` — autor, ano, primeira palavra significativa do título. Configurável.
-- **Exportação automática para `.bib`.** Configuras uma vez (`File → Export Library → Better BibTeX → Keep updated`) e o ficheiro `.bib` actualiza-se sempre que adicionas uma referência ao Zotero.
+- **Stable, readable cite keys.** Instead of random identifiers, your reference becomes `silva2024asthma` — author, year, first meaningful word of the title. Configurable.
+- **Automatic export to `.bib`.** You set it up once (`File → Export Library → Better BibTeX → Keep updated`) and the `.bib` file updates whenever you add a reference to Zotero.
 
-Instalação: download do `.xpi` em [retorque.re/zotero-better-bibtex/installation/](https://retorque.re/zotero-better-bibtex/installation/), e `Tools → Add-ons → Install Add-on From File`.
+Installation: download the `.xpi` from [retorque.re/zotero-better-bibtex/installation/](https://retorque.re/zotero-better-bibtex/installation/), and `Tools → Add-ons → Install Add-on From File`.
 
-[Padrão típico de *cite key*: `auth.lower + year + shorttitle(1,1).lower`. Produz `silva2024asthma`, `who2023air`. Configurável em **Preferences → Better BibTeX → Citation Key Format**.]{.column-margin}
+[Typical *cite key* pattern: `auth.lower + year + shorttitle(1,1).lower`. Produces `silva2024asthma`, `who2023air`. Configurable in **Preferences → Better BibTeX → Citation Key Format**.]{.column-margin}
 
-## Retractações
+## Retractions
 
-Artigos retractados continuam a ser citados na literatura — incluindo, regularmente, por artigos novos cujos autores não verificaram o estado das suas referências. Citar trabalho retractado é um erro grave de integridade.
+Retracted articles keep being cited in the literature — including, regularly, by new articles whose authors did not check the status of their references. Citing retracted work is a serious integrity error.
 
-[O caso mais conhecido em saúde é o Wakefield 1998 — autismo e vacina MMR. Retractado em 2010, continuou a ser citado centenas de vezes por ano até hoje.]{.column-margin}
+[The best-known case in health is Wakefield 1998 — autism and the MMR vaccine. Retracted in 2010, it kept being cited hundreds of times a year to this day.]{.column-margin}
 
-O Zotero, desde 2022, integra o [Retraction Watch Database](https://retractionwatch.com/retraction-watch-database/). Sempre que um artigo da tua biblioteca é retractado, vês um aviso vermelho na linha do item. **Repara antes de citar**.
+Since 2022, Zotero integrates the [Retraction Watch Database](https://retractionwatch.com/retraction-watch-database/). Whenever an article in your library is retracted, you see a red warning on the item's row. **Notice it before citing**.
 
 ::: {.callout-important}
-## Regra inegociável
+## Non-negotiable rule
 
-Antes de enviar qualquer manuscrito para revisão, verifica retractações em duas vias: o aviso do Zotero e uma busca manual no [Retraction Watch](http://retractiondatabase.org/RetractionSearch.aspx). Se uma das tuas referências está retractada, decide se a deves retirar (na maioria dos casos, sim) ou se a deves citar explicitamente como retractada (em casos onde estás a discutir o erro).
+Before sending any manuscript for review, check for retractions two ways: the Zotero warning and a manual search on [Retraction Watch](http://retractiondatabase.org/RetractionSearch.aspx). If one of your references is retracted, decide whether to remove it (in most cases, yes) or to cite it explicitly as retracted (in cases where you're discussing the error).
 :::
 
-## Exercício 1 — Biblioteca Zotero
+## Exercise 1 — Zotero library
 
-Abre [`exercises/01-zotero/README.md`](../exercises/01-zotero/README.md). Vais criar uma biblioteca com pelo menos 10 referências usando três métodos diferentes, instalar e configurar o Better BibTeX, exportar para `.bib` automático, e verificar retractações.
+Open [`exercises/01-zotero/README.md`](../exercises/01-zotero/README.md). You'll create a library with at least 10 references using three different methods, install and configure Better BibTeX, export to an automatic `.bib`, and check for retractions.
 
 # YAML *front matter*
 
-O *front matter* é a "ficha técnica" no topo do `.qmd`, entre `---` e `---`:
+The *front matter* is the "spec sheet" at the top of the `.qmd`, between `---` and `---`:
 
 ```yaml
 ---
-title: "Inflamação eosinofílica e função pulmonar em crianças com asma"
+title: "Eosinophilic inflammation and lung function in children with asthma"
 author:
   - name: Marta Silva
     email: marta.silva@chusj.min-saude.pt
@@ -298,10 +298,10 @@ author:
       - Centro Hospitalar Universitário de São João
   - name: Tiago Jacinto
     affiliations:
-      - Faculdade de Medicina da Universidade do Porto
+      - Faculty of Medicine, University of Porto
 date: "2026-09-15"
 abstract: |
-  A inflamação eosinofílica é um endotipo dominante da asma pediátrica...
+  Eosinophilic inflammation is a dominant endotype of paediatric asthma...
 bibliography: references.bib
 csl: vancouver.csl
 format:
@@ -311,27 +311,27 @@ format:
 ---
 ```
 
-A YAML aceita centenas de opções. As que vais usar mais frequentemente:
+YAML accepts hundreds of options. The ones you'll use most often:
 
-- `title`, `subtitle`, `author`, `date` — metadados básicos.
-- `abstract` — o resumo, escrito em Markdown.
-- `bibliography` — caminho para o `.bib`.
-- `csl` — caminho para o ficheiro CSL com o estilo de citação. Se omitires, o Quarto usa o estilo *Chicago author-date*.
-- `format` — formatos de saída. Podes ter múltiplos.
+- `title`, `subtitle`, `author`, `date` — basic metadata.
+- `abstract` — the abstract, written in Markdown.
+- `bibliography` — path to the `.bib`.
+- `csl` — path to the CSL file with the citation style. If you omit it, Quarto uses the *Chicago author-date* style.
+- `format` — output formats. You can have several.
 
-A documentação completa do *front matter* está em [quarto.org/docs/reference/formats/html](https://quarto.org/docs/reference/formats/html.html) (e equivalente para outros formatos).
+The full *front matter* documentation is at [quarto.org/docs/reference/formats/html](https://quarto.org/docs/reference/formats/html.html) (and the equivalent for other formats).
 
-[YAML também aceita autores com ORCID, afiliações múltiplas, e marcadores de autor correspondente. Vê [quarto.org/docs/journals/authors.html](https://quarto.org/docs/journals/authors.html) para a referência completa.]{.column-margin}
+[YAML also accepts authors with ORCID, multiple affiliations, and corresponding-author markers. See [quarto.org/docs/journals/authors.html](https://quarto.org/docs/journals/authors.html) for the full reference.]{.column-margin}
 
 ::: {.callout-warning}
-## Cuidado com a indentação
+## Mind the indentation
 
-YAML é sensível a espaços e indentação. Dois espaços antes de `name:` dentro de `author:`. Nunca *tabs* — só espaços. Se o `quarto render` falhar com um erro estranho, 80% das vezes é YAML mal indentada.
+YAML is sensitive to spaces and indentation. Two spaces before `name:` inside `author:`. Never *tabs* — only spaces. If `quarto render` fails with a strange error, 80% of the time it's badly indented YAML.
 :::
 
-## YAML para um projecto, não só um documento
+## YAML for a project, not just a document
 
-Quando tens vários `.qmd` no mesmo projecto, podes definir opções comuns num ficheiro `_quarto.yml` na raiz:
+When you have several `.qmd` files in the same project, you can define common options in a `_quarto.yml` file at the root:
 
 ```yaml
 project:
@@ -349,15 +349,15 @@ format:
     geometry: margin=2.5cm
 ```
 
-Todos os `.qmd` na pasta herdam estas opções — não tens de as repetir em cada um.
+Every `.qmd` in the folder inherits these options — you don't have to repeat them in each one.
 
-# Blocos de código R
+# R code blocks
 
-Um bloco R (*code chunk*) é o que faz o Quarto diferente do Word: prosa e código no mesmo ficheiro, código que corre quando renderizas.
+An R block (*code chunk*) is what makes Quarto different from Word: prose and code in the same file, code that runs when you render.
 
 ```{{r}}
 #| label: tbl-demographics
-#| tbl-cap: "Características demográficas da amostra"
+#| tbl-cap: "Demographic characteristics of the sample"
 
 library(tidyverse)
 library(gt)
@@ -372,34 +372,34 @@ read_csv("data/cohort-asma.csv") |>
 ```
 
 ::: {.callout-tip collapse="true"}
-## R enferrujado? Três coisas para reconhecer neste exemplo
+## Rusty R? Three things to recognise in this example
 
-Não vamos ensinar R — mas se não lhe tocas há uns meses, isto orienta-te para os exercícios:
+We won't teach R — but if you haven't touched it in a few months, this orients you for the exercises:
 
-- **`|>` é o *pipe*.** Lê-se "e depois": pega no resultado da esquerda e passa-o como primeiro argumento à função da direita. `dados |> summarise(...)` é o mesmo que `summarise(dados, ...)`, mas lê-se de cima para baixo.
-- **`summarise()` colapsa linhas em resumos** (média, contagem). Com `group_by(sex)` antes, faz um resumo *por grupo*.
-- **`gt()` transforma a tabela num objecto formatado** para o documento final.
+- **`|>` is the *pipe*.** Read it as "and then": it takes the result on the left and passes it as the first argument to the function on the right. `data |> summarise(...)` is the same as `summarise(data, ...)`, but reads top to bottom.
+- **`summarise()` collapses rows into summaries** (mean, count). With `group_by(sex)` before it, it produces a summary *per group*.
+- **`gt()` turns the table into a formatted object** for the final document.
 
-Se precisas de mais, o [R for Data Science (2e)](https://r4ds.hadley.nz) (gratuito) cobre isto nos capítulos 3–4.
+If you need more, [R for Data Science (2e)](https://r4ds.hadley.nz) (free) covers this in chapters 3–4.
 :::
 
-As opções com `#|` (chamadas *hash-pipe options*) controlam o comportamento do chunk:
+The `#|` options (called *hash-pipe options*) control the chunk's behaviour:
 
-| Opção        | O que faz                                                  |
+| Option       | What it does                                               |
 |--------------|------------------------------------------------------------|
-| `label`      | Identificador único, usado para *cross-references*.        |
-| `tbl-cap` / `fig-cap` | Legenda da tabela ou figura.                      |
-| `echo`       | Mostra o código no documento final? (`true`/`false`)        |
-| `eval`       | Executa o código? Se `false`, mostra o código mas não corre. |
-| `warning`    | Mostra os avisos do R?                                     |
-| `message`    | Mostra as mensagens (ex.: pacotes carregados)?              |
-| `include`    | Inclui o output no documento? `false` corre mas esconde.    |
-| `fig-width` / `fig-height` | Dimensões da figura em polegadas.             |
-| `cache`      | Guarda o resultado em disco. Útil para chunks longos.       |
+| `label`      | Unique identifier, used for *cross-references*.            |
+| `tbl-cap` / `fig-cap` | Caption of the table or figure.                   |
+| `echo`       | Show the code in the final document? (`true`/`false`)      |
+| `eval`       | Run the code? If `false`, shows the code but doesn't run it. |
+| `warning`    | Show R's warnings?                                         |
+| `message`    | Show messages (e.g. packages loaded)?                     |
+| `include`    | Include the output in the document? `false` runs but hides it. |
+| `fig-width` / `fig-height` | Figure dimensions in inches.                  |
+| `cache`      | Store the result on disk. Useful for long chunks.         |
 
-[A lista completa de opções de chunk está em [quarto.org/docs/reference/cells/cells-knitr.html](https://quarto.org/docs/reference/cells/cells-knitr.html).]{.column-margin}
+[The full list of chunk options is at [quarto.org/docs/reference/cells/cells-knitr.html](https://quarto.org/docs/reference/cells/cells-knitr.html).]{.column-margin}
 
-Para um manuscrito limpo, normalmente queres `echo: false`, `warning: false`, `message: false` em todos os chunks de análise — para que o texto final só mostre tabelas, figuras e números, sem código nem ruído. Podes definir estas opções globalmente no YAML, com:
+For a clean manuscript, you usually want `echo: false`, `warning: false`, `message: false` on every analysis chunk — so the final text shows only tables, figures and numbers, with no code or noise. You can set these options globally in the YAML, with:
 
 ```yaml
 execute:
@@ -409,134 +409,134 @@ execute:
 ```
 
 ::: {.callout-tip}
-## Quando mostrar código?
+## When to show code?
 
-Em manuscritos, esconde sempre — `echo: false`. Em apontamentos didácticos ou suplementos metodológicos, mostra — `echo: true`. Em relatórios internos com colegas que sabem ler R, considera mostrar — o código é a documentação mais honesta da análise.
+In manuscripts, always hide it — `echo: false`. In teaching notes or methodological supplements, show it — `echo: true`. In internal reports with colleagues who can read R, consider showing it — code is the most honest documentation of the analysis.
 :::
 
-## Cinco princípios para chunks legíveis
+## Five principles for readable chunks
 
-1. **Um chunk por tarefa.** Não misturas carregamento de dados, transformação e visualização no mesmo bloco.
-2. **`label` em todos os chunks.** Mesmo que não vás referenciá-los — facilita debugging quando algo falha.
-3. **Nomes descritivos.** `tbl-demographics` é melhor do que `chunk-1`.
-4. **Separa I/O do processamento.** Lê o dataset uma vez no início, num chunk próprio. As transformações usam o objecto carregado.
-5. **Comentários onde a lógica não é óbvia.** O `tidyverse` é legível por si, mas decisões clínicas (ex.: "excluímos doentes com FEV1 < 0.5 L porque...") merecem uma linha de comentário.
+1. **One chunk per task.** Don't mix data loading, transformation and visualisation in the same block.
+2. **`label` on every chunk.** Even if you won't reference them — it makes debugging easier when something fails.
+3. **Descriptive names.** `tbl-demographics` is better than `chunk-1`.
+4. **Separate I/O from processing.** Read the dataset once at the start, in its own chunk. Transformations use the loaded object.
+5. **Comments where the logic isn't obvious.** The `tidyverse` is readable on its own, but clinical decisions (e.g. "we excluded patients with FEV1 < 0.5 L because...") deserve a line of comment.
 
 ## *Cross-references*
 
-Quando dás `label: tbl-demographics` a uma tabela e `label: fig-spirometry` a uma figura, podes referenciá-las no texto com `@tbl-demographics` e `@fig-spirometry`. O Quarto resolve a numeração automaticamente — não tens de actualizar "Tabela 1" para "Tabela 2" quando inseres uma tabela nova.
+When you give `label: tbl-demographics` to a table and `label: fig-spirometry` to a figure, you can reference them in the text with `@tbl-demographics` and `@fig-spirometry`. Quarto resolves the numbering automatically — you don't have to update "Table 1" to "Table 2" when you insert a new table.
 
-Convenção do Quarto: `tbl-*` para tabelas, `fig-*` para figuras, `eq-*` para equações, `sec-*` para secções, `lst-*` para listagens de código. O Quarto numera-as por tipo.
+Quarto convention: `tbl-*` for tables, `fig-*` for figures, `eq-*` for equations, `sec-*` for sections, `lst-*` for code listings. Quarto numbers them by type.
 
-[Sintaxe completa de cross-references: [quarto.org/docs/authoring/cross-references.html](https://quarto.org/docs/authoring/cross-references.html). Inclui referências a sub-figuras (`@fig-spirometry-1`), referências combinadas (`@tbl-a; @tbl-b`), e mais.]{.column-margin}
+[Full cross-reference syntax: [quarto.org/docs/authoring/cross-references.html](https://quarto.org/docs/authoring/cross-references.html). Includes references to sub-figures (`@fig-spirometry-1`), combined references (`@tbl-a; @tbl-b`), and more.]{.column-margin}
 
-## Tabelas com `gt` e `knitr::kable()`
+## Tables with `gt` and `knitr::kable()`
 
-Para tabelas básicas, [`knitr::kable()`](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html) chega:
+For basic tables, [`knitr::kable()`](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html) is enough:
 
 ```{{r}}
 mtcars |>
   head() |>
-  knitr::kable(caption = "Primeiros seis carros")
+  knitr::kable(caption = "First six cars")
 ```
 
-Para tabelas com formatação séria (cabeçalhos agrupados, células coloridas, totais), [`gt`](https://gt.rstudio.com) é o pacote certo. Curva de aprendizagem mais alta, mas resultado *publication-ready*.
+For tables with serious formatting (grouped headers, coloured cells, totals), [`gt`](https://gt.rstudio.com) is the right package. A steeper learning curve, but a *publication-ready* result.
 
 ::: {.callout-tip}
-## Outras opções de tabelas
+## Other table options
 
-- [`gtsummary`](https://www.danieldsjoberg.com/gtsummary/) — tabelas estatísticas prontas a publicar (Table 1 de demográficas, modelos de regressão, etc.).
-- [`flextable`](https://davidgohel.github.io/flextable/) — alternativa ao `gt`, com melhor suporte para Word.
-- [`kableExtra`](https://haozhu233.github.io/kableExtra/) — adiciona formatação avançada ao `knitr::kable()`.
+- [`gtsummary`](https://www.danieldsjoberg.com/gtsummary/) — publication-ready statistical tables (demographic Table 1, regression models, etc.).
+- [`flextable`](https://davidgohel.github.io/flextable/) — alternative to `gt`, with better Word support.
+- [`kableExtra`](https://haozhu233.github.io/kableExtra/) — adds advanced formatting to `knitr::kable()`.
 :::
 
-## Gráficos com `ggplot2`
+## Figures with `ggplot2`
 
-[`ggplot2`](https://ggplot2.tidyverse.org) é o padrão para visualização em R. Vale a pena investir tempo nele uma vez na vida. Recomendação: o livro [R for Data Science (2e)](https://r4ds.hadley.nz), capítulos 2 e 9-11.
+[`ggplot2`](https://ggplot2.tidyverse.org) is the standard for visualisation in R. It's worth investing time in it once in your life. Recommendation: the book [R for Data Science (2e)](https://r4ds.hadley.nz), chapters 2 and 9–11.
 
-Exemplo mínimo de um gráfico para um manuscrito:
+Minimal example of a figure for a manuscript:
 
 ```{{r}}
 #| label: fig-fev1-age
-#| fig-cap: "FEV1 em função da idade, estratificado por gravidade"
+#| fig-cap: "FEV1 as a function of age, stratified by severity"
 #| fig-width: 7
 #| fig-height: 5
 
 ggplot(cohort, aes(x = age, y = fev1_l, colour = asthma_severity)) +
   geom_point(alpha = 0.7) +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(x = "Idade (anos)", y = "FEV1 (L)", colour = "Gravidade") +
+  labs(x = "Age (years)", y = "FEV1 (L)", colour = "Severity") +
   theme_minimal()
 ```
 
-[Para gráficos *publication-ready*, considera os pacotes [`ggpubr`](https://rpkgs.datanovia.com/ggpubr/) (para anotações estatísticas) e [`patchwork`](https://patchwork.data-imaginist.com) (para combinar múltiplos gráficos).]{.column-margin}
+[For *publication-ready* figures, consider the packages [`ggpubr`](https://rpkgs.datanovia.com/ggpubr/) (for statistical annotations) and [`patchwork`](https://patchwork.data-imaginist.com) (for combining multiple plots).]{.column-margin}
 
-## Exercício 2 — Análise em Quarto
+## Exercise 2 — Analysis in Quarto
 
-Abre [`exercises/02-quarto-analysis/README.md`](../exercises/02-quarto-analysis/README.md). Vais receber um dataset clínico e um documento `.qmd` parcialmente preenchido. Completas os blocos de código para produzir uma tabela descritiva e um gráfico, e renderizas o documento.
+Open [`exercises/02-quarto-analysis/README.md`](../exercises/02-quarto-analysis/README.md). You'll receive a clinical dataset and a partially filled `.qmd` document. You complete the code blocks to produce a descriptive table and a figure, and render the document.
 
-# Markdown no Quarto
+# Markdown in Quarto
 
-Tudo o que não é YAML nem código R é Markdown. As sintaxes que vais usar quase sempre:
+Everything that isn't YAML or R code is Markdown. The syntax you'll use almost always:
 
-| Sintaxe                       | Renderiza como                              |
+| Syntax                        | Renders as                                  |
 |-------------------------------|---------------------------------------------|
-| `# Cabeçalho`                 | Cabeçalho nível 1 (h1)                      |
-| `## Cabeçalho`                | Cabeçalho nível 2 (h2)                      |
-| `**negrito**`                 | **negrito**                                 |
-| `*itálico*`                   | *itálico*                                   |
-| `` `código inline` ``         | `código inline`                             |
-| `- item`                      | Item de lista não ordenada                  |
-| `1. item`                     | Item de lista ordenada                      |
-| `[texto](https://url)`        | Link                                        |
-| `![alt](imagem.png)`          | Imagem                                      |
-| `> citação`                   | Citação em bloco                            |
-| `---`                         | Linha horizontal                            |
-| `$E = mc^2$`                  | Equação inline (LaTeX)                      |
-| `$$ \int x^2 dx $$`           | Equação em bloco                            |
+| `# Heading`                   | Level-1 heading (h1)                        |
+| `## Heading`                  | Level-2 heading (h2)                        |
+| `**bold**`                    | **bold**                                    |
+| `*italic*`                    | *italic*                                    |
+| `` `inline code` ``           | `inline code`                               |
+| `- item`                      | Unordered list item                         |
+| `1. item`                     | Ordered list item                           |
+| `[text](https://url)`         | Link                                        |
+| `![alt](image.png)`           | Image                                       |
+| `> quote`                     | Block quote                                 |
+| `---`                         | Horizontal rule                             |
+| `$E = mc^2$`                  | Inline equation (LaTeX)                      |
+| `$$ \int x^2 dx $$`           | Block equation                              |
 
-Para o resto (tabelas manuais, notas de rodapé, citações cruzadas, *callouts*), a [Quarto Markdown reference](https://quarto.org/docs/authoring/markdown-basics.html) tem tudo num único sítio.
+For the rest (manual tables, footnotes, cross-references, *callouts*), the [Quarto Markdown reference](https://quarto.org/docs/authoring/markdown-basics.html) has everything in one place.
 
 ::: {.callout-tip}
-## *Cheat sheet* de Markdown
+## Markdown *cheat sheet*
 
-Para imprimir e ter à mão: a [Markdown cheatsheet do Quarto](https://rstudio.github.io/cheatsheets/html/quarto.html) cabe numa folha A4 e cobre 90% do que vais usar.
+To print and keep handy: the [Quarto Markdown cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html) fits on one A4 page and covers 90% of what you'll use.
 :::
 
-## Callouts — caixas de destaque no texto
+## Callouts — highlight boxes in the text
 
-O Quarto suporta cinco tipos de *callouts* — caixas com cor e ícone próprios para chamar a atenção. A sintaxe é simples:
+Quarto supports five types of *callouts* — boxes with their own colour and icon to draw attention. The syntax is simple:
 
 ```markdown
 ::: {.callout-note}
-## Título do callout
-Conteúdo em Markdown.
+## Callout title
+Content in Markdown.
 :::
 ```
 
-Tipos disponíveis: `note`, `tip`, `warning`, `important`, `caution`. Cada um com cor e semântica próprias — usa-os deliberadamente: `tip` para conselhos práticos, `warning` para avisos, `important` para regras absolutas.
+Available types: `note`, `tip`, `warning`, `important`, `caution`. Each with its own colour and semantics — use them deliberately: `tip` for practical advice, `warning` for warnings, `important` for absolute rules.
 
-Podes também adicionar `collapse="true"` para fazer o *callout* expansível, ou `appearance="simple"` para uma versão mais discreta.
+You can also add `collapse="true"` to make the *callout* expandable, or `appearance="simple"` for a more discreet version.
 
-## Margin notes — notas na coluna lateral
+## Margin notes — notes in the side column
 
-Tudo o que coloques numa `div` com a classe `.column-margin` aparece na margem direita do documento, em vez de no fluxo principal. Útil para definições, referências secundárias, ou comentários do autor.
+Anything you place in a `div` with the class `.column-margin` appears in the right margin of the document, instead of in the main flow. Useful for definitions, secondary references, or author comments.
 
-[Esta caixa que estás a ler agora — é uma *margin note*. Atrai o olhar sem interromper a leitura linear.]{.column-margin}
+[This box you're reading now — it's a *margin note*. It draws the eye without interrupting linear reading.]{.column-margin}
 
 ```markdown
 ::: {.column-margin}
-Esta é uma nota lateral.
+This is a margin note.
 :::
 ```
 
-Ou inline com a sintaxe `[texto]{.column-margin}`.
+Or inline with the syntax `[text]{.column-margin}`.
 
-# Citações no Quarto
+# Citations in Quarto
 
-Depois de teres um ficheiro `.bib` exportado do Zotero e o caminho dele declarado no YAML (`bibliography: references.bib`), inserir citações é trivial:
+Once you have a `.bib` file exported from Zotero and its path declared in the YAML (`bibliography: references.bib`), inserting citations is trivial:
 
-| Sintaxe no `.qmd`           | Renderiza (estilo *author-date*)    | Renderiza (Vancouver) |
+| Syntax in the `.qmd`        | Renders (*author-date* style)       | Renders (Vancouver)   |
 |-----------------------------|-------------------------------------|-----------------------|
 | `@silva2024asthma`          | Silva (2024)                        | 1                     |
 | `[@silva2024asthma]`        | (Silva, 2024)                       | (1)                   |
@@ -545,29 +545,29 @@ Depois de teres um ficheiro `.bib` exportado do Zotero e o caminho dele declarad
 | `[@silva2024asthma, p. 23]` | (Silva, 2024, p. 23)                | (1, p. 23)            |
 | `[see @silva2024asthma]`    | (see Silva, 2024)                   | (see 1)               |
 
-A bibliografia final aparece automaticamente no fim do documento, formatada de acordo com o CSL que escolheste.
+The final bibliography appears automatically at the end of the document, formatted according to the CSL you chose.
 
-## O selector de citações do RStudio
+## The RStudio citation picker
 
-Se preferires não decorar *cite keys*, no RStudio 2022.07+ podes usar o selector visual de citações: `Insert → Citation` ou `Ctrl + Shift + F8` (no Mac, `Cmd + Shift + F8`). Procuras pelo autor ou título, e o RStudio insere o `@citekey` correcto.
+If you'd rather not memorise *cite keys*, in RStudio 2022.07+ you can use the visual citation picker: `Insert → Citation` or `Ctrl + Shift + F8` (on Mac, `Cmd + Shift + F8`). You search by author or title, and RStudio inserts the correct `@citekey`.
 
-No VS Code com a [extensão Quarto](https://marketplace.visualstudio.com/items?itemName=quarto.quarto), o atalho equivalente é `@` no editor — abre uma lista filtrada das tuas referências.
+In VS Code with the [Quarto extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto), the equivalent shortcut is `@` in the editor — it opens a filtered list of your references.
 
-## Mudar de estilo
+## Switching style
 
-Para mudar de Vancouver para APA, ou para o estilo da revista *Thorax*, descarregas o ficheiro `.csl` correspondente em [zotero.org/styles](https://www.zotero.org/styles), guardas no projecto, e mudas a linha no YAML:
+To switch from Vancouver to APA, or to the *Thorax* journal style, you download the corresponding `.csl` file from [zotero.org/styles](https://www.zotero.org/styles), save it in the project, and change the line in the YAML:
 
 ```yaml
 csl: thorax.csl
 ```
 
-Re-renderiza, está feito. Sem reescrever uma única citação.
+Re-render, done. Without rewriting a single citation.
 
-[O repositório CSL Project tem mais de 10 000 estilos. Para a maioria das revistas em saúde encontras o estilo certo procurando o nome da revista em [zotero.org/styles](https://www.zotero.org/styles).]{.column-margin}
+[The CSL Project repository has over 10,000 styles. For most health journals you'll find the right style by searching the journal name at [zotero.org/styles](https://www.zotero.org/styles).]{.column-margin}
 
-# Exportação para múltiplos formatos
+# Export to multiple formats
 
-A magia do Quarto está em três linhas do YAML:
+Quarto's magic is in three lines of YAML:
 
 ```yaml
 format:
@@ -576,16 +576,16 @@ format:
   html: default
 ```
 
-Quando renderizas, geram-se os três ficheiros. Para revistas que exigem `.docx`, tens. Para arquivo institucional, tens PDF. Para partilha online (preprint, página pessoal, GitHub Pages), tens HTML.
+When you render, all three files are generated. For journals that require `.docx`, you have it. For institutional archiving, you have PDF. For online sharing (preprint, personal page, GitHub Pages), you have HTML.
 
-[Há um quarto formato a ganhar terreno: `typst`. Gera PDF sem LaTeX, muito mais depressa, e a primeira render não descarrega pacotes. Ainda é recente, mas para relatórios e apontamentos vale a pena experimentar `format: typst`.]{.column-margin}
+[There's a fourth format gaining ground: `typst`. It generates PDF without LaTeX, much faster, and the first render doesn't download packages. It's still recent, but for reports and notes it's worth trying `format: typst`.]{.column-margin}
 
-Cada formato pode ter opções próprias:
+Each format can have its own options:
 
 ```yaml
 format:
   docx:
-    reference-doc: template-revista-X.docx
+    reference-doc: journal-X-template.docx
   pdf:
     documentclass: scrartcl
     fontsize: 11pt
@@ -595,75 +595,75 @@ format:
     theme: cosmo
 ```
 
-A [referência completa de opções](https://quarto.org/docs/reference/) está organizada por formato.
+The [full options reference](https://quarto.org/docs/reference/) is organised by format.
 
 ::: {.callout-note}
-## Templates de revistas para Quarto
+## Journal templates for Quarto
 
-Várias revistas já têm templates oficiais Quarto: [PLOS One](https://github.com/quarto-journals/plos), [American Statistical Association](https://github.com/quarto-journals/jasa), [Elsevier](https://github.com/quarto-journals/elsevier). A lista cresce. Procura em [github.com/quarto-journals](https://github.com/quarto-journals) antes de fazer o teu próprio template.
+Several journals already have official Quarto templates: [PLOS One](https://github.com/quarto-journals/plos), [American Statistical Association](https://github.com/quarto-journals/jasa), [Elsevier](https://github.com/quarto-journals/elsevier). The list keeps growing. Search [github.com/quarto-journals](https://github.com/quarto-journals) before making your own template.
 
-Para usar um template (exemplo com PLOS):
+To use a template (example with PLOS):
 
 ```bash
 quarto use template quarto-journals/plos
 ```
 
-Cria a estrutura pronta a preencher.
+It creates the structure ready to fill in.
 :::
 
-## Gotchas específicos por formato
+## Format-specific gotchas
 
 ::: {.callout-warning}
-## `.docx` — onde falha
+## `.docx` — where it fails
 
-- Tabelas complexas do `gt` perdem formatação. Para Word, prefere `flextable` (que tem suporte nativo).
-- Imagens vectoriais (SVG, PDF) podem ficar pixelizadas. Para Word, exporta figuras como PNG de alta resolução.
-- Cabeçalhos numerados precisam de `number-sections: true` no YAML.
-- Equações LaTeX nem sempre renderizam bem no Word. Para fórmulas complexas, considera incluir como imagem.
-:::
-
-::: {.callout-warning}
-## PDF — onde falha
-
-- A primeira render é lenta porque o `tinytex` instala pacotes LaTeX em falta. As renders seguintes são rápidas.
-- Caracteres não-ASCII em metadados YAML às vezes precisam de escape. Se vir erro de fonte, adicionar `mainfont: "Latin Modern Roman"` ao YAML costuma resolver.
-- Tabelas que excedem a largura da página são problema clássico. Solução: `quarto/scale-down` ou rotação para *landscape*.
+- Complex `gt` tables lose formatting. For Word, prefer `flextable` (which has native support).
+- Vector images (SVG, PDF) can become pixelated. For Word, export figures as high-resolution PNG.
+- Numbered headings need `number-sections: true` in the YAML.
+- LaTeX equations don't always render well in Word. For complex formulas, consider including them as an image.
 :::
 
 ::: {.callout-warning}
-## HTML — onde falha
+## PDF — where it fails
 
-- Tabelas muito largas saem do alinhamento. Solução: `tbl-colwidths: [20, 30, 50]` para forçar larguras.
-- Imagens de alta resolução tornam o HTML pesado. Considera `optimize-html: true` no YAML.
-- Para partilhar offline, usa `embed-resources: true` para empacotar CSS, JS e imagens dentro do `.html`.
+- The first render is slow because `tinytex` installs missing LaTeX packages. The following renders are fast.
+- Non-ASCII characters in YAML metadata sometimes need escaping. If you see a font error, adding `mainfont: "Latin Modern Roman"` to the YAML usually fixes it.
+- Tables that exceed the page width are a classic problem. Solution: `quarto/scale-down` or rotation to *landscape*.
 :::
 
-## Exercício 3 — Escrita e exportação
+::: {.callout-warning}
+## HTML — where it fails
 
-Abre [`exercises/03-writing-export/README.md`](../exercises/03-writing-export/README.md). Vais retomar o `.qmd` do exercício 2, escrever uma introdução e métodos com citações da biblioteca do exercício 1, e exportar o documento final em `.docx`, PDF e HTML — depois mudas o estilo de citação e re-exportas.
+- Very wide tables break alignment. Solution: `tbl-colwidths: [20, 30, 50]` to force widths.
+- High-resolution images make the HTML heavy. Consider `optimize-html: true` in the YAML.
+- To share offline, use `embed-resources: true` to bundle CSS, JS and images inside the `.html`.
+:::
 
-# Post-mortem — erros comuns ao renderizar
+## Exercise 3 — Writing and export
 
-Quando o `quarto render` falha, a mensagem de erro é geralmente honesta mas verbosa. Seis padrões cobrem a maioria dos casos.
+Open [`exercises/03-writing-export/README.md`](../exercises/03-writing-export/README.md). You'll pick up the `.qmd` from exercise 2, write an introduction and methods with citations from the exercise 1 library, and export the final document in `.docx`, PDF and HTML — then switch citation style and re-export.
+
+# Post-mortem — common errors when rendering
+
+When `quarto render` fails, the error message is usually honest but verbose. Six patterns cover most cases.
 
 ::: {.callout-warning}
-## "Error: cannot find object" ou "object 'x' not found"
+## "Error: cannot find object" or "object 'x' not found"
 
-Um chunk usa uma variável que não foi criada. Verifica se o chunk de setup (que cria `cohort` ou `data`) está antes do chunk que a usa, e se correu sem erros.
+A chunk uses a variable that wasn't created. Check that the setup chunk (which creates `cohort` or `data`) is before the chunk that uses it, and that it ran without errors.
 
-Se estás a usar o `quarto preview`, edita o chunk de setup, grava, e re-executa todos os chunks com **Run All** no RStudio ou `Ctrl + Shift + Enter` em VS Code.
+If you're using `quarto preview`, edit the setup chunk, save, and re-run all chunks with **Run All** in RStudio or `Ctrl + Shift + Enter` in VS Code.
 :::
 
 ::: {.callout-warning}
 ## "Error: There is no package called 'X'"
 
-O pacote R não está instalado. No Codespace, abre o terminal e corre:
+The R package isn't installed. In the Codespace, open the terminal and run:
 
 ```r
 install.packages("X")
 ```
 
-Para pacotes mais raros, pode ser preciso especificar o repositório:
+For rarer packages, you may need to specify the repository:
 
 ```r
 install.packages("X", repos = "https://cran.rstudio.com")
@@ -673,240 +673,240 @@ install.packages("X", repos = "https://cran.rstudio.com")
 ::: {.callout-warning}
 ## "! LaTeX Error: File 'X.sty' not found"
 
-Erro só em renders PDF. O `tinytex` instala pacotes em falta na primeira render. Se falhar, força a instalação:
+An error only in PDF renders. `tinytex` installs missing packages on the first render. If it fails, force the installation:
 
 ```r
 tinytex::tlmgr_install("X")
 ```
 
-Se persistir, faz `tinytex::reinstall_tinytex()` para reinstalar o LaTeX inteiro (demora 5-10 min).
+If it persists, run `tinytex::reinstall_tinytex()` to reinstall the whole LaTeX distribution (takes 5–10 min).
 :::
 
 ::: {.callout-warning}
 ## "Citation @citekey not found in references.bib"
 
-A cite key que escreveste não existe no `.bib`. Causas comuns:
+The cite key you wrote doesn't exist in the `.bib`. Common causes:
 
-1. Erro de escrita no `.qmd` — `@silvva2024` em vez de `@silva2024`.
-2. A referência ainda não foi exportada do Zotero — confirma que o Better BibTeX tem **Keep updated** activo.
-3. O `.bib` está num caminho diferente do que o YAML aponta.
+1. A typo in the `.qmd` — `@silvva2024` instead of `@silva2024`.
+2. The reference hasn't been exported from Zotero yet — check that Better BibTeX has **Keep updated** active.
+3. The `.bib` is at a different path than the YAML points to.
 
-Para todos os 3 casos, abre o `.bib` num editor e procura a chave. Se não está lá, copia uma chave existente e vê como se escreve.
+For all 3 cases, open the `.bib` in an editor and search for the key. If it's not there, copy an existing key and see how it's spelled.
 :::
 
 ::: {.callout-warning}
-## "YAML parse error" — sintaxe estranha
+## "YAML parse error" — strange syntax
 
-YAML é sensível a indentação e a aspas. Quatro causas frequentes:
+YAML is sensitive to indentation and quotes. Four frequent causes:
 
-1. *Tabs* em vez de espaços — o YAML rejeita *tabs*.
-2. Falta de espaço depois dos `:` — `title:foo` não funciona, `title: foo` sim.
-3. Aspas em branco mal-formadas — usa `"` clássicas, não `"` ou `"`.
-4. Indentação inconsistente — usa sempre 2 espaços, nunca 4 numa secção e 2 noutra.
+1. *Tabs* instead of spaces — YAML rejects *tabs*.
+2. Missing space after the `:` — `title:foo` doesn't work, `title: foo` does.
+3. Malformed smart quotes — use classic `"`, not `"` or `"`.
+4. Inconsistent indentation — always use 2 spaces, never 4 in one section and 2 in another.
 
-Se o YAML é longo, valida-o em [yamllint.com](https://www.yamllint.com) antes de re-renderizar.
+If the YAML is long, validate it at [yamllint.com](https://www.yamllint.com) before re-rendering.
 :::
 
 ::: {.callout-warning}
-## "Misplaced alignment tab character &" — caracteres especiais no PDF
+## "Misplaced alignment tab character &" — special characters in PDF
 
-Só em renders PDF. Os caracteres `&`, `%`, `_`, `#`, `$` têm significado próprio em LaTeX. Um `&` cru no texto (ex.: "Saúde & Tecnologia"), numa legenda, ou num campo do `.bib` faz o render PDF falhar.
+Only in PDF renders. The characters `&`, `%`, `_`, `#`, `$` have their own meaning in LaTeX. A raw `&` in the text (e.g. "Health & Technology"), in a caption, or in a `.bib` field makes the PDF render fail.
 
-- **No teu texto:** escapa-os com uma barra invertida — `\&`, `\%`, `\_`, `\#`, `\$`.
-- **No `.bib`:** deixa o Better BibTeX tratar disto — re-exporta a biblioteca em vez de editar o `.bib` à mão.
+- **In your text:** escape them with a backslash — `\&`, `\%`, `\_`, `\#`, `\$`.
+- **In the `.bib`:** let Better BibTeX handle this — re-export the library instead of editing the `.bib` by hand.
 
-Acentos portugueses (á, ç, ã, õ) **não** são o problema: o motor por defeito (LuaLaTeX/XeLaTeX) trata-os nativamente. Se vires caracteres corrompidos (`Ã§` em vez de `ç`), confirma que não forçaste `pdf-engine: pdflatex` no YAML — o `pdflatex` antigo não lida bem com UTF-8.
+Accented characters (á, ç, ã, õ) are **not** the problem: the default engine (LuaLaTeX/XeLaTeX) handles them natively. If you see garbled characters (`Ã§` instead of `ç`), check that you didn't force `pdf-engine: pdflatex` in the YAML — the old `pdflatex` doesn't handle UTF-8 well.
 :::
 
-# Perfis típicos — qual é o teu ponto de partida?
+# Typical profiles — what's your starting point?
 
 ::: {.callout-note}
-## Sou **estudante de doutoramento** a começar a tese
+## I'm a **PhD student** starting my thesis
 
-Recomendado:
+Recommended:
 
-1. Faz o curso completo (Zotero + Quarto + R chunks + exportação).
-2. Para a tese em si, considera a [extensão Quarto para teses](https://github.com/nmfs-opensci/quarto-thesis) ou procura o template específico da tua universidade na [lista curada de templates de tese em Quarto](https://github.com/Jupyter4Science/awesome-quarto-thesis).
-3. Aprende **Git** em paralelo (1h em [learngitbranching.js.org](https://learngitbranching.js.org)) — vais agradecer ao quinto rascunho da introdução.
-4. Sincroniza a biblioteca Zotero em três sítios: portátil, máquina do laboratório, conta online. Faz *backup* mensal do `.bib` para o repositório Git do projecto.
-5. Considera escrever a tese em formato [Quarto Book](https://quarto.org/docs/books/) — capítulos separados num projecto único, com bibliografia partilhada.
-:::
-
-::: {.callout-note}
-## Sou **investigador a submeter para uma revista específica**
-
-Recomendado:
-
-1. Verifica se a revista tem template Quarto oficial em [github.com/quarto-journals](https://github.com/quarto-journals).
-2. Caso contrário, descobre o **CSL** da revista em [zotero.org/styles](https://www.zotero.org/styles). Guarda-o no projecto.
-3. Configura o YAML para exportar `.docx` (que é o que a maioria das revistas aceita ainda) — `format: docx: default`.
-4. Mantém os ficheiros `.qmd` + `data/` + `references.bib` num repositório Git público (Zenodo, OSF, GitHub) **se a política da revista permitir**. Aumenta a probabilidade de aceitação em revistas com requisitos de reprodutibilidade (Lancet, BMJ, várias revistas Nature).
-5. Para revistas com requisitos estritos de reprodutibilidade (Nature Code Sharing Policy, BMJ Open Data), inclui um `Code availability` no manuscrito apontando para o teu repositório.
+1. Do the full course (Zotero + Quarto + R chunks + export).
+2. For the thesis itself, consider the [Quarto thesis extension](https://github.com/nmfs-opensci/quarto-thesis) or look for your university's specific template in the [curated list of Quarto thesis templates](https://github.com/Jupyter4Science/awesome-quarto-thesis).
+3. Learn **Git** in parallel (1h at [learngitbranching.js.org](https://learngitbranching.js.org)) — you'll thank yourself by the fifth draft of the introduction.
+4. Sync the Zotero library across three places: laptop, lab machine, online account. Make a monthly *backup* of the `.bib` to the project's Git repository.
+5. Consider writing the thesis in [Quarto Book](https://quarto.org/docs/books/) format — separate chapters in a single project, with a shared bibliography.
 :::
 
 ::: {.callout-note}
-## Sou **docente** a preparar materiais didácticos
+## I'm a **researcher submitting to a specific journal**
 
-Recomendado:
+Recommended:
 
-1. Quarto é excelente para apoios de aula que misturam exposição teórica e código que corre em tempo real.
-2. Considera o formato `revealjs` para slides — o mesmo `.qmd` pode dar slides para a aula e apontamentos PDF para os alunos.
-3. Para um curso completo, considera o formato [Quarto Book](https://quarto.org/docs/books/) ou [Quarto Website](https://quarto.org/docs/websites/), com várias páginas e navegação.
-4. Publica online com [Quarto Pub](https://quartopub.com) (gratuito), GitHub Pages, ou Netlify.
-5. Para exercícios interactivos em R sem que os alunos precisem de instalar nada, [Webr](https://docs.r-wasm.org/webr/) corre R no próprio navegador.
+1. Check whether the journal has an official Quarto template at [github.com/quarto-journals](https://github.com/quarto-journals).
+2. Otherwise, find the journal's **CSL** at [zotero.org/styles](https://www.zotero.org/styles). Save it in the project.
+3. Set up the YAML to export `.docx` (which is what most journals still accept) — `format: docx: default`.
+4. Keep the `.qmd` + `data/` + `references.bib` files in a public Git repository (Zenodo, OSF, GitHub) **if the journal's policy allows it**. It increases the odds of acceptance at journals with reproducibility requirements (Lancet, BMJ, several Nature journals).
+5. For journals with strict reproducibility requirements (Nature Code Sharing Policy, BMJ Open Data), include a `Code availability` statement in the manuscript pointing to your repository.
 :::
 
 ::: {.callout-note}
-## Já uso **LaTeX + BibTeX** para tudo
+## I'm a **teacher** preparing teaching materials
 
-Boa notícia: a transição é suave.
+Recommended:
 
-1. O teu `.bib` já funciona, sem alterações.
-2. Equações LaTeX (`$$...$$`) continuam a funcionar dentro do Quarto.
-3. Para PDFs sofisticados, o Quarto usa LaTeX por baixo — podes injectar `\usepackage{...}` no preâmbulo via YAML.
-4. Em troca, ganhas a capacidade de exportar para `.docx` (para co-autores que insistem em Word) e HTML (para partilha rápida).
-5. Para quem vem de Sweave/knitr, a transição é praticamente nula.
+1. Quarto is excellent for class handouts that mix theory and code running in real time.
+2. Consider the `revealjs` format for slides — the same `.qmd` can produce slides for class and PDF notes for students.
+3. For a full course, consider the [Quarto Book](https://quarto.org/docs/books/) or [Quarto Website](https://quarto.org/docs/websites/) format, with multiple pages and navigation.
+4. Publish online with [Quarto Pub](https://quartopub.com) (free), GitHub Pages, or Netlify.
+5. For interactive R exercises without students needing to install anything, [Webr](https://docs.r-wasm.org/webr/) runs R in the browser itself.
 :::
 
 ::: {.callout-note}
-## Já uso **Word + Mendeley** e o sistema "funciona"
+## I already use **LaTeX + BibTeX** for everything
 
-Recomendado:
+Good news: the transition is smooth.
 
-1. Migra a biblioteca de Mendeley para Zotero ([guia oficial](https://www.zotero.org/support/kb/mendeley_import)). O Zotero é *open source* e independente de qualquer editora; o Mendeley pertence à Elsevier, que já descontinuou (e depois recuperou) partes do produto — historial que vale a pena considerar antes de depender dele a longo prazo.
-2. Começa por usar Quarto **apenas** para os documentos onde código e dados são parte do output (artigos quantitativos, relatórios analíticos). Mantém Word para documentos puramente textuais durante a transição.
-3. À medida que ganhas confiança, expande. Não há prémio por adoptar tudo de uma vez.
-4. Mantém o Word disponível para co-autores que insistem — exporta para `.docx` quando preciso, mas o teu original fica `.qmd`.
+1. Your `.bib` already works, unchanged.
+2. LaTeX equations (`$$...$$`) keep working inside Quarto.
+3. For sophisticated PDFs, Quarto uses LaTeX underneath — you can inject `\usepackage{...}` in the preamble via YAML.
+4. In exchange, you gain the ability to export to `.docx` (for co-authors who insist on Word) and HTML (for quick sharing).
+5. For those coming from Sweave/knitr, the transition is practically nil.
 :::
 
-# Princípios FAIR
+::: {.callout-note}
+## I already use **Word + Mendeley** and the system "works"
 
-[FAIR](https://www.go-fair.org/fair-principles/) é o acrónimo de *Findable*, *Accessible*, *Interoperable*, *Reusable* — princípios para dados (e código, e documentos) reutilizáveis no longo prazo. O fluxo Quarto + Zotero + R apoia os quatro:
+Recommended:
 
-- **Findable.** Identificadores persistentes nas referências (DOIs); metadados explícitos no YAML.
-- **Accessible.** O `.qmd` é texto puro, lê-se com qualquer editor; os dados ficam em formatos abertos (CSV, JSON); os formatos de saída são padrão (`.docx`, PDF, HTML).
-- **Interoperable.** Markdown, BibTeX e CSL são formatos abertos; podes mudar de ferramenta sem perder o trabalho.
-- **Reusable.** O mesmo `.qmd` re-renderiza com dados actualizados; outra pessoa que abra o repositório consegue reproduzir o documento; o código está auditável.
+1. Migrate the library from Mendeley to Zotero ([official guide](https://www.zotero.org/support/kb/mendeley_import)). Zotero is *open source* and independent of any publisher; Mendeley belongs to Elsevier, which has already discontinued (and then walked back) parts of the product — a history worth considering before relying on it long term.
+2. Start by using Quarto **only** for documents where code and data are part of the output (quantitative articles, analytical reports). Keep Word for purely textual documents during the transition.
+3. As you gain confidence, expand. There's no prize for adopting everything at once.
+4. Keep Word available for co-authors who insist — export to `.docx` when needed, but your original stays `.qmd`.
+:::
 
-[A literatura técnica sobre FAIR começou com [Wilkinson et al. 2016 — *Nature Scientific Data*](https://doi.org/10.1038/sdata.2016.18). Vale a leitura se trabalhas em projectos com componente de partilha de dados.]{.column-margin}
+# FAIR principles
 
-# Próximos passos
+[FAIR](https://www.go-fair.org/fair-principles/) is the acronym for *Findable*, *Accessible*, *Interoperable*, *Reusable* — principles for data (and code, and documents) reusable in the long term. The Quarto + Zotero + R workflow supports all four:
 
-O que aprendeste hoje cobre 80% das tarefas. Para os outros 20%:
+- **Findable.** Persistent identifiers in the references (DOIs); explicit metadata in the YAML.
+- **Accessible.** The `.qmd` is plain text, readable in any editor; the data are in open formats (CSV, JSON); the output formats are standard (`.docx`, PDF, HTML).
+- **Interoperable.** Markdown, BibTeX and CSL are open formats; you can switch tools without losing the work.
+- **Reusable.** The same `.qmd` re-renders with updated data; someone else who opens the repository can reproduce the document; the code is auditable.
 
-- **Controlo de versões com Git.** O `.qmd` é texto — gerivel com Git. [Learn Git Branching](https://learngitbranching.js.org) ensina-te o suficiente em 60 minutos. Depois usa o GitHub (já tens conta) para *backup* e partilha.
-- **`renv` para fixar pacotes R.** Os pacotes R mudam de versão; um `.qmd` que corre hoje pode falhar daqui a dois anos se o `tidyverse` mudou. O [`renv`](https://rstudio.github.io/renv/) congela as versões dos pacotes do projecto. Análogo do `requirements.txt` em Python.
-- **[Positron](https://positron.posit.co)**, o sucessor do RStudio. Em fase final de *beta*. Mesma equipa, código novo, baseado em VS Code. Vale a pena experimentar quando estiveres confortável com o RStudio.
-- **Extensões Quarto.** Há [muitas](https://quarto.org/docs/extensions/) — para slides, posters, *journal articles*, *flashcards*. Procura antes de fazer o teu próprio.
-- **Citações com [Citation File Format (CFF)](https://citation-file-format.github.io)**, para tornares o teu próprio código citável.
+[The technical literature on FAIR started with [Wilkinson et al. 2016 — *Nature Scientific Data*](https://doi.org/10.1038/sdata.2016.18). Worth reading if you work on projects with a data-sharing component.]{.column-margin}
 
-## Mini-tutorial — Git em 5 comandos
+# Next steps
 
-[Git é um sistema de controlo de versões. Funciona como o histórico do Word ("voltar à versão de ontem") mas para qualquer ficheiro, com etiquetas explícitas. Indispensável para projectos com mais de um colaborador, valioso mesmo para projectos a solo.]{.column-margin}
+What you learned today covers 80% of the tasks. For the other 20%:
+
+- **Version control with Git.** The `.qmd` is text — manageable with Git. [Learn Git Branching](https://learngitbranching.js.org) teaches you enough in 60 minutes. Then use GitHub (you already have an account) for *backup* and sharing.
+- **`renv` to pin R packages.** R packages change version; a `.qmd` that runs today may fail two years from now if the `tidyverse` changed. [`renv`](https://rstudio.github.io/renv/) freezes the project's package versions. Analogous to `requirements.txt` in Python.
+- **[Positron](https://positron.posit.co)**, the successor to RStudio. In late *beta*. Same team, new codebase, based on VS Code. Worth trying once you're comfortable with RStudio.
+- **Quarto extensions.** There are [many](https://quarto.org/docs/extensions/) — for slides, posters, *journal articles*, *flashcards*. Search before making your own.
+- **Citations with [Citation File Format (CFF)](https://citation-file-format.github.io)**, to make your own code citable.
+
+## Mini-tutorial — Git in 5 commands
+
+[Git is a version control system. It works like Word's history ("go back to yesterday's version") but for any file, with explicit labels. Indispensable for projects with more than one collaborator, valuable even for solo projects.]{.column-margin}
 
 ```bash
-# 1. Inicializa um repositório no teu projecto
-cd o-meu-projecto/
+# 1. Initialise a repository in your project
+cd my-project/
 git init
 
-# 2. Diz ao Git quem és
-git config user.email "tiago@exemplo.pt"
+# 2. Tell Git who you are
+git config user.email "tiago@example.com"
 git config user.name "Tiago Jacinto"
 
-# 3. Adiciona tudo e faz o primeiro commit
+# 3. Add everything and make the first commit
 git add .
-git commit -m "Versão inicial"
+git commit -m "Initial version"
 
-# 4. Cria o repositório no GitHub (via gh CLI)
-gh repo create o-meu-projecto --private --source=. --push
+# 4. Create the repository on GitHub (via gh CLI)
+gh repo create my-project --private --source=. --push
 
-# 5. Daqui em diante, cada vez que mudas algo importante
+# 5. From now on, every time you change something important
 git add .
-git commit -m "Adiciona análise de subgrupos"
+git commit -m "Add subgroup analysis"
 git push
 ```
 
-E em qualquer altura podes voltar atrás com `git log` (vê o histórico) e `git checkout <hash>` (volta a uma versão antiga).
+And at any time you can go back with `git log` (see the history) and `git checkout <hash>` (return to an old version).
 
-## Mini-tutorial — `renv` em 3 comandos
+## Mini-tutorial — `renv` in 3 commands
 
 ```r
-# 1. Activar renv no projecto
+# 1. Activate renv in the project
 renv::init()
 
-# 2. Sempre que instalas um pacote novo
+# 2. Whenever you install a new package
 renv::snapshot()
 
-# 3. Quando abres o projecto noutra máquina
+# 3. When you open the project on another machine
 renv::restore()
 ```
 
-O `renv` cria uma pasta `renv/` e um ficheiro `renv.lock` com as versões exactas dos pacotes. Faz *commit* dos dois no Git. Em qualquer máquina, `renv::restore()` recompõe o ambiente.
+`renv` creates a `renv/` folder and a `renv.lock` file with the exact package versions. Commit both to Git. On any machine, `renv::restore()` rebuilds the environment.
 
-# Recursos
+# Resources
 
-Para aprofundar depois do curso:
+To go deeper after the course:
 
 **Quarto:**
 
-- [Quarto guide oficial](https://quarto.org/docs/guide/) — referência completa.
-- [Quarto for academics](https://quarto.org/docs/manuscripts/) — secção dedicada a manuscritos científicos.
-- [Quarto Discussions](https://github.com/quarto-dev/quarto-cli/discussions) — fórum oficial, comunidade activa.
-- [Awesome Quarto](https://github.com/mcanouil/awesome-quarto) — lista curada de extensões, exemplos, templates.
+- [Official Quarto guide](https://quarto.org/docs/guide/) — full reference.
+- [Quarto for academics](https://quarto.org/docs/manuscripts/) — section dedicated to scientific manuscripts.
+- [Quarto Discussions](https://github.com/quarto-dev/quarto-cli/discussions) — official forum, active community.
+- [Awesome Quarto](https://github.com/mcanouil/awesome-quarto) — curated list of extensions, examples, templates.
 
 **R, tidyverse, ggplot2:**
 
-- [R for Data Science (2e)](https://r4ds.hadley.nz) — manual essencial, gratuito.
+- [R for Data Science (2e)](https://r4ds.hadley.nz) — essential manual, free.
 - [ggplot2 cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf).
 - [gt documentation](https://gt.rstudio.com).
-- [The Epidemiologist R Handbook](https://epirhandbook.com) — manual focado em saúde pública.
+- [The Epidemiologist R Handbook](https://epirhandbook.com) — manual focused on public health.
 
-**Zotero e Better BibTeX:**
+**Zotero and Better BibTeX:**
 
 - [Zotero documentation](https://www.zotero.org/support/).
 - [Better BibTeX manual](https://retorque.re/zotero-better-bibtex/).
-- [Using Zotero (Tiago Jacinto)](https://tiagojct.eu/notes/zotero/) — tutorial em inglês.
+- [Using Zotero (Tiago Jacinto)](https://tiagojct.eu/notes/zotero/) — tutorial in English.
 - [Zettlr and Zotero: a plain-text workflow for scientific writing](https://tiagojct.eu/notes/zettlr-zotero/).
 
-**Reprodutibilidade:**
+**Reproducibility:**
 
-- [The Turing Way](https://the-turing-way.netlify.app) — guia de reprodutibilidade em investigação.
+- [The Turing Way](https://the-turing-way.netlify.app) — guide to reproducibility in research.
 - [Wilkinson et al. 2016 — FAIR Guiding Principles](https://doi.org/10.1038/sdata.2016.18).
 - [Goodman et al. 2016 — What does research reproducibility mean?](https://doi.org/10.1126/scitranslmed.aaf5027).
 
-**Tutoriais relacionados (Tiago Jacinto):**
+**Related tutorials (Tiago Jacinto):**
 
 - [RStudio: Best practices for scientific work](https://tiagojct.eu/notes/rst-bp/).
 - [Computing Foundations for Health Researchers](https://tiagojct.eu/projects/computing-foundations/).
 
-O Codespace que criaste hoje é teu. Podes voltar lá quando quiseres, podes usá-lo como ponto de partida para os teus projectos. Leva tudo daqui.
+The Codespace you created today is yours. You can go back whenever you want, you can use it as a starting point for your projects. Take everything from here.
 
-# Fecho
+# Closing
 
-Saíram daqui com um fluxo de trabalho que junta as três actividades centrais — gerir referências, analisar dados, escrever — num único projecto reproduzível. Nenhuma ferramenta isolada faz isto melhor. Levem o fluxo convosco, e adaptem-no ao vosso trabalho.
+You leave here with a workflow that brings the three core activities together — managing references, analysing data, writing — in a single reproducible project. No isolated tool does this better. Take the workflow with you, and adapt it to your work.
 
-# Porquê "2001: A Quarto Odyssey"?
+# Why "2001: A Quarto Odyssey"?
 
 ::: {.callout-tip collapse="true"}
-## Para quem gostou da brincadeira (e para quem nunca viu o filme)
+## For those who enjoyed the joke (and those who never saw the film)
 
-O nome do curso é um trocadilho com *[2001: A Space Odyssey](https://en.wikipedia.org/wiki/2001:_A_Space_Odyssey_(film))* — filme de 1968 de Stanley Kubrick (argumento co-escrito com Arthur C. Clarke) sobre uma missão espacial a Júpiter, comandada por dois astronautas e por um computador de bordo chamado **HAL 9000**. O HAL falha e a missão corre mal. É um marco do cinema de ficção científica e da reflexão sobre inteligência artificial — apropriado, indirectamente, para um curso sobre ferramentas que substituem o Word.
+The course name is a pun on *[2001: A Space Odyssey](https://en.wikipedia.org/wiki/2001:_A_Space_Odyssey_(film))* — Stanley Kubrick's 1968 film (screenplay co-written with Arthur C. Clarke) about a space mission to Jupiter, commanded by two astronauts and an onboard computer called **HAL 9000**. HAL fails and the mission goes wrong. It's a landmark of science-fiction cinema and of reflection on artificial intelligence — fitting, indirectly, for a course about tools that replace Word.
 
-O subtítulo, **"I'm sorry Dave, Word can't do that"**, é uma reescrita da frase mais famosa do filme: *"I'm sorry, Dave. I'm afraid I can't do that."* HAL diz isto a David Bowman, o astronauta, quando este lhe pede para abrir as portas da nave. No contexto do curso, é o que o Word te diz, em silêncio, sempre que tentas fazer algo *reproducible* lá dentro.
+The subtitle, **"I'm sorry Dave, Word can't do that"**, rewrites the film's most famous line: *"I'm sorry, Dave. I'm afraid I can't do that."* HAL says this to David Bowman, the astronaut, when he asks it to open the ship's doors. In the context of the course, it's what Word tells you, silently, every time you try to do something *reproducible* inside it.
 
-A imagem do poster é o **monólito** — um objecto rectangular, perfeitamente liso, preto, que aparece no filme em momentos-chave da evolução humana. Funciona como metáfora para uma ferramenta que muda como pensamos. O ponto vermelho à frente do monólito é o olho do HAL, sempre a observar.
+The poster image is the **monolith** — a rectangular, perfectly smooth, black object that appears in the film at key moments of human evolution. It works as a metaphor for a tool that changes how we think. The red dot in front of the monolith is HAL's eye, always watching.
 
-Outras referências do filme que talvez encontres em conversas sobre Quarto e reprodutibilidade:
+Other references from the film you might come across in conversations about Quarto and reproducibility:
 
-**"Open the pod bay doors, HAL."** Bowman ao HAL, pedindo entrada na nave. Em contextos de prompting e instruções a ferramentas, vê-se citado como exemplo do "pedido claro que precisa de uma resposta clara".
+**"Open the pod bay doors, HAL."** Bowman to HAL, asking to enter the ship. In prompting and tool-instruction contexts, it's cited as an example of the "clear request that needs a clear answer".
 
-**"Just what do you think you're doing, Dave?"** HAL a Bowman quando este o tenta desligar. Em contextos de verificação de output de IA, é usada como recordatório de que ferramentas que parecem cooperar podem estar a executar a sua própria agenda.
+**"Just what do you think you're doing, Dave?"** HAL to Bowman when he tries to shut it down. In AI-output-verification contexts, it's used as a reminder that tools that appear to cooperate may be running their own agenda.
 
-**O *Star Child*** — figura final do filme, o nascimento de uma consciência nova depois do contacto com o monólito. Metaforicamente, o investigador que sai de um fluxo de trabalho fragmentado para um fluxo integrado e reproduzível.
+**The *Star Child*** — the film's final figure, the birth of a new consciousness after contact with the monolith. Metaphorically, the researcher who leaves a fragmented workflow for an integrated, reproducible one.
 
-Se nunca viste o filme, nada disto é necessário para fazer o curso. Mas é um clássico — e fica bem ver depois de aprender a usar uma ferramenta com este nome.
+If you've never seen the film, none of this is needed to take the course. But it's a classic — and it goes down well after learning to use a tool with this name.
 :::
 
 ---
 
-Tiago Jacinto · FMUP / CINTESIS–RISE-Health · Escola de Verão MEDCIDS 2026
+Tiago Jacinto · FMUP / CINTESIS–RISE-Health · MEDCIDS Summer School 2026
