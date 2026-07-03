@@ -498,9 +498,9 @@ ggplot(cohort, aes(x = age, y = fev1_l, colour = asthma_severity)) +
 
 [For *publication-ready* figures, consider the packages [`ggpubr`](https://rpkgs.datanovia.com/ggpubr/) (for statistical annotations) and [`patchwork`](https://patchwork.data-imaginist.com) (for combining multiple plots).]{.column-margin}
 
-## Exercise 2 — Analysis in Quarto
+## Exercise 2 — Configure the analysis document
 
-Open [`exercises/02-quarto-analysis/README.md`](../exercises/02-quarto-analysis/README.md). You'll receive a clinical dataset and a partially filled `.qmd` document. You complete the code blocks to produce a descriptive table and a figure, and render the document.
+Open [`exercises/02-quarto-analysis/README.md`](../exercises/02-quarto-analysis/README.md). You get a `.qmd` whose R code **already works** — you don't write code. Your job is the Quarto layer: hide the code (`echo`), give the table and figure a label and a caption, size the figure, and add the cross-references. Re-render after each change and watch the effect.
 
 # Markdown in Quarto
 
@@ -665,9 +665,9 @@ It creates the structure ready to fill in.
 - To share offline, use `embed-resources: true` to bundle CSS, JS and images inside the `.html`.
 :::
 
-## Exercise 3 — Writing and export
+## Exercise 3 — Format, cite and export
 
-Open [`exercises/03-writing-export/README.md`](../exercises/03-writing-export/README.md). You'll pick up the `.qmd` from exercise 2, write an introduction and methods with citations from the exercise 1 library, and export the final document in `.docx`, PDF and HTML — then switch citation style and re-export.
+Open [`exercises/03-writing-export/README.md`](../exercises/03-writing-export/README.md). The Introduction and Methods are **already written** — you don't write prose. You format the given text (headings, a list, a callout, emphasis), insert citations at the marked spots, add the cross-references, and export the document to `.docx`, PDF and HTML — then switch citation style in one line.
 
 # Post-mortem — common errors when rendering
 

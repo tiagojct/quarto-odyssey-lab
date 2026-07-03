@@ -1,99 +1,88 @@
-# Exercise 2 — Analysis in Quarto
+# Exercise 2 — Configure the analysis document
 
 ## Objective
 
-Complete a partially filled `.qmd` document with R code blocks that produce a **descriptive table** and a **plot**, and render the result to HTML.
+You are given a manuscript whose **R code already works**. Your job is not to write code — it's to configure the **Quarto layer** so the document looks like a finished paper: hide the code, label the outputs, add captions, size the figure, and cross-reference the table and figure in the text. You'll re-render after each change and watch the effect.
 
 ## Before you start
 
-- Exercise 1 does not need to be finished before you begin this one. But you need the project open in RStudio.
-- R, Quarto, and the required packages (`tidyverse`, `gt`, `ggplot2`) are installed locally (you set them up in Getting started).
+- The project is open in RStudio, and you ran `setup.R` (or installed `tidyverse`, `gt`, `knitr`, `rmarkdown`) as described in **Getting started**.
 - The dataset (`data/cohort-asma.csv`) and the template (`template/manuscript.qmd`) are in this exercise's folder.
 
 ## The dataset
 
-`exercises/02-quarto-analysis/data/cohort-asma.csv` — about 200 pediatric patients with asthma, with 8 variables: `patient_id`, `age`, `sex`, `height_cm`, `weight_kg`, `fev1_l`, `fvc_l`, `asthma_severity`.
-
-The data is synthetic and clean — no missing values, no impossible values. The goal here is not data quality; it is to demonstrate how R code inside a `.qmd` produces tables and plots.
+`exercises/02-quarto-analysis/data/cohort-asma.csv` — about 200 paediatric patients with asthma, with 8 variables: `patient_id`, `age`, `sex`, `height_cm`, `weight_kg`, `fev1_l`, `fvc_l`, `asthma_severity`. Synthetic and clean — the point here is the Quarto mechanics, not the analysis.
 
 ## Steps
 
-### 1. Open the template
+### 1. Render it as-is — see the raw output
 
-In RStudio, open `exercises/02-quarto-analysis/template/manuscript.qmd`. Read the YAML *front matter* — you will see the title, author, date, format, and the `bibliography` directive.
-
-### 2. Start the preview
-
-In the RStudio Terminal:
+Open `template/manuscript.qmd` in RStudio. In the RStudio Terminal:
 
 ```bash
 cd exercises/02-quarto-analysis/template
 quarto preview manuscript.qmd
 ```
 
-This opens a page with the rendered document. Every time you save the `.qmd`, the page refreshes automatically. Clicking **Render** in RStudio does the same thing.
+(Or click **Render**.) The document builds and shows the table and figure — but also **all the R code and its messages**. That's the starting point. Every save re-renders automatically.
 
-### 3. Complete the first chunk — reading the data
+### 2. Hide the code — add an `execute` block
 
-In the chunk marked with the comment `# TODO: chunk 1`, write R code that loads the dataset and stores it in an object called `cohort`. Something like:
+The code works, but a manuscript shouldn't show it. In the YAML front matter, where the comment tells you, add:
+
+```yaml
+execute:
+  echo: false
+  warning: false
+  message: false
+```
+
+Save and look again: the code and the package-loading messages are gone, only the outputs remain. You just set three options for **every** chunk at once.
+
+### 3. Label the table and add a caption
+
+Find the chunk that produces the table (the one with `gt()`). At the top of the chunk, add two options:
 
 ```r
-library(tidyverse)
-
-cohort <- read_csv("../data/cohort-asma.csv")
+#| label: tbl-demographics
+#| tbl-cap: "Demographic and functional characteristics of the sample, by sex"
 ```
 
-> Watch the relative path: the `.qmd` file is in `template/`, and the dataset is at `../data/cohort-asma.csv`.
+Re-render. The table now has a numbered caption ("Table 1: …"). The `tbl-` prefix tells Quarto this is a table.
 
-### 4. Complete the second chunk — descriptive table
+### 4. Label and size the figure
 
-In the chunk marked with `# TODO: chunk 2`, produce a table with:
+In the chunk that produces the plot (the one with `ggplot`), add:
 
-- N by sex.
-- Mean and standard deviation of age, within each sex group.
-- Mean and standard deviation of FEV1, within each sex group.
-
-Use `dplyr` for the calculation and `gt` (or `knitr::kable`) for the formatting.
-
-Give the chunk the label `tbl-demographics` and a caption in `tbl-cap`.
-
-### 5. Complete the third chunk — plot
-
-In the chunk marked with `# TODO: chunk 3`, build a plot with `ggplot2`:
-
-- X axis: age.
-- Y axis: FEV1 in liters.
-- Color by asthma severity (`asthma_severity`).
-- Add a linear regression line (`geom_smooth(method = "lm")`).
-
-Give the chunk the label `fig-fev1-age` and a caption in `fig-cap`.
-
-### 6. Cite the figures in the text
-
-In the results section, write a sentence referencing the table and the plot:
-
-```markdown
-The demographic characteristics of the sample are summarised in @tbl-demographics.
-The relationship between age and lung function, stratified by severity, is
-illustrated in @fig-fev1-age.
+```r
+#| label: fig-fev1-age
+#| fig-cap: "FEV1 as a function of age, stratified by asthma severity"
+#| fig-width: 7
+#| fig-height: 5
 ```
 
-### 7. Render to HTML
+Re-render. Change `fig-width` to `5`, re-render, and watch the figure resize. Put it back to `7`.
 
-If the preview is already open, all you need to do is save the file. If not:
+### 5. Cross-reference the table and figure
 
-```bash
-quarto render manuscript.qmd --to html
-```
+Now that both outputs have labels, go to the **Results** paragraph and replace the plain phrases with cross-references:
+
+- "the table below" → `@tbl-demographics`
+- "the figure below" → `@fig-fev1-age`
+
+Re-render. Quarto turns them into "Table 1" and "Figure 1", numbered automatically. Reorder the chunks and the numbers follow — you never hard-code "Table 1".
+
+### 6. Optional — collapsible code
+
+Some readers *do* want the code, on demand. In the YAML, under `format: html:`, set `code-fold: true` (it's currently `false`), and add `echo: true` back for a single chunk with `#| echo: true`. Re-render to HTML: the code returns as a collapsible "Code" button. Undo this before finishing if you prefer the clean look.
 
 ## Expected output
 
-- `manuscript.html` in the `template/` folder, with the table and plot visible.
-- The cross-references (`@tbl-demographics`, `@fig-fev1-age`) replaced by "Table 1", "Figure 1" in the text.
+- `manuscript.html` with the code hidden, a captioned **Table 1** and **Figure 1**, and the Results text referring to "Table 1" and "Figure 1" via cross-references.
 
 ## For discussion
 
-- What would happen if you changed a value in `cohort-asma.csv` and re-rendered? Try it.
-- If you removed the `label` from a chunk, could you still reference it?
-- Which chunk options did you use? `echo`? `warning`? Why?
-- How long did the render take? Faster or slower than you expected?
+- `echo: false` in the `execute` block vs `#| echo: true` on one chunk — which wins, and why? (Chunk-level overrides document-level.)
+- Why is `@tbl-demographics` better than typing "Table 1" by hand?
+- What happens to the numbering if you move the figure chunk above the table chunk?
+- When would you actually want `code-fold: true`?

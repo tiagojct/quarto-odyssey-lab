@@ -9,11 +9,12 @@ author:
 date: today
 date-format: "D MMMM YYYY"
 abstract: |
-  This document is the skeleton you'll complete in exercises 2 and 3 of
-  the *A Quarto Odyssey* course. In exercise 2, you'll fill in the three R
-  code blocks marked with `TODO`. In exercise 3, you'll write the
-  Introduction and Methods sections, insert citations from your Zotero
-  library, and export the document to .docx, PDF and HTML.
+  This is a ready-made manuscript: the R code already works and the text is
+  already written. Your job is the *Quarto layer*, not the analysis. In
+  exercise 2 you configure the code chunks (hide the code, add labels and
+  captions, size the figure) and add cross-references. In exercise 3 you
+  format the text, insert citations from your Zotero library, and export the
+  document to .docx, PDF and HTML.
 bibliography: references.bib
 csl: vancouver.csl
 format:
@@ -24,103 +25,84 @@ format:
   pdf:
     documentclass: scrartcl
     geometry: margin=2.5cm
-execute:
-  echo: false
-  warning: false
-  message: false
+# NOTE (exercise 2, step 2): there is no `execute:` block yet. Render the
+# document once and you'll see the R code and its messages in the output.
+# You'll add the block here to hide them.
 ---
 
 ```{r}
-#| label: setup
+# This setup chunk loads the packages and reads the data. It works as-is —
+# don't change the code. In exercise 2 you'll configure how it appears.
+library(tidyverse)
+library(gt)
 
-# TODO: chunk 1 — load the tidyverse and gt, and read the file
-# ../data/cohort-asma.csv into an object called `cohort`.
-#
-# Hint:
-#   library(tidyverse)
-#   library(gt)
-#   cohort <- read_csv("../data/cohort-asma.csv")
-
+cohort <- read_csv("../data/cohort-asma.csv")
 ```
 
 # Introduction
 
-> *In exercise 3, write two or three paragraphs here about paediatric asthma,
-> with at least three citations from your Zotero library.*
->
-> Citation syntax:
->
-> - `@papi2018asthma` → "Papi et al. (2018)"
-> - `[@papi2018asthma]` → "(Papi et al., 2018)" or "(1)" in Vancouver
-> - `[@papi2018asthma; @quanjer2012multi]` → combines citations
+<!-- TODO (exercise 3): this paragraph is written, but flat. Format it and add
+     the citations at the [CITE] marks using your Zotero cite keys, e.g.
+     [@papi2018asthma]. -->
+
+Asthma is one of the most common chronic diseases of childhood [CITE]. Spirometry — in particular the forced expiratory volume in one second (FEV1) — is central to assessing and monitoring disease severity in children [CITE]. Reference values for paediatric spirometry follow widely adopted multi-ethnic equations [CITE].
 
 # Methods
 
-> *In exercise 3, write the sample description here. Include:*
->
-> - *Sample size (n) and age range.*
-> - *Distribution by sex.*
-> - *Inclusion and exclusion criteria (made up — it's an exercise).*
-> - *At least one reference to the statistical method used.*
->
-> *Cross-reference the tables and figures with `@tbl-demographics` and `@fig-fev1-age`.*
->
-> *Bonus (optional, see exercise 3): generate a STROBE flow diagram of the*
-> *cohort with the `quarto-study-flow` extension and cross-reference it with `@fig-flow`.*
+<!-- TODO (exercise 3): format this section (a short bulleted list of the sample
+     characteristics reads well here) and add the cross-references and a citation
+     for the statistical approach. -->
+
+We analysed a synthetic cohort of children with asthma. For each participant we recorded age, sex, height, weight and spirometry (FEV1, FVC). The sample is summarised with descriptive statistics — means and standard deviations by sex [CITE]. Sample characteristics are reported in TABLE-REF and the relationship between age and lung function in FIGURE-REF.
 
 # Results
 
-The sample is characterised in @tbl-demographics. The relationship between age and lung function, stratified by asthma severity, is illustrated in @fig-fev1-age.
+The demographic and functional characteristics of the sample are shown in the table below. The relationship between age and FEV1, stratified by asthma severity, is shown in the figure below.
+
+<!-- TODO (exercise 2): once you give the two chunks below a label, replace
+     "the table below" / "the figure below" above with cross-references,
+     e.g. @tbl-demographics and @fig-fev1-age. -->
 
 ```{r}
-#| label: tbl-demographics
-#| tbl-cap: "Demographic and functional characteristics of the sample, by sex"
-
-# TODO: chunk 2 — produce a table with:
-#   - n by sex
-#   - mean (standard deviation) of age, by sex
-#   - mean (standard deviation) of FEV1, by sex
-#
-# Hint (dplyr + gt):
-#   cohort |>
-#     group_by(sex) |>
-#     summarise(
-#       n = n(),
-#       age_mean = mean(age),
-#       age_sd = sd(age),
-#       fev1_mean = mean(fev1_l),
-#       fev1_sd = sd(fev1_l)
-#     ) |>
-#     gt() |>
-#     fmt_number(columns = age_mean:fev1_sd, decimals = 2)
-
+# TODO (exercise 2): configure this chunk — give it a label (tbl-demographics)
+# and a caption (tbl-cap). The code is complete; don't change it.
+cohort |>
+  group_by(sex) |>
+  summarise(
+    n = n(),
+    age_mean = mean(age),
+    age_sd = sd(age),
+    fev1_mean = mean(fev1_l),
+    fev1_sd = sd(fev1_l)
+  ) |>
+  gt() |>
+  fmt_number(columns = age_mean:fev1_sd, decimals = 2) |>
+  cols_label(
+    sex = "Sex",
+    n = "N",
+    age_mean = "Age (mean)",
+    age_sd = "Age (SD)",
+    fev1_mean = "FEV1 (mean)",
+    fev1_sd = "FEV1 (SD)"
+  )
 ```
 
 ```{r}
-#| label: fig-fev1-age
-#| fig-cap: "FEV1 as a function of age, stratified by asthma severity"
-#| fig-width: 7
-#| fig-height: 5
-
-# TODO: chunk 3 — ggplot2 plot with:
-#   - x axis: age
-#   - y axis: fev1_l
-#   - colour: asthma_severity
-#   - geom_point() + geom_smooth(method = "lm")
-#
-# Hint:
-#   ggplot(cohort, aes(x = age, y = fev1_l, colour = asthma_severity)) +
-#     geom_point(alpha = 0.7) +
-#     geom_smooth(method = "lm", se = FALSE) +
-#     labs(x = "Age (years)", y = "FEV1 (L)", colour = "Severity") +
-#     theme_minimal()
-
+# TODO (exercise 2): configure this chunk — give it a label (fig-fev1-age),
+# a caption (fig-cap), and set fig-width / fig-height. The code is complete.
+ggplot(cohort, aes(x = age, y = fev1_l, colour = asthma_severity)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Age (years)", y = "FEV1 (L)", colour = "Severity") +
+  theme_minimal()
 ```
 
 # Discussion
 
-> *You don't need to write the discussion. The goal of the exercise is the
-> Quarto workflow, not the clinical analysis.*
+<!-- The discussion is intentionally left short — the goal of the exercise is the
+     Quarto workflow, not the clinical interpretation. -->
+
+These descriptive results illustrate the expected increase of FEV1 with age. A full analysis is beyond the scope of this demonstration.
 
 # References
 
