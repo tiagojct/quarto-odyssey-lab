@@ -67,7 +67,7 @@ Look at the bibliography at the end of the document. Did you notice any referenc
 quarto render manuscript.qmd --to docx
 ```
 
-Open `manuscript.docx` (double-click it in the VS Code file panel; in a Codespace the file opens in the browser). Confirm that the tables and citations are correct.
+Open `manuscript.docx` (open it from RStudio's Files pane; it opens in your default app). Confirm that the tables and citations are correct.
 
 ### 7. Render to PDF
 

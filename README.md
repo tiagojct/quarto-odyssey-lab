@@ -10,26 +10,18 @@ A course on Quarto, Zotero and R for reproducible research in health. FMUP / MED
 
 ## Getting started
 
-1. Create a free GitHub account if you don't have one yet.
-2. Click **"Use this template" → "Create a new repository"** in the top-right corner of this page. Make a copy under your own account (you can keep it private).
-3. In your new repository, click **"Code" → "Codespaces" → "Create codespace on main"**.
-4. Wait two to three minutes on the first startup. The Codespace uses the `rocker-org/devcontainer/tidyverse` image with the `quarto-cli` feature (TinyTeX included), which comes with R, tidyverse, Quarto and LaTeX already installed.
-5. When VS Code opens, the terminal is already open at the bottom. To open the course in your browser:
+1. Install the tools locally: [R](https://cloud.r-project.org) and [RStudio](https://posit.co/download/rstudio-desktop/); Quarto (bundled with recent RStudio, otherwise [quarto.org/docs/get-started](https://quarto.org/docs/get-started/)); [Zotero 7+](https://www.zotero.org/download/) with [Better BibTeX](https://retorque.re/zotero-better-bibtex/installation/). New to RStudio? See [tiagojct.eu/rsbp](https://tiagojct.eu/rsbp/).
+2. Get the materials: `git clone https://github.com/tiagojct/quarto-odyssey-lab.git`, or **Code → Download ZIP**, or **Use this template** to copy it to your own account.
+3. Open `quarto-odyssey.Rproj` in RStudio. Open `course/course.qmd` and click **Render** (or run `quarto preview course/course.qmd` in the RStudio Terminal). It opens the course in your browser; use the table of contents on the left.
+4. When you render a PDF (exercise 3), double-click the rendered `.pdf` in RStudio's **Files** pane to open it in a viewer. The opening slides live in `presentation/slides.qmd` — render them with `quarto preview presentation/slides.qmd` for the local version, or view the [online](https://tiagojct.eu/quarto-odissey/slides/) version directly. They are not required for the exercises, only to follow along with the introduction.
 
-   ```bash
-   quarto preview course/course.qmd
-   ```
-
-   This opens a new tab with the course document. Navigate through the table of contents on the left.
-
-   When you render a PDF (exercise 3), double-click the `.pdf` file in the file panel on the left — it opens in a PDF viewer inside the Codespace itself, without needing to download anything.
-
-   The opening slides live in `presentation/slides.qmd` — render them with `quarto preview presentation/slides.qmd` if you want the local version, or view the [online](https://tiagojct.eu/quarto-odissey/slides/) version directly. They are not required for the exercises, only to follow along with the introduction.
+**Fallback: no local install?** The repo ships a `.devcontainer`, so you can open it in **GitHub Codespaces** instead (**Code → Codespaces → Create codespace on main**).
 
 ## Structure
 
 ```
 .
+├── quarto-odyssey.Rproj            # RStudio project file
 ├── course/
 │   ├── course.qmd                  # Course document (Quarto HTML)
 │   ├── theme.scss                  # Visual theme (poster palette)
@@ -50,11 +42,11 @@ A course on Quarto, Zotero and R for reproducible research in health. FMUP / MED
 
 ## Requirements
 
-- A GitHub account (any free plan).
-- A modern browser.
-- **For exercise 1 only:** Zotero 7+ on your local machine. Zotero is a desktop application and does not run inside the Codespace.
+- R 4.x + RStudio.
+- Quarto (bundled with recent RStudio, or installed separately).
+- Zotero 7+ with Better BibTeX.
 
-Everything else (R, tidyverse, Quarto, LaTeX) is pre-installed in the Codespace. You don't need to install anything on your own computer.
+All of these run locally. A GitHub account is optional — only needed to clone the repository or use version control. Everything renders locally; there is nothing else to install.
 
 ## Notice
 

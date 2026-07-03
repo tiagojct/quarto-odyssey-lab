@@ -1,7 +1,7 @@
 ---
 title: "2001: A Quarto Odyssey"
 subtitle: "I'm sorry Dave, Word can't do that"
-author: "Tiago Jacinto — FMUP / CINTESIS–RISE-Health"
+author: "Tiago Jacinto — FMUP / RISE-Health"
 date: "2026-07-03"
 date-format: "D MMMM YYYY"
 lang: en
@@ -66,12 +66,14 @@ A health researcher does three things repeatedly: **manages references**, **anal
 
 Quarto solves this problem. It's a scientific publishing system that lets you write text, insert citations managed by Zotero, and include blocks of R code that produce tables and figures directly in the final document. A change in the data propagates automatically to the tables and figures. A change of citation style applies in seconds. The same `.qmd` file generates a `.docx` to submit to a journal, a PDF to archive, and an HTML page to share.
 
-This document serves two purposes. It's the **course script** you'll follow today. And it's the **reference material** you take with you: after the course it stays available in the Codespace and you can come back to it. Navigate the table of contents on the left to jump between sections. Each exercise has its own `README.md` in `exercises/` — that's where you'll do the hands-on work.
+This document serves two purposes. It's the **course script** you'll follow today. And it's the **reference material** you take with you: it lives in your project folder, so you can come back to it any time. Navigate the table of contents on the left to jump between sections. Each exercise has its own `README.md` in `exercises/` — that's where you'll do the hands-on work.
 
 ::: {.callout-tip}
-## If you don't have the Codespace open yet
+## If you haven't opened the project yet
 
-Go back to the [repository README](../README.md) and follow the four startup instructions (all you need is a GitHub account and a browser). The rest of this document assumes you already have the Codespace running, with R, Quarto and LaTeX available.
+You run this course locally in **RStudio**. Get the materials (`git clone`, **Code → Download ZIP**, or **Use this template**), then open `quarto-odyssey.Rproj` in RStudio. The rest of this document assumes you have R, RStudio, Quarto and Zotero installed — see the [repository README](../README.md) for the four setup steps, and [tiagojct.eu/rsbp](https://tiagojct.eu/rsbp/) if RStudio is new to you.
+
+No local install? The repo ships a `.devcontainer`, so you can open it in **GitHub Codespaces** as a fallback — everything below works there too.
 :::
 
 ## What you'll be able to do by the end of the day
@@ -139,6 +141,29 @@ The core terms, in more detail:
 
 **FAIR.** Acronym for *Findable, Accessible, Interoperable, Reusable*. [Principles](https://www.go-fair.org/fair-principles/) for making data (and code, and documents) reusable in the long term. The Quarto + Zotero + R workflow supports all four.
 
+# Why plain-text files?
+
+Notice a pattern in that glossary: `.qmd`, `.bib`, `.csl`, `.yml`, `.csv` — they're all **plain text**. Not a coincidence. Every durable part of this workflow is a text file you can open in any editor, on any operating system, today or in twenty years. That single property is where most of the payoff comes from.
+
+| File        | Holds                                  | Why it's text                                            |
+|-------------|----------------------------------------|----------------------------------------------------------|
+| `.qmd`      | Your prose, code and metadata          | Editable anywhere; no proprietary format to go obsolete  |
+| `.bib`      | Your references (BibTeX)               | Portable between tools; readable and fixable by hand      |
+| `.csl`      | The citation style rules               | Swap one file, restyle the whole bibliography            |
+| `.yml`      | Project/document settings              | Version-controllable configuration, not hidden in menus   |
+| `.csv`      | Your data                              | Opens in R, Python, Excel, or a text editor — no lock-in  |
+
+What plain text buys you:
+
+- **Durability.** A `.docx` from 2005 can already be awkward to open. A text file never rots — the format is the content.
+- **Diff-able history.** Because it's text, a version-control tool can show you *exactly which line changed* between two versions (more on this below). A binary `.docx` can only tell you "the file changed".
+- **Tool independence.** RStudio today, Positron or VS Code tomorrow, a plain editor on a borrowed laptop — the files don't care.
+- **Searchable and scriptable.** You can `grep` a folder of `.qmd` and `.bib` files, or write a script that touches a hundred of them. You cannot do that to a stack of Word documents.
+
+[The opposite of plain text is a *binary* format — `.docx`, `.xlsx`, `.pdf` — where the bytes only make sense to the program that wrote them. Binary is fine for *output*; the trouble starts when it's also your *source*.]{.column-margin}
+
+The rest of the course is, in a sense, just learning to work comfortably with a handful of well-chosen text files.
+
 # The problem: three tools that don't talk to each other
 
 Look at your typical workflow for writing an article:
@@ -200,7 +225,7 @@ my-article/
     └── manuscript.html
 ```
 
-When the `.qmd` file reads data, use **relative paths** (`data/cohort-asma.csv`), not absolute ones. That way the project works on your machine, on your supervisor's, and in the Codespace.
+When the `.qmd` file reads data, use **relative paths** (`data/cohort-asma.csv`), not absolute ones. That way the project works on your machine, on your supervisor's, and anywhere else it's opened.
 
 [Absolute path: `C:\Users\Tiago\Desktop\data.csv`. Relative path: `data/cohort.csv`. Only the second survives moving the project to another machine or to the *cloud*.]{.column-margin}
 
@@ -221,7 +246,7 @@ The `cohort-asma.csv` you'll use today is **synthetic** — generated for the ex
 
 In your real projects, with patient data, different rules apply:
 
-- **Never commit real patient data to a Git repository**, public or private. A Codespace can be shared, left in public mode by mistake, or the repository can be *forked*; Git history keeps everything forever, even if you delete the file in a later commit.
+- **Never commit real patient data to a Git repository**, public or private. A repository can be shared, cloned, published by mistake, or *forked*; Git history keeps everything forever, even if you delete the file in a later commit. (The same applies to a Codespace built from the repository.)
 - **Check your institution's data protection policy** (GDPR, ethics committee) before you even load patient data onto any machine — including your own laptop.
 - **Confirm you have ethics committee approval** for the study in question before analysing the data.
 - If you need to work with sensitive data in a Quarto workflow, keep it out of the repository (for example, in a `data/` folder listed in `.gitignore`, or in an institution-approved storage system) and use only relative paths to reference it locally.
@@ -232,6 +257,8 @@ In your real projects, with patient data, different rules apply:
 [Zotero](https://www.zotero.org) is the reference manager you'll use. It's *open source*, it's free, and it has a desktop application (Windows, macOS, Linux) plus sync with the *online* library. It solves a concrete problem: storing, organising and citing hundreds (or thousands) of articles without relying on PDF folders with names like `article_final_v2.pdf`.
 
 Underneath, Zotero stores three things per reference: the **metadata** (authors, title, year, DOI — what goes into the bibliography), the **attachments** (the PDF, if you have access), and your **annotations** (highlights, notes). All of this syncs across computers and integrates directly with Word, LibreOffice, and — what matters here — with Quarto.
+
+[For a fuller walkthrough of Zotero beyond what we cover today — collections, tags, group libraries, the built-in PDF reader — see [tiagojct.eu/zotero](https://tiagojct.eu/zotero).]{.column-margin}
 
 ::: {.callout-note}
 ## Zotero vs Mendeley vs EndNote
@@ -657,7 +684,7 @@ If you're using `quarto preview`, edit the setup chunk, save, and re-run all chu
 ::: {.callout-warning}
 ## "Error: There is no package called 'X'"
 
-The R package isn't installed. In the Codespace, open the terminal and run:
+The R package isn't installed. In RStudio, open the **Terminal** tab (or use the R **Console**) and run:
 
 ```r
 install.packages("X")
@@ -790,43 +817,67 @@ Recommended:
 
 [The technical literature on FAIR started with [Wilkinson et al. 2016 — *Nature Scientific Data*](https://doi.org/10.1038/sdata.2016.18). Worth reading if you work on projects with a data-sharing component.]{.column-margin}
 
-# Next steps
+# Version control, in brief
 
-What you learned today covers 80% of the tasks. For the other 20%:
+You don't need version control to finish today's exercises. But the moment your files are plain text — which, after the last few sections, they are — it becomes the single most valuable habit to add next. Here's the idea in one minute.
 
-- **Version control with Git.** The `.qmd` is text — manageable with Git. [Learn Git Branching](https://learngitbranching.js.org) teaches you enough in 60 minutes. Then use GitHub (you already have an account) for *backup* and sharing.
-- **`renv` to pin R packages.** R packages change version; a `.qmd` that runs today may fail two years from now if the `tidyverse` changed. [`renv`](https://rstudio.github.io/renv/) freezes the project's package versions. Analogous to `requirements.txt` in Python.
-- **[Positron](https://positron.posit.co)**, the successor to RStudio. In late *beta*. Same team, new codebase, based on VS Code. Worth trying once you're comfortable with RStudio.
-- **Quarto extensions.** There are [many](https://quarto.org/docs/extensions/) — for slides, posters, *journal articles*, *flashcards*. Search before making your own.
-- **Citations with [Citation File Format (CFF)](https://citation-file-format.github.io)**, to make your own code citable.
+**The problem it solves.** You've seen the folder that grows `thesis.docx`, `thesis_v2.docx`, `thesis_final.docx`, `thesis_final_REALLY.docx`. Version control replaces that with **one file and a labelled history**: instead of copies, you take *named snapshots* ("added subgroup analysis") that you can return to at any time.
 
-## Mini-tutorial — Git in 5 commands
+**Git vs GitHub.** Two different things people often confuse:
 
-[Git is a version control system. It works like Word's history ("go back to yesterday's version") but for any file, with explicit labels. Indispensable for projects with more than one collaborator, valuable even for solo projects.]{.column-margin}
+- **Git** is the tool that runs on *your computer* and records those snapshots. It works offline, on any files, and — because your sources are plain text — it can show you the exact line that changed between any two versions (`git diff`), not just "the file changed".
+- **GitHub** (and GitLab, Codeberg, and others) is a *website* that hosts a copy of your Git history online — for backup, for sharing, and for collaborating without emailing files around. You've already used one: this course lives in a GitHub repository.
+
+**Why it clicks with this workflow.** A `.qmd` project is exactly what version control was built for: small text files, meaningful line-level changes, one canonical version instead of a swarm of copies. Data, code, references and prose all get an auditable history for free.
+
+::: {.callout-tip}
+## Learn it properly, in the right order
+
+I've written two short, health-researcher-focused guides that go beyond this section:
+
+- [Git for health researchers: version control from day one](https://tiagojct.eu/git) — the concepts and the everyday commands.
+- [GitHub for health researchers: sharing, collaborating, and open science](https://tiagojct.eu/github) — hosting, collaboration, and reproducibility.
+
+For a hands-on, visual feel of branching, [Learn Git Branching](https://learngitbranching.js.org) is 60 well-spent minutes.
+:::
+
+The whole everyday loop is really five commands:
+
+[Git works like Word's track-changes history ("go back to yesterday's version"), but for any file, with explicit labels. Indispensable with more than one collaborator, valuable even solo.]{.column-margin}
 
 ```bash
 # 1. Initialise a repository in your project
 cd my-project/
 git init
 
-# 2. Tell Git who you are
+# 2. Tell Git who you are (once per machine)
 git config user.email "tiago@example.com"
 git config user.name "Tiago Jacinto"
 
-# 3. Add everything and make the first commit
+# 3. Add everything and take the first snapshot
 git add .
 git commit -m "Initial version"
 
-# 4. Create the repository on GitHub (via gh CLI)
+# 4. Put it on GitHub (via the gh CLI)
 gh repo create my-project --private --source=. --push
 
-# 5. From now on, every time you change something important
+# 5. From now on, every time you change something meaningful
 git add .
 git commit -m "Add subgroup analysis"
 git push
 ```
 
-And at any time you can go back with `git log` (see the history) and `git checkout <hash>` (return to an old version).
+Go back at any time with `git log` (see the history) and `git checkout <hash>` (return to an old snapshot). That's 90% of what you'll ever do.
+
+# Next steps
+
+What you learned today covers 80% of the tasks. For the other 20%:
+
+- **Version control with Git** (see the section above). The single highest-value habit to add once you're comfortable — start with [tiagojct.eu/git](https://tiagojct.eu/git).
+- **`renv` to pin R packages.** R packages change version; a `.qmd` that runs today may fail two years from now if the `tidyverse` changed. [`renv`](https://rstudio.github.io/renv/) freezes the project's package versions. Analogous to `requirements.txt` in Python.
+- **[Positron](https://positron.posit.co)**, the successor to RStudio. In late *beta*. Same team, new codebase, based on VS Code. Worth trying once you're comfortable with RStudio.
+- **Quarto extensions.** There are [many](https://quarto.org/docs/extensions/) — for slides, posters, *journal articles*, *flashcards*. Search before making your own.
+- **Citations with [Citation File Format (CFF)](https://citation-file-format.github.io)**, to make your own code citable.
 
 ## Mini-tutorial — `renv` in 3 commands
 
@@ -865,8 +916,8 @@ To go deeper after the course:
 
 - [Zotero documentation](https://www.zotero.org/support/).
 - [Better BibTeX manual](https://retorque.re/zotero-better-bibtex/).
-- [Using Zotero (Tiago Jacinto)](https://tiagojct.eu/notes/zotero/) — tutorial in English.
-- [Zettlr and Zotero: a plain-text workflow for scientific writing](https://tiagojct.eu/notes/zettlr-zotero/).
+- [Using Zotero (Tiago Jacinto)](https://tiagojct.eu/zotero) — tutorial in English.
+- [Zettlr and Zotero: a plain-text workflow for scientific writing](https://tiagojct.eu/zettlr-zotero).
 
 **Reproducibility:**
 
@@ -876,10 +927,10 @@ To go deeper after the course:
 
 **Related tutorials (Tiago Jacinto):**
 
-- [RStudio: Best practices for scientific work](https://tiagojct.eu/notes/rst-bp/).
-- [Computing Foundations for Health Researchers](https://tiagojct.eu/projects/computing-foundations/).
+- [RStudio: Best practices for scientific work](https://tiagojct.eu/rsbp/).
+- [Computing Foundations for Health Researchers](https://tiagojct.eu/computing-foundations).
 
-The Codespace you created today is yours. You can go back whenever you want, you can use it as a starting point for your projects. Take everything from here.
+The project you set up today is yours. You can come back to it whenever you want, and use it as a starting point for your own work. Take everything from here.
 
 # Closing
 
@@ -909,4 +960,4 @@ If you've never seen the film, none of this is needed to take the course. But it
 
 ---
 
-Tiago Jacinto · FMUP / CINTESIS–RISE-Health · MEDCIDS Summer School 2026
+Tiago Jacinto · FMUP / RISE-Health · MEDCIDS Summer School 2026

@@ -2,7 +2,7 @@
 title: "2001: A Quarto Odyssey"
 subtitle: "I'm sorry Dave, Word can't do that"
 author: "Tiago Jacinto"
-institute: "FMUP · CINTESIS/RISE-Health"
+institute: "FMUP · RISE-Health"
 date: 2026-07-03
 date-format: "D MMMM YYYY"
 lang: en
@@ -23,21 +23,25 @@ format:
 - FAIR principles
 - Next steps
 
-## Before we start: GitHub account
+## Before we start: what to install
 
-You need a **free GitHub account** to follow the course.
+Install these on your own computer before the course:
 
-- Already have an account? Log in at [github.com](https://github.com).
-- Don't have one? Create one now at [github.com/signup](https://github.com/signup) — all you need is an email, it takes less than a minute.
-- A modern browser (Chrome, Firefox, Safari, Edge). You don't need to install anything on your computer — R, Quarto and LaTeX come ready in the environment you'll open next.
+- **R** ([cloud.r-project.org](https://cloud.r-project.org)) + **RStudio** ([posit.co/download/rstudio-desktop](https://posit.co/download/rstudio-desktop/)).
+- **Quarto** — bundled with recent RStudio; otherwise [quarto.org/docs/get-started](https://quarto.org/docs/get-started/).
+- **Zotero 7+** ([zotero.org/download](https://www.zotero.org/download/)) + **Better BibTeX**.
+
+New or rusty in RStudio? See [tiagojct.eu/rsbp](https://tiagojct.eu/rsbp/).
+
+A **GitHub account** is optional — only needed for cloning and version control.
 
 ::: {.callout-tip}
-## Exception: exercise 1 (Zotero)
+## Zotero is a desktop app
 
-Zotero runs on your computer, not in the browser. Install it now if you don't have it yet: [zotero.org/download](https://www.zotero.org/download/) (version 7+), plus the [browser connector](https://www.zotero.org/download/connectors).
+Zotero runs on your computer, not in the browser. Install it now if you don't have it yet, plus the [browser connector](https://www.zotero.org/download/connectors).
 :::
 
-## Access the course repository
+## Get the materials
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -46,10 +50,11 @@ Zotero runs on your computer, not in the browser. Install it now if you don't ha
 ::: {.column width="55%"}
 [github.com/tiagojct/quarto-odyssey-lab](https://github.com/tiagojct/quarto-odyssey-lab)
 
-1. Open the link (or scan the code).
-2. **Use this template → Create a new repository**.
-3. In your new repo: **Code → Codespaces → Create codespace on main**.
-4. Wait 3–5 minutes on the first launch.
+1. Clone `git clone https://github.com/tiagojct/quarto-odyssey-lab.git`, or **Code → Download ZIP**, or **Use this template**.
+2. Open the project in **RStudio** (double-click `quarto-odyssey.Rproj`).
+3. Open `course/course.qmd` and click **Render** (or `quarto preview course/course.qmd` in the RStudio Terminal).
+
+[No local install? The repo ships a devcontainer — open in GitHub Codespaces as a fallback.]{.dimmed}
 :::
 ::::
 
@@ -222,8 +227,8 @@ You don't need to have seen the film. But after today, it might be worth it.
 
 ## Let's get started
 
-Open `course/course.qmd` in your Codespace — it's today's script, and it stays with you afterwards.
+Open `course/course.qmd` in RStudio — it's today's script, and it stays with you afterwards.
 
 [github.com/tiagojct/quarto-odyssey-lab](https://github.com/tiagojct/quarto-odyssey-lab)
 
-Tiago Jacinto · FMUP / CINTESIS–RISE-Health
+Tiago Jacinto · FMUP / RISE-Health

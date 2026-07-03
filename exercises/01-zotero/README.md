@@ -6,14 +6,14 @@ Build a Zotero library with at least **10 references** added by **three differen
 
 ## Before you start
 
-- You have Zotero installed on your machine (not in the Codespace — Zotero is a desktop application).
+- You have Zotero installed on your machine — Zotero is a desktop application, so this exercise happens in the app, not in RStudio.
   - Download it at <https://www.zotero.org/download/>. Version 7.0 or later.
 - You have the Zotero connector installed in your browser.
   - <https://www.zotero.org/download/connectors>
 
-> **Note.** This exercise is done on your **local machine**, not in the Codespace. The Codespace is for the Quarto document (exercises 2 and 3), but Zotero is a desktop application.
+> **Note.** This exercise is done in the **Zotero app** on your machine. RStudio is for the Quarto document (exercises 2 and 3); Zotero is a separate desktop application. Exercises 2 and 3 read the `references.bib` you produce here.
 
-> **Support files.** This exercise's `starter-files/` folder contains a sample PDF and a sample `.bib` (see step 3, methods 3 and 5). Since Zotero runs on your machine and not in the Codespace, download them first: on GitHub, open `exercises/01-zotero/starter-files/`, pick the file, and use **Download raw file**.
+> **Support files.** This exercise's `starter-files/` folder contains a sample PDF and a sample `.bib` (see step 3, methods 3 and 5). Because you cloned or downloaded the repository, they're already on your computer at `exercises/01-zotero/starter-files/`.
 
 ## Steps
 
@@ -57,9 +57,9 @@ Create a new collection (`File → New Collection`) named `quarto-odyssey`. Add 
 1. Right-click the `quarto-odyssey` collection → **Export Collection** (or **Export Library** for the entire library).
 2. Format: **Better BibTeX**.
 3. Check **Keep updated**.
-4. Save it as `references.bib` in the folder of the Quarto project you will use in exercises 2 and 3 (in your Codespace).
+4. Save it as `references.bib` in the folder of the Quarto project you will use in exercises 2 and 3.
 
-> How to move the file from your computer to the Codespace: in the Codespace's VS Code, drag `references.bib` from your local folder into the file panel on the left. The file is uploaded to the Codespace.
+> How to move the file: save/export `references.bib` directly into the project folder `exercises/02-quarto-analysis/template/` on your computer. Since Zotero runs locally, no upload is needed — it's already on your machine. (If you're using the Codespace fallback instead, drag the file into the VS Code file panel to upload it.)
 
 ### 6. Check the `.bib` before moving on
 
@@ -75,7 +75,7 @@ If these three points are fine, the `.bib` is ready for exercises 2 and 3.
 
 - A Zotero collection with 10+ references added by at least 3 methods.
 - Better BibTeX installed and generating readable *cite keys*.
-- A `references.bib` file in the Quarto project in the Codespace.
+- A `references.bib` file in the Quarto project folder (`exercises/02-quarto-analysis/template/`).
 - At least one article with a retraction warning in the library (forcing the Wakefield 1998 example).
 
 ## For discussion

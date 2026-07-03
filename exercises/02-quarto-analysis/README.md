@@ -6,8 +6,8 @@ Complete a partially filled `.qmd` document with R code blocks that produce a **
 
 ## Before you start
 
-- Exercise 1 does not need to be finished before you begin this one. But you do need the Codespace open.
-- R, Quarto, and the required packages (`tidyverse`, `gt`, `ggplot2`) are already installed in the Codespace.
+- Exercise 1 does not need to be finished before you begin this one. But you need the project open in RStudio.
+- R, Quarto, and the required packages (`tidyverse`, `gt`, `ggplot2`) are installed locally (you set them up in Getting started).
 - The dataset (`data/cohort-asma.csv`) and the template (`template/manuscript.qmd`) are in this exercise's folder.
 
 ## The dataset
@@ -20,18 +20,18 @@ The data is synthetic and clean — no missing values, no impossible values. The
 
 ### 1. Open the template
 
-In the Codespace's VS Code, open `exercises/02-quarto-analysis/template/manuscript.qmd`. Read the YAML *front matter* — you will see the title, author, date, format, and the `bibliography` directive.
+In RStudio, open `exercises/02-quarto-analysis/template/manuscript.qmd`. Read the YAML *front matter* — you will see the title, author, date, format, and the `bibliography` directive.
 
 ### 2. Start the preview
 
-In the terminal:
+In the RStudio Terminal:
 
 ```bash
 cd exercises/02-quarto-analysis/template
 quarto preview manuscript.qmd
 ```
 
-This opens a page with the rendered document. Every time you save the `.qmd`, the page refreshes automatically.
+This opens a page with the rendered document. Every time you save the `.qmd`, the page refreshes automatically. Clicking **Render** in RStudio does the same thing.
 
 ### 3. Complete the first chunk — reading the data
 
